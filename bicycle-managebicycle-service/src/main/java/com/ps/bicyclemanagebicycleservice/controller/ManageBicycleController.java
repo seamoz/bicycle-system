@@ -22,6 +22,7 @@ public class ManageBicycleController {
     @GetMapping("/bikes/deduction")
     public void deduction(@RequestParam("id") int id){
         manageBicycleService.deduction(id);
+        System.out.println("sss");
     }
 
     @PostMapping("/bikes/malfunction")
