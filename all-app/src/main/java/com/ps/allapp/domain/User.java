@@ -29,5 +29,4 @@ public class User implements Serializable {
 
     private int bicycleId;//单车id
 
-
 }
