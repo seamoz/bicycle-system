@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bicycle-managebicycle-service" />
         <module name="bicycle-billing-service" />
-        <module name="bicycle-system" />
         <module name="bicycle-user-service" />
         <module name="bicycle-h5-app" />
+        <module name="bicyclesystem" />
+        <module name="bicycle-managebicycle-service" />
+        <module name="bicycle-system" />
       </profile>
     </annotationProcessing>
   </component>
