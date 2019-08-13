@@ -1,6 +1,8 @@
 package com.ps.bicyclemanagebicycleservice.controller;
 
-import org.springframework.web.bind.annotation.RestController;
+import com.ps.bicyclemanagebicycleservice.service.ManageBicycleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author ZZH
@@ -9,9 +11,33 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ManageBicycleController {
 
-    public void hello(){
+    @Autowired
+    private ManageBicycleService manageBicycleService;
 
+    @GetMapping("/bikes/cycling")
+    public void cycling(@RequestParam("userId") int userId){
+        manageBicycleService.cycling(userId);
     }
 
+    @GetMapping("/bikes/deduction")
+    public void deduction(@RequestParam("id") int id){
+        manageBicycleService.deduction(id);
+        System.out.println("ddd");
+    }
+
+    @PostMapping("/bikes/malfunction")
+    public void malfunction(){
+        manageBicycleService.malfunction();
+    }
+
+    @GetMapping("/bikes/succeed")
+    public void succeed(@RequestParam("bicycleNum") String bicycleNum){
+        manageBicycleService.succeed(bicycleNum);
+    }
+
+    @PutMapping("/pays/pay")
+    public void pay(@RequestParam("userId") int userId, @RequestParam("money") float money){
+        manageBicycleService.pay(userId, money);
+    }
 
 }

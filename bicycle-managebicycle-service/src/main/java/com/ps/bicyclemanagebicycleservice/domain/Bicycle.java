@@ -5,4 +5,7 @@ package com.ps.bicyclemanagebicycleservice.domain;
  * @date 2019/8/13 19:18
  */
 public class Bicycle {
+
+    int hello1;
+
 }
