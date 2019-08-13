@@ -12,7 +12,6 @@
         <module name="bicycle-managebicycle-service" />
         <module name="all-app" />
         <module name="eureka-service" />
-        <module name="bicycle-system" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
