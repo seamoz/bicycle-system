@@ -1,4 +1,4 @@
-package com.ps.allapp.domai;
+package com.ps.allapp.domain;
 
 import lombok.Data;
 
