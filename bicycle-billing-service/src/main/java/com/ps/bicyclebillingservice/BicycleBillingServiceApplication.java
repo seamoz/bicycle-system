@@ -11,5 +11,4 @@ public class BicycleBillingServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(BicycleBillingServiceApplication.class, args);
     }
-
 }
