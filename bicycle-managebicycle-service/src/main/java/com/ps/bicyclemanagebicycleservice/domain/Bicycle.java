@@ -6,5 +6,6 @@ package com.ps.bicyclemanagebicycleservice.domain;
  */
 public class Bicycle {
 
+    int hello1;
 
 }

@@ -2,15 +2,12 @@ package com.ps.bicyclemanagebicycleservice.service;
 
 import org.springframework.stereotype.Service;
 
-/**
- * @author ZZH
- * @date 2019/8/13 19:17
- */
 @Service
 public class ManageBicycleService {
 
-    public void cycling(int userId){
 
+    public void cycling(int userId){
+        System.out.println("sss");
     }
 
     public void deduction(int id){
@@ -28,8 +25,6 @@ public class ManageBicycleService {
     public void pay(int userId, float money){
 
     }
-
-
 
 
 }
