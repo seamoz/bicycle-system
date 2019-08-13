@@ -14,10 +14,6 @@ public class ManageBicycleController {
     @Autowired
     private ManageBicycleService manageBicycleService;
 
-    public void hello(){
-
-    }
-
     @GetMapping("/bikes/cycling")
     public void cycling(@RequestParam("userId") int userId){
         manageBicycleService.cycling(userId);
