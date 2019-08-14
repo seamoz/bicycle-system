@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ps.bicycleuserservice.mapper.UserMapper">
+
+    <select id="queryRoute" resultType="com.ps.allapp.domain.ShareBicycle">
+        SELECT
+            sb.id,
+            sb.start_time as startTime,
+            sb.use_time as useTime,
+            sb.money
+        FROM
+            sharebicycle_bicycle_t sb
+        WHERE
+            user_id = #{userId}
+    </select>
+
+
+    <select id="userOrder" resultType="java.lang.Integer">
+        SELECT
+          st.bicycle_num as bicycleNum,
+            st.start_time as startTime,
+            st.initial_address as initialAddress,
+            st.end_address as endAddress,
+            st.use_time as useTime,
+            st.money
+        FROM
+            sharebicycle_bicycle_t st
+        WHERE
+            id = #{id}
+    </select>
+
+
+    <select id="queryPersonage" resultType="com.ps.allapp.domain.User">
+        SELECT
+            su.id as userId ,
+            su.head_photo as headPhoto,
+            su.username as username,
+            su.phone as phone,
+            su.email as email,
+            su.address as address
+        FROM
+            sbike_user_t su
+        WHERE
+            id = #{userId}
+    </select>
+</mapper>
