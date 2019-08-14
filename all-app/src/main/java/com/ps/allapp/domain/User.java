@@ -28,5 +28,4 @@ public class User implements Serializable {
     private int walletId;//钱包id
 
     private int bicycleId;//单车id
-
 }
