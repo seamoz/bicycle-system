@@ -46,11 +46,6 @@ public class ManageBicycleController {
         manageBicycleService.malfunction();
     }
 
-    @GetMapping("/bikes/succeed")
-    public void succeed(@RequestParam("bicycleNum") String bicycleNum){
-        manageBicycleService.succeed(bicycleNum);
-    }
-
     @PutMapping("/pays/pay")
     public void pay(@RequestParam("userId") int userId, @RequestParam("money") float money){
         manageBicycleService.pay(userId, money);
@@ -75,5 +70,17 @@ public class ManageBicycleController {
         Result result  = manageBicycleService.faultDetails(id);
         return result;
     }
+
+    /**
+     *  故障上报成功查询
+     */
+    @GetMapping("/bikes/succeed")
+    public Result succeed(@RequestParam("id") int id){
+
+        Result result  = manageBicycleService.faultDetails(id);
+        return result;
+    }
+
+
 
 }

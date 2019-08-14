@@ -13,9 +13,6 @@ import java.util.List;
 @Repository
 public interface ManageBicycleMapper {
 
-    void hello();
-    void hello1();
-
     /**
      *  历史故障（用户提交单车的故障）
      * @param userId

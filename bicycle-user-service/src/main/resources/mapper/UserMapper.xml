@@ -5,6 +5,15 @@
 
 <mapper namespace="com.ps.bicycleuserservice.mapper.UserMapper">
 
+
+    <!-- 免密支付 -->
+    <update id="confidentialPayment">
+        UPDATE sbike_wallet_t
+        SET no_password_pay = #{noPasswordPay}
+        WHERE
+            id = #{id}
+    </update>
+
     <select id="queryRoute" resultType="com.ps.allapp.domain.ShareBicycle">
         SELECT
             sb.id,
@@ -46,4 +55,17 @@
         WHERE
             id = #{userId}
     </select>
+
+    <!-- 根据用户id，密码查询 用户钱包关联数据 -->
+    <select id="userWalletDetails" resultType="java.lang.Integer">
+        SELECT
+            w.id
+        FROM
+            sbike_user_t u
+            LEFT JOIN sbike_wallet_t w ON ( u.wallet_id = w.id )
+        WHERE
+            u.id = #{userId}
+            AND u.PASSWORD = #{password}
+    </select>
+
 </mapper>

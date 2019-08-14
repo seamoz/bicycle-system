@@ -26,10 +26,6 @@ public class ManageBicycleService {
 
     }
 
-    public void succeed(String bicycleNum){
-
-    }
-
     public void pay(int userId, float money){
 
     }
@@ -42,11 +38,10 @@ public class ManageBicycleService {
     public Result historyMalfunction(int userId) {
         Result result = new Result();
 
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
-
         List<Fault> list = manageBicycleMapper.historyMalfunction(userId);
 
         result.setData(list);
+        result.setError_code(200);
         return result;
     }
 
@@ -61,6 +56,7 @@ public class ManageBicycleService {
         Fault fault = manageBicycleMapper.faultDetails(id);
 
         result.setData(fault);
+        result.setError_code(200);
         return result;
     }
 
