@@ -1,0 +1,46 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ps.bicyclemanagebicycleservice.mapper.ManageBicycleMapper">
+
+    <!-- 历史故障（用户提交单车的故障）-->
+    <select id="historyMalfunction"  resultType="com.ps.allapp.domain.Fault">
+        SELECT
+            id,
+            bicycle_num as bicycleNum,
+            publish_time as publishTime,
+        CASE
+                dispose_state
+                WHEN 0 THEN
+                "处理中"
+                WHEN 1 THEN
+                "已处理" ELSE "未处理"
+            END disposeState
+        FROM
+            sbike_fault_t
+        WHERE
+            user_id = #{userId}
+    </select>
+
+    <!-- 故障的详情资料 -->
+    <select id="faultDetails" resultType="com.ps.allapp.domain.Fault">
+        SELECT
+            bicycle_num as bicycleNum,
+        CASE
+                dispose_state
+                WHEN 0 THEN
+                "处理中"
+                WHEN 1 THEN
+                "已处理" ELSE "未处理"
+            END disposeState,
+            publish_time as publishTime,
+            dispose_time as disposeTime,
+            fault_type as faultType,
+            remark
+        FROM
+            sbike_fault_t
+        WHERE
+            id = #{id}
+    </select>
+
+
+</mapper>
