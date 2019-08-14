@@ -38,7 +38,7 @@ public class Fault {
     /**
      * 处理状态
      */
-    private int disposeState;
+    private String disposeState;
 
     /**
      * 上报时间
