@@ -1,5 +1,6 @@
 package com.ps.bicyclemanagebicycleservice.controller;
 
+import com.ps.allapp.domain.Result;
 import com.ps.bicyclemanagebicycleservice.service.ManageBicycleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -45,14 +46,42 @@ public class ManageBicycleController {
         manageBicycleService.malfunction();
     }
 
-    @GetMapping("/bikes/succeed")
-    public void succeed(@RequestParam("bicycleNum") String bicycleNum){
-        manageBicycleService.succeed(bicycleNum);
-    }
-
     @PutMapping("/pays/pay")
     public void pay(@RequestParam("userId") int userId, @RequestParam("money") float money){
         manageBicycleService.pay(userId, money);
     }
+
+    /**
+     * 历史故障（用户提交单车的故障）
+     */
+    @GetMapping("/history-malfunction")
+    public Result historyMalfunction(@RequestParam("userId") int userId){
+
+        Result result  = manageBicycleService.historyMalfunction(userId);
+        return result;
+    }
+
+    /**
+     * 故障的详情资料
+     */
+    @GetMapping("/fault-details")
+    public Result faultDetails(@RequestParam("id") int id){
+
+        Result result  = manageBicycleService.faultDetails(id);
+        return result;
+    }
+
+    /**
+     *  故障上报成功查询
+     */
+    @GetMapping("/bikes/succeed")
+    public Result succeed(@RequestParam("id") int id){
+
+        Result result  = manageBicycleService.faultDetails(id);
+        return result;
+    }
+
+
+
 
 }

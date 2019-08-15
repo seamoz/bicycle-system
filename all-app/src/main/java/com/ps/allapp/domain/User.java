@@ -18,5 +18,4 @@ public class User implements Serializable {
     private String address;//地址
     private int walletId;//钱包id
     private int bicycleId;//单车id
-
 }
