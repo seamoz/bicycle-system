@@ -8,6 +8,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * @description: user mapper类
+ * @author: 谭倾云
+ * @create: 2019/08/14
+ */
 @Mapper
 @Repository
 public interface UserMapper {
@@ -80,4 +85,62 @@ public interface UserMapper {
      */
     Integer userWalletDetails(int userId, String password);
 
+    /**
+     * @Description 根据电话修改密码
+     * @param phone 用户的电话号码
+     * @return User 返回的用户对象
+     * */
+    User queryUserByPhone(String phone);
+
+    /**
+     * @Description 根据电话修改密码
+     * @param phone 用户的电话号码
+     * @param newPassword 用户修改的密码
+     * */
+    void updatePasswordByPhone(String phone, String newPassword);
+
+    /**
+     * @Description 根据邮箱查找用户
+     * @param email 用户的邮箱
+     * @return User 返回的用户对象
+     * */
+    User queryUserByEmail(String email);
+
+    /**
+     * @Description 根据邮箱修改密码
+     * @param email 用户的邮箱地址
+     * @param newPassword 用户要修改的密码
+     * */
+    void updatePasswordByEmail(String email, String newPassword);
+
+    /**
+     * @Description 添加用户
+     * @param name 用户名
+     * @param phone 用户电话
+     * */
+    void addUserByCode(String name, String phone);
+
+    /**
+     * @Description 添加用户
+     * @param userName 用户名
+     * @param encryptionPassword 用户密码
+     * @param email 邮箱地址
+     * */
+    void addUser(String userName, String encryptionPassword, String email);
+
+    /**
+     * @Description 电话发送短信进行记录
+     * @param phone 用户名电话
+     * @param state 短信类型
+     * @param verificationCode 验证码
+     * */
+    void addCodeRecordPhone(String phone, Integer state, String verificationCode);
+
+    /**
+     * @Description 邮箱发送短信进行记录
+     * @param email 用户邮箱地址
+     * @param state 短信类型
+     * @param verificationCode 验证码
+     * */
+    void addCodeRecordEmail(String email, Integer state, String verificationCode);
 }

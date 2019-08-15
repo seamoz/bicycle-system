@@ -40,7 +40,6 @@ public class ManagebicycleController {
      */
     @GetMapping("/bikes/succeed")
     Result succeed(@RequestParam("id") int id){
-
         Result result = managebicycleService.succeed(id);
         return result;
     }

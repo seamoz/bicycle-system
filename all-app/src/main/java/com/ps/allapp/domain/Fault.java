@@ -2,13 +2,14 @@ package com.ps.allapp.domain;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author VP
  */
 @Data
-public class Fault {
+public class Fault implements Serializable {
 
     /**
      * 故障id
