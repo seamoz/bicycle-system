@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ps.bicycleuserservice.mapper.UserMapper">
+
+    <insert id="insertVerify">
+        INSERT INTO bicycle_system.sbike_verify_t ( user_id, user_email, verify_type, verify_code, verify_time )
+        VALUES
+            ( #{userId}, #{userEmail},#{verifyType},#{verifyCode},now())
+
+    </insert>
+
+
+    <select id="queryRoute" resultType="com.ps.allapp.domain.ShareBicycle">
+      SELECT
+        sb.id,
+        sb.start_time as startTime,
+        sb.use_time as useTime,
+        sb.money
+    FROM
+        sharebicycle_bicycle_t sb
+    WHERE
+        user_id = #{userId}
+    </select>
+
+
+    <select id="userOrder" resultType="com.ps.allapp.domain.ShareBicycle">
+        SELECT
+            st.id,
+            st.user_id as userId,
+            st.bicycle_num as bicycleNum,
+            st.start_time as startTime,
+            st.initial_address as initialAddress,
+            st.end_address as endAddress,
+            st.use_time as useTime,
+            st.money
+        FROM
+            sharebicycle_bicycle_t st
+        WHERE
+            id = #{id}
+    </select>
+
+
+    <select id="queryPersonage" resultType="com.ps.allapp.domain.User">
+        SELECT
+            su.id as userId ,
+            su.head_photo as headPhoto,
+            su.username as username,
+            su.phone as phone,
+            su.email as email,
+            su.address as address
+        FROM
+            sbike_user_t su
+        WHERE
+            id = #{userId}
+    </select>
+
+    <select id="queryMailbox" resultType="com.ps.allapp.domain.User">
+        SELECT
+            su.id as userId,
+            su.email
+        FROM
+            sbike_user_t su
+        WHERE
+            id = #{userId}
+    </select>
+
+    <select id="queryVerifyCode" resultType="java.lang.Integer">
+        SELECT
+            su.id,
+            sv.verify_code
+        FROM
+            sbike_user_t su
+            LEFT JOIN sbike_verify_t sv ON su.id = sv.user_id
+        WHERE
+            su.id = #{userId}
+    </select>
+
+
+    <update id="updateMyEmail">
+        UPDATE sbike_user_t
+        SET email = #{email}
+        WHERE
+            id = #{userId}
+    </update>
+
+    <update id="updatePhone">
+         UPDATE sbike_user_t
+        SET phone = #{phone}
+        WHERE
+            id = #{userId}
+    </update>
+
+    <select id="queryPhone" resultType="com.ps.allapp.domain.User">
+        SELECT phone FROM sbike_user_t WHERE id =#{userId}
+    </select>
+
+
+</mapper>

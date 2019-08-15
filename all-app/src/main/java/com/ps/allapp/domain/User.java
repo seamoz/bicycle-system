@@ -7,63 +7,19 @@ import java.io.Serializable;
 @Data
 public class User implements Serializable {
 
-    /**
-     * 用户id
-     * */
-    private Integer Id;
+    private Integer userId;//用户id
+    private String username;//用户名
+    private String password;//密码
+    private String phone;//手机号
+    private String email;//邮箱
+    private String registerTime;//注册时间
+    private double route;//里程
+    private String headPhoto;//头像
+    private String address;//地址
+    private int walletId;//钱包id
+    private int bicycleId;//单车id
+    private int verifyCode;//验证码
+    private String userEmail;//用户邮箱
+    private String verifyType;//验证码类型
 
-    /**
-     * 用户名
-     * */
-    private String username;
-
-    /**
-     * 密码
-     * */
-    private String password;
-
-    /**
-     * 手机号
-     * */
-    private String phone;
-
-    /**
-     * 邮箱
-     * */
-    private String email;
-
-    /**
-     * 注册时间
-     * */
-    private String registerTime;
-
-    /**
-     * 里程
-     * */
-    private double route;
-
-    /**
-     * 头像
-     * */
-    private String headPhoto;
-
-    /**
-     * 地址
-     * */
-    private String address;
-
-    /**
-     * 钱包id
-     * */
-    private Integer walletId;
-
-    /**
-     * 单车id
-     * */
-    private Integer bicycleId;
-
-    /**
-     * 单车编号
-     */
-    private int bicycleNum;
 }
