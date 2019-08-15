@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ps.bicyclemanagebicycleservice.mapper.ManageBicycleMapper">
+
+    <resultMap id="bicycleResultMap" type="com.ps.allapp.domain.ShareBicycle">
+        <id column="id" property="id" />
+        <result column="bicycle_state"  property="bicycleState" />
+        <result column="bicycle_site" property="bicycleSite" />
+        <result column="bicycle_num" property="bicycleNum" />
+    </resultMap>
+    <!--改变地址-->
+    <select id="changeAddress" parameterType="String" resultMap="bicycleResultMap">
+        select id, bicycle_state, bicycle_site, bicycle_num from sbike_bicycle_t b where b.bicycle_site = #{address}
+    </select>
+
+    <resultMap id="UserResultMap" type="com.ps.allapp.domain.User">
+        <result column="address"  property="address" />
+        <result column="make_bicycle_num" property="bicycleNum" />
+    </resultMap>
+
+    <!--进入首页查询地址和预约的单车-->
+    <select id="bicycleInit" parameterType="int" resultMap="UserResultMap">
+        select u.address,u.make_bicycle_num from sbike_user_t u where u.id = #{id}
+    </select>
+
+    <!--校验有没有预约单车-->
+    <select id="checkAppointment" parameterType="int" resultMap="UserResultMap">
+        select u.make_bicycle_num from sbike_user_t u where u.id = #{id}
+    </select>
+    <!--预约单车-->
+    <update id="appointmentBicycle">
+        update sbike_user_t set make_bicycle_num = #{bicycleNum} where id = #{userId}
+    </update>
+
+    <!--修改单车状态-->
+    <update id="changeBicycleState">
+        update sbike_bicycle_t set bicycle_state = #{bicycleState} where bicycle_num = #{bicycleNum}
+    </update>
+
+    <!--校验有没有解锁单车-->
+    <select id="checkUnlock" parameterType="int" resultType="int">
+        select count(1) from sharebicycle_bicycle_t where user_id = #{userId} and bicycle_state = 0
+    </select>
+
+    <!--解锁单车-->
+    <insert id="unlockBicycle" parameterType="com.ps.allapp.domain.ShareBicycle">
+        insert into sharebicycle_bicycle_t (user_id,bicycle_num,initial_address,start_time,bicycle_state)
+        values (#{userId},#{bicycleNum},#{initialAddress},#{startTime},0)
+    </insert>
+
+    <!--根据单车编号获取位置-->
+    <select id="getSiteByBicycleNum" parameterType="int" resultType="String">
+        select bicycle_site from sbike_bicycle_t b where b.bicycle_num = #{bicycleNum}
+    </select>
+
+</mapper>
+

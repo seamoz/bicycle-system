@@ -10,7 +10,6 @@ public class BicycleManagebicycleServiceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BicycleManagebicycleServiceApplication.class, args);
-        System.out.println("sss");
     }
 
 }

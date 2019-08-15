@@ -1,58 +1,80 @@
 package com.ps.bicyclemanagebicycleservice.controller;
 
-import com.ps.bicyclemanagebicycleservice.service.ManageBicycleService;
+import com.ps.allapp.domain.Result;
+import com.ps.allapp.domain.ShareBicycle;
+import com.ps.allapp.domain.User;
+import com.ps.bicyclemanagebicycleservice.service.impl.ManageBicycleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.websocket.server.PathParam;
 
 /**
  * @author ZZH
  * @date 2019/8/13 19:17
  */
 @RestController
+@RequestMapping("/bikes")
 public class ManageBicycleController {
 
+    private Result result = new Result();
+
     @Autowired
-    private ManageBicycleService manageBicycleService;
+    private ManageBicycleServiceImpl manageBicycleServiceImpl;
 
-    @GetMapping("/bicycle/address")
-    public void changeAddress(){
-
+    @GetMapping("/address")
+    public Result changeAddress(@RequestBody ShareBicycle shareBicycle){
+        System.out.println(shareBicycle);
+        result.setData(manageBicycleServiceImpl.changeAddress(shareBicycle.getBicycleSite()));
+        result.setError_code(0);
+        result.setMeg("success");
+        return result;
     }
 
-    @PostMapping("/bicycle/subscribe")
-    public void reserveBicycle(){
-
+    @GetMapping("/init")
+    public Result bicycleInit(@RequestBody User user){
+        result.setData(manageBicycleServiceImpl.bicycleInit(user.getUserId()));
+        result.setError_code(0);
+        result.setMeg("success");
+        return result;
     }
 
-    @PostMapping("/bicycle/unlock")
-    public void unlockBicycle(){
-
+    @PostMapping("/subscribe")
+    public Result appointmentBicycle(@RequestBody User user){
+        manageBicycleServiceImpl.appointmentBicycle(user);
+        result.setError_code(0);
+        result.setMeg("success");
+        return result;
     }
 
-    @GetMapping("/bikes/cycling")
+    @PostMapping("/unlock")
+    public Result unlockBicycle(@RequestBody User user){
+        manageBicycleServiceImpl.unlockBicycle(user);
+        result.setError_code(0);
+        result.setMeg("解锁成功");
+        return result;
+    }
+
+    @GetMapping("/cycling")
     public void cycling(@RequestParam("userId") int userId){
-        manageBicycleService.cycling(userId);
+        manageBicycleServiceImpl.cycling(userId);
     }
 
-    @GetMapping("/bikes/deduction")
+    @GetMapping("/deduction")
     public void deduction(@RequestParam("id") int id){
-        manageBicycleService.deduction(id);
+        manageBicycleServiceImpl.deduction(id);
         System.out.println("ddd");
     }
 
-    @PostMapping("/bikes/malfunction")
+    @PostMapping("/malfunction")
     public void malfunction(){
-        manageBicycleService.malfunction();
+        manageBicycleServiceImpl.malfunction();
     }
 
-    @GetMapping("/bikes/succeed")
+    @GetMapping("/succeed")
     public void succeed(@RequestParam("bicycleNum") String bicycleNum){
-        manageBicycleService.succeed(bicycleNum);
+        manageBicycleServiceImpl.succeed(bicycleNum);
     }
 
-    @PutMapping("/pays/pay")
-    public void pay(@RequestParam("userId") int userId, @RequestParam("money") float money){
-        manageBicycleService.pay(userId, money);
-    }
 
 }
