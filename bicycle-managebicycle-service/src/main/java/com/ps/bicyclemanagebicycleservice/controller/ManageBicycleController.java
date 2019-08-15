@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-
+import javax.websocket.server.PathParam;
 
 /**
  * @author ZZH
@@ -24,13 +24,12 @@ public class ManageBicycleController {
     private ManageBicycleService manageBicycleServiceImpl;
 
     @GetMapping("/address")
-    public Result changeAddress(@RequestBody ShareBicycle shareBicycle) {
+    public Result changeAddress(@RequestBody ShareBicycle shareBicycle){
         System.out.println(shareBicycle);
         result.setData(manageBicycleServiceImpl.changeAddress(shareBicycle.getBicycleSite()));
         result.setError_code(0);
         result.setMeg("success");
         return result;
-
     }
 
     @GetMapping("/init")
@@ -47,7 +46,6 @@ public class ManageBicycleController {
         result.setError_code(0);
         result.setMeg("success");
         return result;
-
     }
 
     @PostMapping("/unlock")
