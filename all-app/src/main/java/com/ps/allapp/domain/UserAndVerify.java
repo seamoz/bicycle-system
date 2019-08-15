@@ -4,8 +4,11 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * @author Peigen
+ */
 @Data
-public class User implements Serializable {
+public class UserAndVerify implements Serializable {
 
     /**
      * 用户id
@@ -61,5 +64,10 @@ public class User implements Serializable {
      * 单车id
      */
     private int bicycleId;
+
+    /**
+     * 验证对象
+     */
+    private Verify verify;
 
 }
