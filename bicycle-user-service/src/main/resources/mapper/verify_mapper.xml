@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ps.bicycleuserservice.mapper.VerifyMapper">
+
+    <update id="updateVerifyByUserId" parameterType="com.ps.allapp.domain.Verify">
+        UPDATE sbike_verify_t
+        SET verify_type = #{verifyType},
+        verify_code = #{verifyCode},
+        verify_time = #{verifyTime}
+        WHERE
+            user_id = #{userId}
+    </update>
+
+    <insert id="createVerify">
+        INSERT INTO sbike_verify_t ( user_id )
+        VALUES
+            ( #{param1} )
+    </insert>
+
+</mapper>

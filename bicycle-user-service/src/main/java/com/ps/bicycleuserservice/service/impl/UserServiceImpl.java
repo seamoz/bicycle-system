@@ -1,4 +1,4 @@
-package com.ps.bicycleuserservice.serviceImpl;
+package com.ps.bicycleuserservice.service.impl;
 
 import com.ps.allapp.domain.Result;
 import com.ps.allapp.domain.ShareBicycle;
