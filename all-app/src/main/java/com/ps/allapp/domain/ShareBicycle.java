@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 /**
  * 骑行记录实体类
- * @author ZZH
  */
 @Data
 public class ShareBicycle implements Serializable {

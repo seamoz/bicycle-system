@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ps.bicycleuserservice.mapper.UserMapper">
+
+    <!-- 免密支付 -->
+    <update id="confidentialPayment">
+        UPDATE sbike_wallet_t
+        SET no_password_pay = #{noPasswordPay}
+        WHERE
+            id = #{id}
+    </update>
+
+    <select id="userOrder" resultType="java.lang.Integer">
+        SELECT
+          st.bicycle_num as bicycleNum,
+            st.start_time as startTime,
+            st.initial_address as initialAddress,
+            st.end_address as endAddress,
+            st.use_time as useTime,
+            st.money
+        FROM
+            sharebicycle_bicycle_t st
+        WHERE
+            id = #{id}
+    </select>
+
+
+    <select id="queryPersonage" resultType="com.ps.allapp.domain.User">
+        SELECT
+            su.id as userId ,
+            su.head_photo as headPhoto,
+            su.username as username,
+            su.phone as phone,
+            su.email as email,
+            su.address as address
+        FROM
+            sbike_user_t su
+        WHERE
+            id = #{userId}
+    </select>
+
+    <!-- 根据用户id，密码查询 用户钱包关联数据 -->
+    <select id="userWalletDetails" resultType="java.lang.Integer">
+        SELECT
+            w.id
+        FROM
+            sbike_user_t u
+            LEFT JOIN sbike_wallet_t w ON ( u.wallet_id = w.id )
+        WHERE
+            u.id = #{userId}
+            AND u.PASSWORD = #{password}
+    </select>
+
+    <!-- 根据电话号码查询用户 -->
+    <select id="queryUserByPhone" resultType="com.ps.allapp.domain.User">
+        SELECT
+        *
+        FROM
+        sbike_user_t
+        WHERE
+        phone=#{phone}
+    </select>
+
+    <!-- 根据电话号码修改用户 -->
+    <update id="updatePasswordByPhone">
+        UPDATE sbike_user_t su
+        SET su.PASSWORD = #{newPassword}
+        WHERE
+        su.phone = #{phone}
+    </update>
+
+    <!-- 根据邮箱查询用户 -->
+    <select id="queryUserByEmail" resultType="com.ps.allapp.domain.User">
+        SELECT
+        *
+        FROM
+        sbike_user_t
+        WHERE
+        email = #{email}
+    </select>
+
+    <!-- 根据邮箱修改用户 -->
+    <update id="updatePasswordByEmail">
+        UPDATE sbike_user_t su
+        SET su.PASSWORD = #{newPassword}
+        WHERE
+        su.email = #{email}
+    </update>
+
+    <!-- 验证码验证成功以后的添加用户 -->
+    <insert id="addUserByCode">
+        INSERT INTO sbike_user_t ( username, phone, register_time)
+        VALUES
+        (
+        #{name},
+        #{phone},
+        now())
+    </insert>
+
+    <!-- 邮箱注册中的 添加用户 -->
+    <insert id="addUser">
+        INSERT INTO sbike_user_t ( username, password, register_time, email)
+        VALUES
+        (
+        #{userName},
+        #{encryptionPassword},
+        now(),
+        #{email})
+    </insert>
+
+    <!-- 添加短信发送记录 -->
+    <insert id="addCodeRecordPhone">
+        INSERT INTO sbike_verify_t ( user_phone, verify_type, verify_code, verify_time)
+        VALUES
+        (
+        #{phone},
+        #{state},
+        #{verificationCode},
+        now())
+    </insert>
+
+    <!-- 添加短信发送记录 -->
+    <insert id="addCodeRecordEmail">
+        INSERT INTO sbike_verify_t ( user_email, verify_type, verify_code, verify_time)
+        VALUES
+        (
+        #{email},
+        #{state},
+        #{verificationCode},
+        now())
+    </insert>
+
+    <sql id="user_verify">
+        u.id,u.username,u.PASSWORD,u.phone,u.email,CONVERT(u.register_time,CHAR) AS registerTime,u.route,u.head_photo,
+        u.address,u.wallet_id,u.make_bicycle_num,v.id AS verifyId,v.user_id,v.verify_type,v.verify_code,
+        v.verify_time
+    </sql>
+
+    <sql id="user">
+        u.id,u.username,u.PASSWORD,u.phone,u.email,CONVERT(u.register_time,CHAR) AS registerTime,u.route,u.head_photo,
+        u.address,u.wallet_id,u.make_bicycle_num
+    </sql>
+
+    <resultMap id="logInByVerifyResultMap" type="com.ps.allapp.domain.UserAndVerify">
+        <id column="id" property="userId" />
+        <result column="username" property="username" />
+        <result column="PASSWORD" property="password" />
+        <result column="phone" property="phone" />
+        <result column="email" property="email" />
+        <result column="registerTime" property="registerTime" />
+        <result column="route" property="route" />
+        <result column="head_photo" property="headPhoto" />
+        <result column="address" property="address" />
+        <result column="wallet_id" property="walletId" />
+        <result column="make_bicycle_num" property="bicycleId" />
+        <result column="verifyId" property="verify.id" />
+        <result column="user_id" property="verify.userId" />
+        <result column="verify_type" property="verify.verifyType" />
+        <result column="verify_code" property="verify.verifyCode" />
+        <result column="verify_time" property="verify.verifyTime" />
+    </resultMap>
+
+    <resultMap id="logInResultMap" type="com.ps.allapp.domain.User">
+        <id column="id" property="userId" />
+        <result column="username" property="username" />
+        <result column="PASSWORD" property="password" />
+        <result column="phone" property="phone" />
+        <result column="email" property="email" />
+        <result column="registerTime" property="registerTime" />
+        <result column="route" property="route" />
+        <result column="head_photo" property="headPhoto" />
+        <result column="address" property="address" />
+        <result column="wallet_id" property="walletId" />
+        <result column="make_bicycle_num" property="bicycleId" />
+    </resultMap>
+
+    <select id="logInByUserNameAndPassword" resultMap="logInResultMap">
+        SELECT
+        <include refid="user" />
+        FROM
+        sbike_user_t u
+        WHERE
+        u.username = #{param1}
+        AND v.password = #{param2}
+    </select>
+
+    <select id="logInByEmailAndPassword" resultMap="logInResultMap">
+        SELECT
+        <include refid="user" />
+        FROM
+        sbike_user_t u
+        WHERE
+        u.email = #{param1}
+        AND v.password = #{param2}
+    </select>
+
+    <select id="logInByPhoneAndPassword" resultMap="logInResultMap">
+        SELECT
+        <include refid="user" />
+        FROM
+        sbike_user_t u
+        WHERE
+        u.phone = #{param1}
+        AND v.password = #{param2}
+    </select>
+
+    <select id="logInByPhoneAndVerify" resultMap="logInByVerifyResultMap">
+        SELECT
+        <include refid="user_verify" />
+        FROM
+        sbike_verify_t v
+        LEFT JOIN sbike_user_t u ON u.id = v.user_id
+        WHERE
+        u.phone = #{param1}
+        AND v.verify_code = #{param2}
+    </select>
+
+    <select id="queryRoute" resultType="com.ps.allapp.domain.ShareBicycle">
+        SELECT
+            sb.id,
+            sb.start_time as startTime,
+            sb.use_time as useTime,
+            sb.money
+        FROM
+            sharebicycle_bicycle_t sb
+        WHERE
+            user_id = #{userId}
+    </select>
+
+</mapper>

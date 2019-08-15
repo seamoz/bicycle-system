@@ -41,6 +41,7 @@ public interface ManageBicycleMapper {
      */
     void appointmentBicycle(int bicycleNum,int userId);
 
+
     /**
      * 修改单车状态
      * @param bicycleState
@@ -67,6 +68,5 @@ public interface ManageBicycleMapper {
      * @return
      */
     String getSiteByBicycleNum(int bicycleNum);
-
 
 }

@@ -3,9 +3,10 @@ package com.ps.bicyclemanagebicycleservice.controller;
 import com.ps.allapp.domain.Result;
 import com.ps.allapp.domain.ShareBicycle;
 import com.ps.allapp.domain.User;
-import com.ps.bicyclemanagebicycleservice.service.impl.ManageBicycleServiceImpl;
+import com.ps.bicyclemanagebicycleservice.service.ManageBicycleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 
 import javax.websocket.server.PathParam;
 
@@ -20,7 +21,7 @@ public class ManageBicycleController {
     private Result result = new Result();
 
     @Autowired
-    private ManageBicycleServiceImpl manageBicycleServiceImpl;
+    private ManageBicycleService manageBicycleServiceImpl;
 
     @GetMapping("/address")
     public Result changeAddress(@RequestBody ShareBicycle shareBicycle){
@@ -29,7 +30,6 @@ public class ManageBicycleController {
         result.setError_code(0);
         result.setMeg("success");
         return result;
-    }
 
     @GetMapping("/init")
     public Result bicycleInit(@RequestBody User user){
@@ -38,14 +38,12 @@ public class ManageBicycleController {
         result.setMeg("success");
         return result;
     }
-
     @PostMapping("/subscribe")
     public Result appointmentBicycle(@RequestBody User user){
         manageBicycleServiceImpl.appointmentBicycle(user);
         result.setError_code(0);
         result.setMeg("success");
         return result;
-    }
 
     @PostMapping("/unlock")
     public Result unlockBicycle(@RequestBody User user){
@@ -54,27 +52,5 @@ public class ManageBicycleController {
         result.setMeg("解锁成功");
         return result;
     }
-
-    @GetMapping("/cycling")
-    public void cycling(@RequestParam("userId") int userId){
-        manageBicycleServiceImpl.cycling(userId);
-    }
-
-    @GetMapping("/deduction")
-    public void deduction(@RequestParam("id") int id){
-        manageBicycleServiceImpl.deduction(id);
-        System.out.println("ddd");
-    }
-
-    @PostMapping("/malfunction")
-    public void malfunction(){
-        manageBicycleServiceImpl.malfunction();
-    }
-
-    @GetMapping("/succeed")
-    public void succeed(@RequestParam("bicycleNum") String bicycleNum){
-        manageBicycleServiceImpl.succeed(bicycleNum);
-    }
-
 
 }
