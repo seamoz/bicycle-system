@@ -10,26 +10,59 @@ import java.io.Serializable;
 @Data
 public class ShareBicycle implements Serializable {
 
-    private int id ;//骑行记录表
+    /**
+     * 骑行记录表
+     * */
+    private int id ;
 
-    private int userId;//用户id
+    /**
+     * 用户id
+     * */
+    private int userId;
 
-    private int bicycleNum;//单车编号
+    /**
+     * 单车编号
+     * */
+    private int bicycleNum;
 
-    private String initialAddress;//初始位置
+    /**
+     * 初始位置
+     * */
+    private String initialAddress;
 
-    private String endAddress;//结束位置
+    /**
+     * 结束位置
+     * */
+    private String endAddress;
 
-    private String startTime;//开始时间
+    /**
+     * 开始时间
+     * */
+    private String startTime;
 
-    private String endTime;//结束时间
+    /**
+     * 结束时间
+     * */
+    private String endTime;
 
-    private String useTime;//行车时间
+    /**
+     * 行车时间
+     * */
+    private String useTime;
 
-    private double money;//金额
+    /**
+     * 金额
+     * */
+    private double money;
 
-    private float route;//骑行距离
+    /**
+     * 骑行距离
+     * */
+    private float route;
 
-    private int bicycleState;//骑行状态
+    /**
+     * 骑行状态
+     * */
+    private int bicycleState;
 
 }

@@ -11,9 +11,19 @@ import java.util.Set;
  */
 @Data
 public class Mail {
+
+    /**
+     * 主板
+     * */
     private String subject;
 
+    /**
+     * 发送消息的内容
+     * */
     private String message;
 
+    /**
+     * 发送给那些用户的集合   存放的是用户的邮箱地址
+     * */
     private Set<String> receivers;
 }
