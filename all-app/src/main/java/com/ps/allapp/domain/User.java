@@ -10,7 +10,7 @@ public class User implements Serializable {
     /**
      * 用户id
      * */
-    private Integer id;
+    private Integer userId;
 
     /**
      * 用户名

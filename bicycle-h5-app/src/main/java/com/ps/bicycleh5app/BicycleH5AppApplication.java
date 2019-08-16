@@ -17,5 +17,4 @@ public class BicycleH5AppApplication {
     public static void main(String[] args) {
         SpringApplication.run(BicycleH5AppApplication.class, args);
     }
-
 }

@@ -27,8 +27,7 @@ import java.util.concurrent.TimeUnit;
  * @author VP
  */
 @Service
-public class UserServiceImpl{
-
+public class UserServiceImpl implements UserService{
     //redis 电话号码验证码存缓 的key
     private static final String userPhone = "phone:";
     //redis 邮箱地址验证码存缓 的key
@@ -40,7 +39,132 @@ public class UserServiceImpl{
     @Autowired
     private StringRedisTemplate template;
 
-    public List<ShareBicycle> queryRoute(int userId) {
+    @Override
+    public Result queryRoute(int userId) {
+        List<ShareBicycle> queryRoute = userMapper.queryRoute(userId);
+        System.out.println("我的行程数据:   "+queryRoute);
+
+        if (queryRoute == null){
+            return new Result("查询失败",101);
+        }
+        return new Result("查询成功",200,queryRoute);
+    }
+
+   @Override
+    public Result userOrder(int id) {
+        Integer userOrder = userMapper.userOrder(id);
+        System.out.println("订单详情数据: "+userOrder);
+
+        if (userOrder == null){
+            return new Result("未查到数据",102);
+        }
+        return new Result("查询成功",200,userOrder);
+    }
+
+    @Override
+    public Result queryPersonage(int userId) {
+        User mySelf = userMapper.queryPersonage(userId);
+        System.out.println("个人信息: "+mySelf);
+        if (mySelf == null){
+            return new Result("查询个人信息失败",103);
+        }
+        return new Result("查询个人信息成功",200,mySelf);
+    }
+
+    @Override
+    public Result updateMailbox(int id, String email) {
+
+        Result result = sendCodeToEmail(id, email);
+        if (result != null){
+            return new Result("验证码已发送",200);
+        }
+
+        //修改自己的邮箱
+        User user = userMapper.updateMyEmail(id, email);
+        sendCodeToEmail(id,user.getEmail());
+        return new Result("修改邮箱成功",200);
+    }
+
+    @Override
+    public Result addEmail(int id, String email) {
+        //查询出自己的邮箱
+        User user = userMapper.queryMailbox(id);
+
+        //邮箱已存在
+        if (user.getEmail() != null &&!"".equals(user.getEmail())){
+            return new Result("邮箱已存在,新增失败!",100,null);
+        }
+
+        Verify verify = userMapper.queryVerifyCode(id);
+        if (!verify.getVerifyCode().equals(verify)){
+            return new Result("验证码不正确",100,null);
+        }
+
+        //验证完毕,允许新增邮箱
+        User addEmail = userMapper.updateMyEmail(id,email);
+        return new Result("邮箱添加成功",200,addEmail);
+
+    }
+
+    //往指定邮箱发送验证码
+    public Result sendCodeToEmail(int id, String email) {
+        //生成验证码-----123001
+        String code = CreateCode.createCode();
+        //发验证码
+        sendNote(email , code);
+
+        //把验证吗保存至数据库,以便将来拿出来跟用户前台的验证码进行比较
+        userMapper.insertVerify(id);
+        return new Result("以往邮箱发送",200);
+    }
+
+    //发送验证码
+    private Result sendNote(String email,String verifyCode){
+        //发验证码
+        SendEmail.setEmail(email,verifyCode);
+
+        //返回说验证码已发送,请注意查收
+        return new Result("验证码已发送,请查收",200);
+    }
+
+
+    @Override
+    public Result addPhone(int userId,String phone) {
+        User user = userMapper.queryPhone(userId, phone);
+
+        //手机号已存在
+        if (user.getPhone() != null &&!"".equals(user.getPhone())){
+            return new Result("手机号已存在,新增失败!",100,null);
+        }
+
+        Verify verify = userMapper.queryVerifyCode(userId);
+        if (!verify.getVerifyCode().equals(verify)){
+            return new Result("验证码不正确",100,null);
+        }
+
+        //验证完毕,允许新增手机号
+        User addPhone = userMapper.updatePhone(userId,phone);
+        return new Result("手机添加成功",200,addPhone);
+    }
+
+    @Override
+    public Result updatePhone(int id, String phone) {
+
+        Result result = sendCodeToEmail(id, phone);
+        if (result != null){
+            return new Result("验证码已发送",200);
+        }
+
+        //修改自己的手机号
+        User user = userMapper.updatePhone(id, phone);
+        sendCodeToEmail(id,user.getPhone());
+        return new Result("修改手机成功",200);
+    }
+/*
+    @Autowired
+    private StringRedisTemplate template;*/
+
+   /* public List<ShareBicycle> queryRoute(int userId) {
         List<ShareBicycle> shareBicycles = userMapper.queryRoute(userId);
         return shareBicycles;
     }
