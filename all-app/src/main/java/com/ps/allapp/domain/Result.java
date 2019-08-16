@@ -8,6 +8,12 @@ import lombok.Data;
  */
 @Data
 public class Result<T> {
+    public Result(String meg, int error_code) {
+        this.meg = meg;
+        this.error_code = error_code;
+    }
+
+    public Result() { }
 
     private String meg;
 

@@ -1,64 +1,72 @@
 package com.ps.bicyclemanagebicycleservice.service;
 
-import com.ps.allapp.domain.Fault;
 import com.ps.allapp.domain.Result;
-import com.ps.bicyclemanagebicycleservice.mapper.ManageBicycleMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.ps.allapp.domain.ShareBicycle;
+import com.ps.allapp.domain.User;
 
 import java.util.List;
 
-@Service
-public class ManageBicycleService {
-
-    @Autowired
-    private ManageBicycleMapper manageBicycleMapper;
-
-    public void cycling(int userId){
-        System.out.println("sss");
-    }
-
-    public void deduction(int id){
-
-    }
-
-    public void malfunction(){
-
-    }
-
-    public void pay(int userId, float money){
-
-    }
+/**
+ * @author ZZH
+ * @date 2019/8/14 16:50
+ */
+public interface ManageBicycleService {
 
     /**
-     * 历史故障（用户提交单车的故障）
+     * 更换地址
+     * @param address 地址
+     * @return 单车数据
+     */
+    List<ShareBicycle> changeAddress(String address);
+
+    /**
+     * 预约单车
+     * @param user 用户对象
+     */
+    void appointmentBicycle(User user);
+
+    /**
+     * 进入骑行首页初始化获取地址和预约车辆
+     * @param userId 用户id
+     * @return 返回用户预约车辆和地址
+     */
+    User bicycleInit(int userId);
+
+    /**
+     * 校验是否预约单车
      * @param userId
      * @return
      */
-    public Result historyMalfunction(int userId) {
-        Result result = new Result();
-
-        List<Fault> list = manageBicycleMapper.historyMalfunction(userId);
-
-        result.setData(list);
-        result.setError_code(200);
-        return result;
-    }
+    int checkAppointmentBicycle(int userId);
 
     /**
-     * 故障的详情资料
-     * @param id
+     * 解锁单车
+     * @param user
+     */
+    void unlockBicycle(User user);
+
+    /**
+     * 骑行中
+     * @param userId
      * @return
      */
-    public Result faultDetails(int id) {
-        Result result = new Result();
+    Result cycling(int userId);
 
-        Fault fault = manageBicycleMapper.faultDetails(id);
+    /**
+     * 骑行扣费页
+     * @param id    骑行记录ID
+     * @return
+     */
+    Result deduction(int id);
 
-        result.setData(fault);
-        result.setError_code(200);
-        return result;
-    }
-
+    /**
+     * 支付
+     * @param userId    用户ID
+     * @param money     费用
+     * @param payPassword   支付密码
+     * @param payType   支付类型
+     * @return
+     */
+    Result pay(int userId, float money, String payPassword, String payType);
 
 }

@@ -1,86 +1,90 @@
 package com.ps.bicyclemanagebicycleservice.controller;
 
 import com.ps.allapp.domain.Result;
+import com.ps.allapp.domain.ShareBicycle;
+import com.ps.allapp.domain.User;
 import com.ps.bicyclemanagebicycleservice.service.ManageBicycleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+import javax.websocket.server.PathParam;
 
 /**
  * @author ZZH
  * @date 2019/8/13 19:17
  */
 @RestController
+@RequestMapping("/bikes")
 public class ManageBicycleController {
 
+    private Result result = new Result();
+
     @Autowired
-    private ManageBicycleService manageBicycleService;
+    private ManageBicycleService manageBicycleServiceImpl;
 
-    @GetMapping("/bicycle/address")
-    public void changeAddress(){
-
+    @GetMapping("/address")
+    public Result changeAddress(@RequestBody ShareBicycle shareBicycle){
+        System.out.println(shareBicycle);
+        result.setData(manageBicycleServiceImpl.changeAddress(shareBicycle.getBicycleSite()));
+        result.setError_code(0);
+        result.setMeg("success");
+        return result;
     }
 
-    @PostMapping("/bicycle/subscribe")
-    public void reserveBicycle(){
-
+    @GetMapping("/init")
+    public Result bicycleInit(@RequestBody User user) {
+        result.setData(manageBicycleServiceImpl.bicycleInit(user.getId()));
+        result.setError_code(0);
+        result.setMeg("success");
+        return result;
     }
 
-    @PostMapping("/bicycle/unlock")
-    public void unlockBicycle(){
-
+    @PostMapping("/subscribe")
+    public Result appointmentBicycle(@RequestBody User user) {
+        manageBicycleServiceImpl.appointmentBicycle(user);
+        result.setError_code(0);
+        result.setMeg("success");
+        return result;
     }
 
-    @GetMapping("/bikes/cycling")
-    public void cycling(@RequestParam("userId") int userId){
-        manageBicycleService.cycling(userId);
-    }
-
-    @GetMapping("/bikes/deduction")
-    public void deduction(@RequestParam("id") int id){
-        manageBicycleService.deduction(id);
-        System.out.println("ddd");
-    }
-
-    @PostMapping("/bikes/malfunction")
-    public void malfunction(){
-        manageBicycleService.malfunction();
-    }
-
-    @PutMapping("/pays/pay")
-    public void pay(@RequestParam("userId") int userId, @RequestParam("money") float money){
-        manageBicycleService.pay(userId, money);
-    }
-
-    /**
-     * 历史故障（用户提交单车的故障）
-     */
-    @GetMapping("/history-malfunction")
-    public Result historyMalfunction(@RequestParam("userId") int userId){
-
-        Result result  = manageBicycleService.historyMalfunction(userId);
+    @PostMapping("/unlock")
+    public Result unlockBicycle(@RequestBody User user) {
+        manageBicycleServiceImpl.unlockBicycle(user);
+        result.setError_code(0);
+        result.setMeg("解锁成功");
         return result;
     }
 
     /**
-     * 故障的详情资料
+     * 骑行中
+     * @param map
+     * @return
      */
-    @GetMapping("/fault-details")
-    public Result faultDetails(@RequestParam("id") int id){
-
-        Result result  = manageBicycleService.faultDetails(id);
-        return result;
+    @RequestMapping("/cycling")
+    public Result cycling(@RequestBody Map<String, String> map){
+        return manageBicycleServiceImpl.cycling(Integer.valueOf(map.get("userId")));
     }
 
     /**
-     *  故障上报成功查询
+     * 骑行扣费页
+     * @param map
+     * @return
      */
-    @GetMapping("/bikes/succeed")
-    public Result succeed(@RequestParam("id") int id){
-
-        Result result  = manageBicycleService.faultDetails(id);
-        return result;
+    @RequestMapping("/deduction")
+    public Result deduction(@RequestBody Map<String, String> map){
+        return manageBicycleServiceImpl.deduction(Integer.valueOf(map.get("id")));
     }
 
+    /**
+     * 支付
+     * @param map
+     * @return
+     */
+    @RequestMapping("/pay")
+    public Result pay(@RequestBody Map<String, String> map){
+        return manageBicycleServiceImpl.pay(Integer.valueOf(map.get("userId")), Float.valueOf(map.get("money")), map.get("payPassword"), map.get("payType"));
+    }
 
 
 
