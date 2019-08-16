@@ -5,9 +5,13 @@ import com.ps.allapp.domain.ShareBicycle;
 import com.ps.allapp.domain.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 /**
  * @author VP
@@ -64,5 +68,29 @@ public interface ManagebicycleService {
      */
     @GetMapping("/bikes/succeed")
     Result succeed(@RequestParam("id") int id);
+
+    /**
+     * 骑行中
+     * @param map
+     * @return
+     */
+    @RequestMapping("/bikes/cycling")
+    Result cycling(@RequestBody Map<String, String> map);
+
+    /**
+     * 骑行扣费页
+     * @param map
+     * @return
+     */
+    @RequestMapping("/bikes/deduction")
+    Result deduction(@RequestBody Map<String, String> map);
+
+    /**
+     * 支付
+     * @param map
+     * @return
+     */
+    @RequestMapping("/bikes/pay")
+    Result pay(@RequestBody Map<String, String> map);
 
 }

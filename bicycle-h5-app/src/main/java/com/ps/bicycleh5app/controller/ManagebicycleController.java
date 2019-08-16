@@ -3,10 +3,9 @@ package com.ps.bicycleh5app.controller;
 import com.ps.allapp.domain.Result;
 import com.ps.bicycleh5app.service.ManagebicycleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * @author VP
@@ -42,6 +41,36 @@ public class ManagebicycleController {
     Result succeed(@RequestParam("id") int id){
         Result result = managebicycleService.succeed(id);
         return result;
+    }
+
+    /**
+     * 骑行中
+     * @param map
+     * @return
+     */
+    @RequestMapping("/bikes/cycling")
+    public Result cycling(@RequestBody Map<String, String> map){
+        return managebicycleService.cycling(map);
+    }
+
+    /**
+     * 骑行扣费页
+     * @param map
+     * @return
+     */
+    @RequestMapping("/bikes/deduction")
+    public Result deduction(@RequestBody Map<String, String> map){
+        return managebicycleService.deduction(map);
+    }
+
+    /**
+     * 支付
+     * @param map
+     * @return
+     */
+    @RequestMapping("/bikes/pay")
+    public Result pay(@RequestBody Map<String, String> map){
+        return managebicycleService.pay(map);
     }
 
 }

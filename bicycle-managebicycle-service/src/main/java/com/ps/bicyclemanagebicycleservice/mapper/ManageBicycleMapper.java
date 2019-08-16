@@ -1,7 +1,9 @@
 package com.ps.bicyclemanagebicycleservice.mapper;
 
+import com.ps.allapp.domain.Payrecord;
 import com.ps.allapp.domain.ShareBicycle;
 import com.ps.allapp.domain.User;
+import com.ps.allapp.domain.Wallet;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -68,5 +70,47 @@ public interface ManageBicycleMapper {
      * @return
      */
     String getSiteByBicycleNum(int bicycleNum);
+
+    /**
+     * 根据用户ID查询骑行记录信息
+     * @param userId    用户ID
+     * @return
+     */
+    List<ShareBicycle> selectShareBicycleByUserId(int userId);
+
+    /**
+     * 根据骑行记录ID查询骑行记录信息
+     * @param id    骑行记录ID
+     * @return
+     */
+    ShareBicycle selectShareBicycleById(int id);
+
+    /**
+     * 根据用户ID查询用户信息
+     * @param userId    用户ID
+     * @return
+     */
+    User selectUserById(int userId);
+
+    /**
+     * 根据钱包ID查询钱包信息
+     * @param walletId      钱包ID
+     * @return
+     */
+    Wallet selectWalletById(int walletId);
+
+    /**
+     * 支付
+     * @param wallet    钱包实体类
+     * @return
+     */
+    int updateWalletById(Wallet wallet);
+
+    /**
+     * 插入消费记录
+     * @param payrecord     消费记录实体类
+     * @return
+     */
+    int insertPayrecord(Payrecord payrecord);
 
 }

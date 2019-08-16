@@ -1,7 +1,5 @@
 package com.ps.bicyclemanagebicycleservice.controller;
 
-
-
 import com.ps.allapp.domain.Result;
 import com.ps.allapp.domain.ShareBicycle;
 import com.ps.allapp.domain.User;
@@ -9,6 +7,7 @@ import com.ps.bicyclemanagebicycleservice.service.ManageBicycleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import javax.websocket.server.PathParam;
 
 /**
@@ -25,7 +24,7 @@ public class ManageBicycleController {
     private ManageBicycleService manageBicycleServiceImpl;
 
     @GetMapping("/address")
-    public Result changeAddress(@RequestBody ShareBicycle shareBicycle) {
+    public Result changeAddress(@RequestBody ShareBicycle shareBicycle){
         System.out.println(shareBicycle);
         result.setData(manageBicycleServiceImpl.changeAddress(shareBicycle.getBicycleSite()));
         result.setError_code(0);
@@ -34,7 +33,7 @@ public class ManageBicycleController {
     }
 
     @GetMapping("/init")
-    public Result bicycleInit(@RequestBody User user){
+    public Result bicycleInit(@RequestBody User user) {
         result.setData(manageBicycleServiceImpl.bicycleInit(user.getId()));
         result.setError_code(0);
         result.setMeg("success");
@@ -50,11 +49,43 @@ public class ManageBicycleController {
     }
 
     @PostMapping("/unlock")
-    public Result unlockBicycle(@RequestBody User user){
+    public Result unlockBicycle(@RequestBody User user) {
         manageBicycleServiceImpl.unlockBicycle(user);
         result.setError_code(0);
         result.setMeg("解锁成功");
         return result;
     }
+
+    /**
+     * 骑行中
+     * @param map
+     * @return
+     */
+    @RequestMapping("/cycling")
+    public Result cycling(@RequestBody Map<String, String> map){
+        return manageBicycleServiceImpl.cycling(Integer.valueOf(map.get("userId")));
+    }
+
+    /**
+     * 骑行扣费页
+     * @param map
+     * @return
+     */
+    @RequestMapping("/deduction")
+    public Result deduction(@RequestBody Map<String, String> map){
+        return manageBicycleServiceImpl.deduction(Integer.valueOf(map.get("id")));
+    }
+
+    /**
+     * 支付
+     * @param map
+     * @return
+     */
+    @RequestMapping("/pay")
+    public Result pay(@RequestBody Map<String, String> map){
+        return manageBicycleServiceImpl.pay(Integer.valueOf(map.get("userId")), Float.valueOf(map.get("money")), map.get("payPassword"), map.get("payType"));
+    }
+
+
 
 }
