@@ -2,6 +2,7 @@ package com.ps.bicyclemanagebicycleservice.controller;
 
 
 
+import com.ps.allapp.domain.Fault;
 import com.ps.allapp.domain.Result;
 import com.ps.allapp.domain.ShareBicycle;
 import com.ps.allapp.domain.User;
@@ -10,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import javax.websocket.server.PathParam;
 
 /**
  * @author ZZH
