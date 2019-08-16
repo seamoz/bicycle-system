@@ -5,6 +5,7 @@ import com.ps.allapp.domain.User;
 import com.ps.allapp.domain.UserAndVerify;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+import com.ps.allapp.domain.*;
 
 import java.util.List;
 
@@ -143,4 +144,44 @@ public interface UserMapper {
      * @param verificationCode 验证码
      * */
     void addCodeRecordEmail(String email, Integer state, String verificationCode);
+    /**
+     *修改邮箱(1.查询出个人邮箱)
+     * @param id
+     * @return
+     */
+    User queryMailbox(int id );
+
+    /**
+     * 修改
+     */
+    User updateMyEmail(int userId,String email);
+
+    /**
+     * 通过用户id查询出验证码
+     * @param userId
+     * @return
+     */
+    Verify queryVerifyCode(int userId);
+
+    /**
+     * 往验证表里添加数据
+     * @return
+     */
+    Integer insertVerify(int id);
+
+    /**
+     * 修改手机号
+     */
+    User updatePhone(int userId,String phone);
+
+    /**
+     *查询出自己的手机号
+     */
+    User queryPhone(int userId,String phone);
+
+
+
+
+
+
 }

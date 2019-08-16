@@ -1,5 +1,6 @@
 package com.ps.bicycleh5app.controller;
 
+import com.ps.allapp.domain.Fault;
 import com.ps.allapp.domain.Result;
 import com.ps.bicycleh5app.service.ManagebicycleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,7 @@ public class ManagebicycleController {
      */
     @GetMapping("/history-malfunction")
     Result historyMalfunction(@RequestParam("userId") int userId){
-        Result result = managebicycleService.historyMalfunction(userId);
-        return result;
+        return managebicycleService.historyMalfunction(userId);
     }
 
     /**
@@ -30,17 +30,25 @@ public class ManagebicycleController {
      */
     @GetMapping("/fault-details")
     Result faultDetails(@RequestParam("id") int id){
-        Result result = managebicycleService.faultDetails(id);
-        return result;
+        return managebicycleService.faultDetails(id);
     }
 
     /**
      *  故障上报成功查询
      */
-    @GetMapping("/bikes/succeed")
+    @GetMapping("/succeed")
     Result succeed(@RequestParam("id") int id){
-        Result result = managebicycleService.succeed(id);
-        return result;
+        return managebicycleService.succeed(id);
+    }
+
+    /**
+     *  上报故障
+     * @param fault
+     * @return
+     */
+    @PostMapping("/malfunction")
+    Result sbikeFault(@RequestBody Fault fault){
+        return managebicycleService.sbikeFault(fault);
     }
 
     /**

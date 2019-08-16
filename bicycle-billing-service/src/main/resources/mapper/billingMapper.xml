@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ps.bicyclebillingsevice.mapper.BillingMapper">
+
+    <!-- 免密支付 -->
+    <update id="confidentialPayment">
+        UPDATE sbike_wallet_t
+        SET no_password_pay = #{noPasswordPay}
+        WHERE
+            id = #{id}
+    </update>
+
+    <resultMap id="logInResultMap" type="com.ps.allapp.domain.User">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="PASSWORD" property="password" />
+        <result column="phone" property="phone" />
+        <result column="email" property="email" />
+        <result column="registerTime" property="registerTime" />
+        <result column="route" property="route" />
+        <result column="head_photo" property="headPhoto" />
+        <result column="address" property="address" />
+        <result column="wallet_id" property="walletId" />
+        <result column="make_bicycle_num" property="bicycleId" />
+    </resultMap>
+
+    <resultMap id="selectWalletById" type="com.ps.allapp.domain.Wallet">
+        <id column="id" property="id" />
+        <result column="remain_money"  property="remainMoney" />
+        <result column="no_password_pay" property="noPasswordPay" />
+        <result column="pledge_state" property="pledgeState" />
+        <result column="pay_password" property="payPassword" />
+    </resultMap>
+
+    <select id="selectUserById" parameterType="int" resultMap="logInResultMap">
+        SELECT
+            u.id,
+            u.username,
+            u.email,
+            u.register_time,
+            u.route,
+            u.head_photo,
+            u.address,
+            u.wallet_id,
+            u.make_bicycle_num
+        FROM
+            sbike_user_t u
+        WHERE
+            u.id = #{id}
+    </select>
+
+    <select id="selectWalletById" parameterType="int" resultMap="selectWalletById">
+        SELECT
+            w.id,
+            w.remain_money,
+            w.no_password_pay,
+            w.pledge_state,
+            w.pay_password
+        FROM
+            sbike_wallet_t w
+        WHERE
+            w.id =  #{walletId}
+    </select>
+
+    <update id="updateWalletById" parameterType="com.ps.allapp.domain.Wallet">
+        UPDATE sbike_wallet_t
+        SET remain_money = #{remainMoney} where id = #{id}
+    </update>
+
+    <insert id="insertPayrecord" parameterType="com.ps.allapp.domain.Payrecord">
+        INSERT INTO sbike_payrecord_t ( user_id, pay_time, pay_type, pay_money )
+        VALUES
+            (#{id},
+             NOW(),
+            #{payType},
+            #{payMoney})
+    </insert>
+
+    <select id="userWalletDetails" resultType="java.lang.Integer">
+        SELECT
+            w.id
+        FROM
+            sbike_user_t u
+            LEFT JOIN sbike_wallet_t w ON ( u.wallet_id = w.id )
+        WHERE
+            u.id = #{userId}
+            AND u.PASSWORD = #{password}
+    </select>
+
+</mapper>

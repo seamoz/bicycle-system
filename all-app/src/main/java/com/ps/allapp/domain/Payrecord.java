@@ -7,6 +7,7 @@ import java.util.Date;
 
 /**
  * 消费记录实体类
+ * @author VP
  */
 @Data
 public class Payrecord implements Serializable {

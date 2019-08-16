@@ -1,6 +1,6 @@
 package com.ps.bicyclemanagebicycleservice.mapper;
 
-import com.ps.allapp.domain.Payrecord;
+import com.ps.allapp.domain.Fault;
 import com.ps.allapp.domain.ShareBicycle;
 import com.ps.allapp.domain.User;
 import com.ps.allapp.domain.Wallet;
@@ -71,6 +71,26 @@ public interface ManageBicycleMapper {
      */
     String getSiteByBicycleNum(int bicycleNum);
 
+    /**
+     *  上报故障
+     * @param fault
+     * @return
+     */
+    Integer sbikeFault(Fault fault);
+
+    /**
+     *  历史故障（用户提交单车的故障）
+     * @param userId
+     * @return
+     */
+    List<Fault> historyMalfunction(int userId);
+
+    /**
+     * 故障的详情资料
+     * @param id
+     * @return
+     */
+    Fault faultDetails(int id);
     /**
      * 根据用户ID查询骑行记录信息
      * @param userId    用户ID

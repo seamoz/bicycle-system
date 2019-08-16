@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 /**
  * @description: 用户controller
@@ -22,11 +24,52 @@ public class UserController {
     @Autowired
     private UserServiceImpl userService;
 
-    @RequestMapping("/hello")
-    public void hello(){
-        System.out.println("userController hello");
+    @Autowired
+    private UserServiceImpl userServiceImpl;
+
+
+    //我的里程查询
+    @GetMapping("/queryRoute")
+    public Result queryRoute(@RequestParam("userId") int userId){
+        Result queryRoute =  userServiceImpl.queryRoute(userId);
+        return queryRoute;
     }
 
+    //查询订单详情
+    @GetMapping("/userOrder")
+    public Result userOrder(@RequestParam("id") int id){
+        Result userOrder =  userServiceImpl.userOrder(id);
+        return userOrder;
+    }
+
+    //个人信息查看
+    @GetMapping("/queryPersonage/{userId}")
+    public Result queryPersonage(@PathVariable("userId") int userId){
+        Result queryPersonage = userServiceImpl.queryPersonage(userId);
+        return queryPersonage;
+    }
+
+    //修改邮箱
+    @RequestMapping("/updateEmail")
+    public Result updateEmail(@RequestParam("id") int id,@RequestParam ("email") String email){
+        Result result = userServiceImpl.updateMailbox(id, email);
+        return result;
+    }
+
+    //添加邮箱
+    @RequestMapping("/addEmail")
+    public Result addEmail(@RequestParam("id") int id,@RequestParam ("email") String email){
+        Result result = userServiceImpl.addEmail(id, email);
+        return result;
+    }
+
+
+
+    //发送验证码至邮箱
+    @RequestMapping("/sendCodeToEmail")
+    public Result sendCodeToEmail(@RequestParam int id,@RequestParam String email){
+        return userServiceImpl.sendCodeToEmail(id , email);
+    }
     /**
      *  免密支付
      * @param userId,password
@@ -72,6 +115,19 @@ public class UserController {
         return userService.verificationCodes(email);
     }
 
+    //添加手机号
+    @RequestMapping("/addPhone")
+    public Result addPhone(@RequestParam("id") int id,@RequestParam ("phone") String phone){
+        Result addPhone = userServiceImpl.addPhone(id,phone);
+        return addPhone;
+    }
+
+    //修改手机号
+    @RequestMapping("/updatePhone")
+    public Result updatePhone(@RequestParam("id") int id,@RequestParam ("phone") String phone){
+        Result result = userServiceImpl.updatePhone(id, phone);
+        return result;
+    }
     /**
      * @Description 给手机发送短信
      * @param phone 用户的电话号码
