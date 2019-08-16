@@ -7,6 +7,8 @@ import com.ps.allapp.util.MD5Encryption;
 import com.ps.allapp.util.MD5Util;
 import com.ps.allapp.util.MailUtil;
 import com.ps.bicycleuserservice.mapper.UserMapper;
+import com.ps.bicycleuserservice.util.CreateCode;
+import com.ps.bicycleuserservice.util.SendEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
