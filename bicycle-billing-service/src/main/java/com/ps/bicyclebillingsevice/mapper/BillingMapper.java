@@ -1,6 +1,5 @@
 package com.ps.bicyclebillingsevice.mapper;
 
-import com.ps.allapp.domain.Payrecord;
 import com.ps.allapp.domain.User;
 import com.ps.allapp.domain.Wallet;
 import org.apache.ibatis.annotations.Mapper;

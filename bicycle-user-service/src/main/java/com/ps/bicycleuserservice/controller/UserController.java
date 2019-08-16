@@ -58,7 +58,7 @@ public class UserController {
      * @param phone 用户的电话号码
      * @return Message<String> 返回的对象提示
      * */
-    @RequestMapping("verificationPhone")
+    @RequestMapping("/verificationPhone")
     public Message<String> verificationCodesPhone(String phone){
         return userService.verificationCodesPhone(phone);
     }

@@ -1,6 +1,5 @@
 package com.ps.bicyclebillingsevice.service.impl;
 
-import com.ps.allapp.domain.Payrecord;
 import com.ps.allapp.domain.Result;
 import com.ps.allapp.domain.User;
 import com.ps.allapp.domain.Wallet;
