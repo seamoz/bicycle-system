@@ -1,6 +1,7 @@
 package com.ps.bicyclemanagebicycleservice.controller;
 
-import com.ps.allapp.domain.Fault;
+
+
 import com.ps.allapp.domain.Result;
 import com.ps.allapp.domain.ShareBicycle;
 import com.ps.allapp.domain.User;
@@ -34,8 +35,8 @@ public class ManageBicycleController {
     }
 
     @GetMapping("/init")
-    public Result bicycleInit(@RequestBody User user) {
-        result.setData(manageBicycleServiceImpl.bicycleInit(user.getId()));
+    public Result bicycleInit(@RequestBody User user){
+        result.setData(manageBicycleServiceImpl.bicycleInit(user.getUserId()));
         result.setError_code(0);
         result.setMeg("success");
         return result;
@@ -50,7 +51,7 @@ public class ManageBicycleController {
     }
 
     @PostMapping("/unlock")
-    public Result unlockBicycle(@RequestBody User user) {
+    public Result unlockBicycle(@RequestBody User user){
         manageBicycleServiceImpl.unlockBicycle(user);
         result.setError_code(0);
         result.setMeg("解锁成功");

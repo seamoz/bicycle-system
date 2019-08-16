@@ -7,11 +7,12 @@ import com.ps.allapp.util.MD5Encryption;
 import com.ps.allapp.util.MD5Util;
 import com.ps.allapp.util.MailUtil;
 import com.ps.bicycleuserservice.mapper.UserMapper;
+import com.ps.bicycleuserservice.util.CreateCode;
+import com.ps.bicycleuserservice.util.SendEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -47,7 +48,7 @@ public class UserServiceImpl implements UserService{
 
    @Override
     public Result userOrder(int id) {
-        List<ShareBicycle> userOrder = userMapper.userOrder(id);
+        Integer userOrder = userMapper.userOrder(id);
         System.out.println("订单详情数据: "+userOrder);
 
         if (userOrder == null){
@@ -75,8 +76,8 @@ public class UserServiceImpl implements UserService{
         }
 
         //修改自己的邮箱
-        userMapper.updateMyEmail(id,email);
-        sendCodeToEmail(id,email);
+        User user = userMapper.updateMyEmail(id, email);
+        sendCodeToEmail(id,user.getEmail());
         return new Result("修改邮箱成功",200);
     }
 
@@ -90,13 +91,13 @@ public class UserServiceImpl implements UserService{
             return new Result("邮箱已存在,新增失败!",100,null);
         }
 
-        Integer verifyCode = userMapper.queryVerifyCode(id);
-        if (user.getVerifyCode() != verifyCode){
+        Verify verify = userMapper.queryVerifyCode(id);
+        if (!verify.getVerifyCode().equals(verify)){
             return new Result("验证码不正确",100,null);
         }
 
         //验证完毕,允许新增邮箱
-        Integer addEmail = userMapper.updateMyEmail(id,email);
+        User addEmail = userMapper.updateMyEmail(id,email);
         return new Result("邮箱添加成功",200,addEmail);
 
     }
@@ -132,8 +133,8 @@ public class UserServiceImpl implements UserService{
             return new Result("手机号已存在,新增失败!",100,null);
         }
 
-        Integer verifyCode = userMapper.queryVerifyCode(userId);
-        if (user.getVerifyCode() != verifyCode){
+        Verify verify = userMapper.queryVerifyCode(userId);
+        if (!verify.getVerifyCode().equals(verify)){
             return new Result("验证码不正确",100,null);
         }
 
@@ -151,8 +152,8 @@ public class UserServiceImpl implements UserService{
         }
 
         //修改自己的手机号
-        userMapper.updatePhone(id,phone);
-        sendCodeToEmail(id,phone);
+        User user = userMapper.updatePhone(id, phone);
+        sendCodeToEmail(id,user.getPhone());
         return new Result("修改手机成功",200);
     }
 /*
@@ -295,6 +296,7 @@ public class UserServiceImpl implements UserService{
                 //设置内容
                 mail.setMessage(code.toString());
                 Set<String> set = new HashSet<>();
+                System.out.println("个人邮箱:  "+email);
                 //添加收信者
                 set.add(email);
                 //设置收信者

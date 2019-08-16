@@ -154,14 +154,14 @@ public interface UserMapper {
     /**
      * 修改
      */
-    Integer updateMyEmail(int userId,String email);
+    User updateMyEmail(int userId,String email);
 
     /**
      * 通过用户id查询出验证码
      * @param userId
      * @return
      */
-    Integer queryVerifyCode(int userId);
+    Verify queryVerifyCode(int userId);
 
     /**
      * 往验证表里添加数据
