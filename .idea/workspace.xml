@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e32b7d74-d6d7-414c-9a11-c0560be78cdb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bicycle-billing-service/src/main/java/com/ps/bicyclebillingsevice/BicycleBillingServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bicycle-billing-service/src/main/javafdgd/com/ps/bicyclebillingservice/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bicycle-billing-service/src/main/javafdgd/jhkl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/PayRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/PayRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Payrecord.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bicycle-billing-service/src/main/java/com/ps/bicyclebillingsevice/mapper/BillingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-billing-service/src/main/java/com/ps/bicyclebillingsevice/mapper/BillingMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bicycle-billing-service/src/main/java/com/ps/bicyclebillingsevice/service/impl/BillingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-billing-service/src/main/java/com/ps/bicyclebillingsevice/service/impl/BillingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/mapper/ManageBicycleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/mapper/ManageBicycleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/controller/UserController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/bicycle-h5-app/target/" />
@@ -93,17 +85,38 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/service/impl/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="296" column="9" lean-forward="true" selection-start-line="296" selection-start-column="9" selection-end-line="296" selection-end-column="9" />
+            <state relative-caret-position="396">
+              <caret line="297" lean-forward="true" selection-start-line="297" selection-end-line="297" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1426#1427#0" expanded="true" />
                 <element signature="e#1473#1474#0" expanded="true" />
                 <element signature="e#1520#1521#0" expanded="true" />
                 <element signature="e#1576#1577#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Payrecord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="945">
+              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bicycle-billing-service/src/main/java/com/ps/bicyclebillingsevice/mapper/BillingMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1593">
+              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -169,7 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/BicycleUserServiceApplication.java" />
         <option value="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/service/UserService.java" />
         <option value="$PROJECT_DIR$/bicycle-user-service/src/main/resources/mapper/user.xml" />
         <option value="$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/service/managebicycle.java" />
@@ -220,6 +232,7 @@
         <option value="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/controller/UserController.java" />
         <option value="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/PayRecord.java" />
         <option value="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Payrecord.java" />
+        <option value="$PROJECT_DIR$/bicycle-billing-service/src/main/java/com/ps/bicyclebillingsevice/mapper/BillingMapper.java" />
       </list>
     </option>
   </component>
@@ -334,6 +347,69 @@
               <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
               <item name="bicycle-billing-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-billing-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-billing-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-billing-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-billing-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-billing-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-billing-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ps" type="462c0819:PsiDirectoryNode" />
+              <item name="bicyclebillingsevice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-billing-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ps" type="462c0819:PsiDirectoryNode" />
+              <item name="bicyclebillingsevice" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
@@ -706,7 +782,7 @@
       <workItem from="1565914058495" duration="4803000" />
       <workItem from="1565919968531" duration="14000" />
       <workItem from="1565919998630" duration="194000" />
-      <workItem from="1565920275224" duration="6691000" />
+      <workItem from="1565920275224" duration="6833000" />
     </task>
     <task id="LOCAL-00001" summary="提交故障类">
       <created>1565772115239</created>
@@ -736,16 +812,24 @@
       <option name="project" value="LOCAL" />
       <updated>1565923299262</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="提交实体类">
+      <created>1565927036609</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1565927036609</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61585000" />
+    <option name="totallyTimeSpent" value="61727000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23667377" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23667377" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -764,11 +848,11 @@
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" visible="true" weight="0.276273" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.30227518" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" visible="true" weight="0.2751896" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49946696" weight="0.30227518" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.49946696" visible="true" weight="0.276273" />
+      <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.4989339" visible="true" weight="0.2751896" />
       <window_info anchor="bottom" id="JRebel Executor" order="15" />
       <window_info anchor="bottom" id="JRebel Console" order="16" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -978,16 +1062,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bicycle-billing-service/src/main/java/com/ps/bicyclebillingsevice/mapper/BillingMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/service/ManagebicycleService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -1181,26 +1255,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Payrecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="296" column="9" lean-forward="true" selection-start-line="296" selection-start-column="9" selection-end-line="296" selection-end-column="9" />
+        <state relative-caret-position="396">
+          <caret line="297" lean-forward="true" selection-start-line="297" selection-end-line="297" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1426#1427#0" expanded="true" />
             <element signature="e#1473#1474#0" expanded="true" />
             <element signature="e#1520#1521#0" expanded="true" />
             <element signature="e#1576#1577#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Payrecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-billing-service/src/main/java/com/ps/bicyclebillingsevice/mapper/BillingMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1593">
+          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
