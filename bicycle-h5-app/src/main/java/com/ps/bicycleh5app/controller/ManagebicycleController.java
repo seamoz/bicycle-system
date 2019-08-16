@@ -6,6 +6,8 @@ import com.ps.bicycleh5app.service.ManagebicycleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 /**
  * @author VP
  */
@@ -20,7 +22,6 @@ public class ManagebicycleController {
      */
     @GetMapping("/history-malfunction")
     Result historyMalfunction(@RequestParam("userId") int userId){
-        System.out.println(userId);
         return managebicycleService.historyMalfunction(userId);
     }
 
@@ -37,8 +38,6 @@ public class ManagebicycleController {
      */
     @GetMapping("/succeed")
     Result succeed(@RequestParam("id") int id){
-
-        System.out.println("hahahah");
         return managebicycleService.succeed(id);
     }
 
@@ -50,6 +49,36 @@ public class ManagebicycleController {
     @PostMapping("/malfunction")
     Result sbikeFault(@RequestBody Fault fault){
         return managebicycleService.sbikeFault(fault);
+    }
+
+    /**
+     * 骑行中
+     * @param map
+     * @return
+     */
+    @RequestMapping("/bikes/cycling")
+    public Result cycling(@RequestBody Map<String, String> map){
+        return managebicycleService.cycling(map);
+    }
+
+    /**
+     * 骑行扣费页
+     * @param map
+     * @return
+     */
+    @RequestMapping("/bikes/deduction")
+    public Result deduction(@RequestBody Map<String, String> map){
+        return managebicycleService.deduction(map);
+    }
+
+    /**
+     * 支付
+     * @param map
+     * @return
+     */
+    @RequestMapping("/bikes/pay")
+    public Result pay(@RequestBody Map<String, String> map){
+        return managebicycleService.pay(map);
     }
 
 }
