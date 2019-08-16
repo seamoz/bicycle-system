@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author: peigen
  * @create: 2019/08/14
  */
-@FeignClient("user-service")
+@FeignClient("USER-SERVICE")
 public interface UserService {
 
     //我的里程查询

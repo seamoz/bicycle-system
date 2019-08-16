@@ -1,57 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ps.bicycleuserservice.mapper.UserMapper">
-
-    <!-- 免密支付 -->
-    <update id="confidentialPayment">
-        UPDATE sbike_wallet_t
-        SET no_password_pay = #{noPasswordPay}
-        WHERE
-            id = #{id}
-    </update>
-
-    <select id="userOrder" resultType="java.lang.Integer">
-        SELECT
-          st.bicycle_num as bicycleNum,
-            st.start_time as startTime,
-            st.initial_address as initialAddress,
-            st.end_address as endAddress,
-            st.use_time as useTime,
-            st.money
-        FROM
-            sharebicycle_bicycle_t st
-        WHERE
-            id = #{id}
-    </select>
-
-
-    <select id="queryPersonage" resultType="com.ps.allapp.domain.User">
-        SELECT
-            su.id as userId ,
-            su.head_photo as headPhoto,
-            su.username as username,
-            su.phone as phone,
-            su.email as email,
-            su.address as address
-        FROM
-            sbike_user_t su
-        WHERE
-            id = #{userId}
-    </select>
-
-    <!-- 根据用户id，密码查询 用户钱包关联数据 -->
-    <select id="userWalletDetails" resultType="java.lang.Integer">
-        SELECT
-            w.id
-        FROM
-            sbike_user_t u
-            LEFT JOIN sbike_wallet_t w ON ( u.wallet_id = w.id )
-        WHERE
-            u.id = #{userId}
-            AND u.PASSWORD = #{password}
-    </select>
 
     <!-- 根据电话号码查询用户 -->
     <select id="queryUserByPhone" resultType="com.ps.allapp.domain.User">
@@ -163,7 +114,7 @@
     </resultMap>
 
     <resultMap id="logInResultMap" type="com.ps.allapp.domain.User">
-        <id column="id" property="userId" />
+        <id column="id" property="id" />
         <result column="username" property="username" />
         <result column="PASSWORD" property="password" />
         <result column="phone" property="phone" />
@@ -174,6 +125,14 @@
         <result column="address" property="address" />
         <result column="wallet_id" property="walletId" />
         <result column="make_bicycle_num" property="bicycleId" />
+    </resultMap>
+
+    <resultMap id="selectWalletById" type="com.ps.allapp.domain.Wallet">
+        <id column="id" property="id" />
+        <result column="remain_money"  property="remainMoney" />
+        <result column="no_password_pay" property="noPasswordPay" />
+        <result column="pledge_state" property="pledgeState" />
+        <result column="pay_password" property="payPassword" />
     </resultMap>
 
     <select id="logInByUserNameAndPassword" resultMap="logInResultMap">
@@ -227,6 +186,35 @@
             sharebicycle_bicycle_t sb
         WHERE
             user_id = #{userId}
+    </select>
+
+
+    <select id="userOrder" resultType="java.lang.Integer">
+        SELECT
+            st.bicycle_num as bicycleNum,
+            st.start_time as startTime,
+            st.initial_address as initialAddress,
+            st.end_address as endAddress,
+            st.use_time as useTime,
+            st.money
+        FROM
+            sharebicycle_bicycle_t st
+        WHERE
+            id = #{id}
+    </select>
+
+    <select id="queryPersonage" resultType="com.ps.allapp.domain.User">
+        SELECT
+            su.id as id ,
+            su.head_photo as headPhoto,
+            su.username as username,
+            su.phone as phone,
+            su.email as email,
+            su.address as address
+        FROM
+            sbike_user_t su
+        WHERE
+            id = #{userId}
     </select>
 
 </mapper>

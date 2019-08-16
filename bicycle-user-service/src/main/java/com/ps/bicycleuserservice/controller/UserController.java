@@ -1,10 +1,6 @@
 package com.ps.bicycleuserservice.controller;
 
 import com.ps.allapp.domain.Result;
-import com.ps.bicycleuserservice.service.impl.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import com.ps.allapp.domain.Result;
 import com.ps.allapp.domain.Message;
 import com.ps.bicycleuserservice.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 /**
- * @description:
- * @author: peigen
+ * @description: 用户controller
+ * @author: 谭倾云
  * @create: 2019/08/14
  */
 @RestController

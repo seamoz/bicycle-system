@@ -12,6 +12,11 @@ import java.util.Map;
  * @description: 登录controller
  * @author: 谭倾云
  * @create: 2019/08/13
+=======
+/**
+ * @description:
+ * @author: peigen
+ * @create: 2019/08/14
  */
 @RestController
 @RequestMapping("/user")
@@ -96,16 +101,4 @@ public class UserController {
         return userService.judgeEmailVerificationCode(userName,password,email,verificationCode);
     }
 
-    /**
-     *  免密支付
-     * @param userId,password
-     * @return
-     */
-    @GetMapping("/confidential-payment")
-    public Result confidentialPayment(@RequestParam("userId") int userId,
-                                      @RequestParam("password") String password){
-        Result result = userService.confidentialPayment(userId, password);
-
-        return result;
-    }
 }

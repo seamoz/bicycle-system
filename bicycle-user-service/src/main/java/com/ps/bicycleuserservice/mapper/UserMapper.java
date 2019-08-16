@@ -5,6 +5,7 @@ import com.ps.allapp.domain.User;
 import com.ps.allapp.domain.UserAndVerify;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+import com.ps.allapp.domain.*;
 
 import java.util.List;
 

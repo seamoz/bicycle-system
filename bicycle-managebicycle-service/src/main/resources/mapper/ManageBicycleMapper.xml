@@ -55,5 +55,81 @@
         select bicycle_site from sbike_bicycle_t b where b.bicycle_num = #{bicycleNum}
     </select>
 
+
+    <resultMap id="selectShareBicycleByUserId" type="com.ps.allapp.domain.ShareBicycle">
+        <id column="id" property="id" />
+        <result column="user_id"  property="userId" />
+        <result column="bicycle_num" property="bicycleNum" />
+        <result column="initial_address" property="initialAddress" />
+        <result column="end_address" property="endAddress" />
+        <result column="start_time" property="startTime" />
+        <result column="end_time" property="endTime" />
+        <result column="money" property="money" />
+        <result column="route" property="route" />
+        <result column="bicycle_state" property="bicycleState" />
+        <result column="use_time" property="useTime" />
+    </resultMap>
+
+    <select id="selectShareBicycleByUserId" parameterType="int" resultMap="selectShareBicycleByUserId">
+        select b.id, b.user_id, b.bicycle_num, b.initial_address, b.end_address, b.start_time, b.end_time, b.money, b.route, b.bicycle_state, b.use_time from sharebicycle_bicycle_t b where b.user_id = #{userId}
+    </select>
+
+    <resultMap id="selectShareBicycleById" type="com.ps.allapp.domain.ShareBicycle">
+        <id column="id" property="id" />
+        <result column="user_id"  property="userId" />
+        <result column="bicycle_num" property="bicycleNum" />
+        <result column="initial_address" property="initialAddress" />
+        <result column="end_address" property="endAddress" />
+        <result column="start_time" property="startTime" />
+        <result column="end_time" property="endTime" />
+        <result column="money" property="money" />
+        <result column="route" property="route" />
+        <result column="bicycle_state" property="bicycleState" />
+        <result column="use_time" property="useTime" />
+    </resultMap>
+    <!-- 根据骑行记录ID查询骑行记录信息 -->
+    <select id="selectShareBicycleById" parameterType="int" resultMap="selectShareBicycleById">
+        select b.id, b.user_id, b.bicycle_num, b.initial_address, b.end_address, b.start_time, b.end_time, b.money, b.route, b.bicycle_state, b.use_time from sharebicycle_bicycle_t b where b.id = #{id}
+    </select>
+
+    <resultMap id="selectUserById" type="com.ps.allapp.domain.User">
+        <id column="id" property="id" />
+        <result column="username"  property="username" />
+        <result column="password" property="password" />
+        <result column="phone" property="phone" />
+        <result column="email" property="email" />
+        <result column="register_time" property="registerTime" />
+        <result column="route" property="route" />
+        <result column="head_photo" property="headPhoto" />
+        <result column="address" property="address" />
+        <result column="wallet_id" property="walletId" />
+        <result column="make_bicycle_num" property="bicycleId" />
+    </resultMap>
+    <!-- 根据用户ID查询用户信息 -->
+    <select id="selectUserById" parameterType="int" resultMap="selectUserById">
+        select u.id, u.username, u.password, u.phone, u.email, u.register_time, u.route, u.head_photo, u.address, u.wallet_id, u.make_bicycle_num from sbike_user_t u where u.id = #{userId}
+    </select>
+
+    <resultMap id="selectWalletById" type="com.ps.allapp.domain.Wallet">
+        <id column="id" property="id" />
+        <result column="remain_money"  property="remainMoney" />
+        <result column="no_password_pay" property="noPasswordPay" />
+        <result column="pledge_state" property="pledgeState" />
+        <result column="pay_password" property="payPassword" />
+    </resultMap>
+    <!-- 根据钱包ID查询钱包信息 -->
+    <select id="selectWalletById" parameterType="int" resultMap="selectWalletById">
+        select w.id, w.remain_money, w.no_password_pay, w.pledge_state, w.pay_password from sbike_wallet_t w where w.id = #{walletId}
+    </select>
+
+    <!-- 根据钱包ID扣钱 -->
+    <update id="updateWalletById" parameterType="com.ps.allapp.domain.Wallet">
+        update sbike_wallet_t set remain_money = #{remainMoney} where id = #{id}
+    </update>
+
+    <!-- 插入消费记录 -->
+    <insert id="insertPayrecord" parameterType="com.ps.allapp.domain.Payrecord">
+        insert into sbike_payrecord_t(user_id, pay_time, pay_type, pay_money) values(#{userId}, #{payTime}, #{payType}, #{payMoney})
+    </insert>
 </mapper>
 

@@ -2,6 +2,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ps.bicyclemanagebicycleservice.mapper.ManageBicycleMapper">
 
+    <!-- 上报故障 -->
+    <insert id="sbikeFault" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sbike_fault_t ( user_id, bicycle_num, fault_type, remark, publish_time, dispose_state)
+        VALUES
+            (
+                #{userId},
+                #{bicycleNum},
+                #{faultType},
+                #{remark},
+            now(),0)
+    </insert>
+
     <!-- 历史故障（用户提交单车的故障）-->
     <select id="historyMalfunction"  resultType="com.ps.allapp.domain.Fault">
         SELECT
