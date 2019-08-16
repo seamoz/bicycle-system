@@ -6,28 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.ps.allapp.domain.Message;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @description:
-<<<<<<< Updated upstream
  * @author: peigen
  * @create: 2019/08/14
  */
 @FeignClient("USER-SERVICE")
 public interface UserService {
-
-    @RequestMapping("/hello")
-    String hello();
-
-    /**
-     *  免密支付
-     * @param userId,password
-     * @return
-     */
-    @GetMapping("/confidential-payment")
-    Result confidentialPayment(@RequestParam("userId") int userId, @RequestParam("password") String password);
 
     /**
      * @Description 根据电话修改密码
@@ -93,4 +82,6 @@ public interface UserService {
                                                @RequestParam("password") String password,
                                                @RequestParam("email") String email,
                                                @RequestParam("verificationCode") String verificationCode);
+
+
 }

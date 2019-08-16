@@ -1,5 +1,7 @@
 package com.ps.bicyclemanagebicycleservice.service;
 
+import com.ps.allapp.domain.Fault;
+import com.ps.allapp.domain.Result;
 import com.ps.allapp.domain.ShareBicycle;
 import com.ps.allapp.domain.User;
 
@@ -40,5 +42,24 @@ public interface ManageBicycleService {
      */
     void unlockBicycle(User user);
 
+    /**
+     * 历史故障（用户提交单车的故障）
+     * @param userId
+     * @return
+     */
+    Result historyMalfunction(int userId);
 
+    /**
+     * 故障的详情资料
+     * @param id
+     * @return
+     */
+    Result faultDetails(int id);
+
+    /**
+     * 上报故障
+     * @param fault
+     * @return
+     */
+    Result sbikeFault(Fault fault);
 }

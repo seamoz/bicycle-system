@@ -1,5 +1,6 @@
 package com.ps.bicyclemanagebicycleservice.mapper;
 
+import com.ps.allapp.domain.Fault;
 import com.ps.allapp.domain.ShareBicycle;
 import com.ps.allapp.domain.User;
 import org.apache.ibatis.annotations.Mapper;
@@ -69,4 +70,24 @@ public interface ManageBicycleMapper {
      */
     String getSiteByBicycleNum(int bicycleNum);
 
+    /**
+     *  上报故障
+     * @param fault
+     * @return
+     */
+    Integer sbikeFault(Fault fault);
+
+    /**
+     *  历史故障（用户提交单车的故障）
+     * @param userId
+     * @return
+     */
+    List<Fault> historyMalfunction(int userId);
+
+    /**
+     * 故障的详情资料
+     * @param id
+     * @return
+     */
+    Fault faultDetails(int id);
 }

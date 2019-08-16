@@ -1,18 +1,11 @@
 package com.ps.bicycleuserservice.mapper;
 
-import com.ps.allapp.domain.ShareBicycle;
-import com.ps.allapp.domain.User;
-import com.ps.allapp.domain.UserAndVerify;
+import com.ps.allapp.domain.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * @description: user mapper类
- * @author: 谭倾云
- * @create: 2019/08/14
- */
 @Mapper
 @Repository
 public interface UserMapper {
@@ -68,22 +61,6 @@ public interface UserMapper {
      * @return
      */
     User queryPersonage(int userId);
-
-    /**
-     *  免密支付
-     * @param id
-     * @param noPasswordPay
-     * @return
-     */
-    Integer confidentialPayment(int id,int noPasswordPay);
-
-    /**
-     * 根据用户id，密码查询 钱包id
-     * @param userId
-     * @param password
-     * @return
-     */
-    Integer userWalletDetails(int userId, String password);
 
     /**
      * @Description 根据电话修改密码
@@ -143,4 +120,5 @@ public interface UserMapper {
      * @param verificationCode 验证码
      * */
     void addCodeRecordEmail(String email, Integer state, String verificationCode);
+
 }

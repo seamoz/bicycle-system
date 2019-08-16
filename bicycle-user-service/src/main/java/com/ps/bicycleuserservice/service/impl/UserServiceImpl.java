@@ -11,9 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -23,6 +28,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Service
 public class UserServiceImpl{
+
     //redis 电话号码验证码存缓 的key
     private static final String userPhone = "phone:";
     //redis 邮箱地址验证码存缓 的key
@@ -46,38 +52,6 @@ public class UserServiceImpl{
 
     public User queryPersonage(int userId) {
         return userMapper.queryPersonage(userId);
-    }
-
-
-    /**
-     * 免密支付
-     * @param userId,password
-     * @return
-     */
-    public Result confidentialPayment(int userId, String password) {
-        Result result = new Result();
-
-        if(password == null || userId <= 0){
-            result.setError_code(102);
-            return result;
-        }
-        System.out.println(userId +" "+ password);
-
-        Integer id = userMapper.userWalletDetails(userId,password);
-        if (id <= 0){
-            result.setError_code(100);
-            return result;
-        }
-
-        Integer integer = userMapper.confidentialPayment(id,1);
-
-        if(integer <= 0){
-            result.setError_code(103);
-            return result;
-        }
-
-        result.setError_code(200);
-        return result;
     }
 
     /**
@@ -349,4 +323,6 @@ public class UserServiceImpl{
         }
         return true;
     }
+
+
 }
