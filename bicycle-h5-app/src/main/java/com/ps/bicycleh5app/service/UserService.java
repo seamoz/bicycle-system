@@ -83,5 +83,36 @@ public interface UserService {
                                                @RequestParam("email") String email,
                                                @RequestParam("verificationCode") String verificationCode);
 
+    /**
+     * @Description 根据用户id查找钱包
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/my/main")
+    Message getWalletMain(@RequestParam("userId") Integer userId);
 
-}
+    /**
+     * @Description 根据用户id查找优惠券
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/my/discount")
+    Message getDiscount(@RequestParam("userId") Integer userId);
+
+    /**
+     * @Description 根据用户id查询支付记录
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/my/payrecord")
+    Message getPayrecord(@RequestParam("userId") Integer userId);
+
+    /**
+     * @Description 用户充值
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @PostMapping("/my/recharge")
+    public Message recharge(@RequestParam("userId") Integer userId,@RequestParam("payType") String payType ,@RequestParam("payMoney") float payMoney);
+
+    }

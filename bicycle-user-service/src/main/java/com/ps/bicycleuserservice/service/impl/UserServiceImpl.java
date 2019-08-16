@@ -324,5 +324,61 @@ public class UserServiceImpl{
         return true;
     }
 
+    /**
+     * @Description 根据用户id
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    public Message getWalletMain(Integer userId) {
+        Wallet wallet = userMapper.getWalletMain(userId);
+        Message message = new Message();
+        message.setCode(200);
+        message.setData(wallet);
+        message.setMsg("查询成功！");
+        return message;
+    }
 
+    /**
+     * @Description 根据用户id查询优惠券
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    public Message getDiscount(Integer userId) {
+        List<Discount> discount = userMapper.getDiscount(userId);
+        Message message = new Message();
+        message.setData(discount);
+        message.setCode(200);
+        message.setMsg("success！");
+        return message;
+    }
+
+    /**
+     * @Description 根据用户id查询支付记录
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    public Message getPayrecord(Integer userId) {
+        List<Payrecord> list = userMapper.getPayrecord(userId);
+        Message message = new Message();
+        message.setMsg("success!");
+        message.setCode(200);
+        message.setData(list);
+        return message;
+    }
+
+    /**
+     * @Description 根据用户客户充值，增加充值记录
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @Transactional
+    public Message recharge(Integer userId, String payType, float payMoney) {
+        userMapper.recharge(userId,payType,payMoney);
+        userMapper.insertPayrecord(userId,payType,payMoney);
+
+        Message message = new Message();
+        message.setCode(200);
+        message.setMsg("success");
+        return message;
+    }
 }

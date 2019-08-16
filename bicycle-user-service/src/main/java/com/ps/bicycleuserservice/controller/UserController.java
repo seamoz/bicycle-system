@@ -95,4 +95,44 @@ public class UserController {
     Message<String> judgeEmailVerificationCode(String userName,String password,String email,String verificationCode){
         return userService.judgeEmailVerificationCode(userName,password,email,verificationCode);
     }
+
+    /**
+     * @Description 根据用户id查找钱包
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/my/main")
+    Message getWalletMain(@RequestParam("userId") Integer userId){
+        return userService.getWalletMain(userId);
+    }
+
+    /**
+     * @Description 根据用户id查找优惠券
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/my/discount")
+    public Message getDiscount(@RequestParam("userId") Integer userId){
+        return userService.getDiscount(userId);
+    }
+
+    /**
+     * @Description 根据用户id查询支付记录
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/my/payrecord")
+    public Message getPayrecord(@RequestParam("userId") Integer userId){
+        return userService.getPayrecord(userId);
+    }
+
+    /**
+     * @Description 用户充值
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @PostMapping("/my/recharge")
+    public Message recharge(@RequestParam("userId") Integer userId,@RequestParam("payType") String payType ,@RequestParam("payMoney") float payMoney) {
+        return userService.recharge(userId,payType,payMoney);
+    }
 }

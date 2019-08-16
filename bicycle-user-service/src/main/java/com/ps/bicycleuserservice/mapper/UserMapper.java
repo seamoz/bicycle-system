@@ -121,4 +121,21 @@ public interface UserMapper {
      * */
     void addCodeRecordEmail(String email, Integer state, String verificationCode);
 
+    /**
+     * @Description 根据用户 id查询用户钱包
+     * @param userId 用户id
+     * */
+    Wallet getWalletMain(Integer userId);
+
+    /**
+     * @Description 根据用户 id查询用户优惠券
+     * @param userId 用户id
+     * */
+    List<Discount> getDiscount(Integer userId);
+
+    List<Payrecord> getPayrecord(Integer userId);
+
+    void recharge(Integer userId, String payType, float payMoney);
+
+    void insertPayrecord(Integer userId, String payType, float payMoney);
 }
