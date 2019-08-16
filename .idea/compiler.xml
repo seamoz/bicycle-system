@@ -2,7 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -15,14 +14,10 @@
         <module name="eureka-service" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="all-sdk" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="all-app" options="-parameters" />
-      <module name="all-sdk" options="-parameters" />
       <module name="bicycle-billing-service" options="-parameters" />
       <module name="bicycle-h5-app" options="-parameters" />
       <module name="bicycle-managebicycle-service" options="-parameters" />
