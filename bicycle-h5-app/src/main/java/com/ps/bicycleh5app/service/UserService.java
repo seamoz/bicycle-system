@@ -13,6 +13,15 @@ import com.ps.allapp.domain.Message;
 @FeignClient("USER-SERVICE")
 public interface UserService {
 
+    /**
+     * 登录（校验了是否是用户名、手机号、邮箱）
+     * @param userData
+     * @param password
+     * @return
+     */
+    @RequestMapping("/logIn")
+    Result logIn(@RequestParam("username") String userData, String password);
+
     //我的里程查询
     @GetMapping("/queryRoute")
     Result queryRoute(@RequestParam("userId") int userId);

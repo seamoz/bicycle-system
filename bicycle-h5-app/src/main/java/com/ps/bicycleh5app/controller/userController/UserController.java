@@ -20,6 +20,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/logIn")
+    public Result logIn(@RequestParam("username") String userData, String password){
+        return userService.logIn(userData, password);
+    }
+
     /**
      * @Description 根据电话修改密码
      * @param map 一个存放了 phone(用户的电话号码) 和 newPassword(用户的新密码) 的容器
