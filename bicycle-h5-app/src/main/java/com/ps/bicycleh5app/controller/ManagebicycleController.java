@@ -2,6 +2,8 @@ package com.ps.bicycleh5app.controller;
 
 import com.ps.allapp.domain.Fault;
 import com.ps.allapp.domain.Result;
+import com.ps.allapp.domain.ShareBicycle;
+import com.ps.allapp.domain.User;
 import com.ps.bicycleh5app.service.ManagebicycleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +14,32 @@ import java.util.Map;
  * @author VP
  */
 @RestController
+@RequestMapping("/bikes")
 public class ManagebicycleController {
 
     @Autowired
     private ManagebicycleService managebicycleService;
+
+
+    @GetMapping("/address")
+    public Result changeAddress(@RequestBody ShareBicycle shareBicycle) {
+        return managebicycleService.changeAddress(shareBicycle);
+    }
+
+    @GetMapping("/init")
+    public Result bicycleInit(@RequestBody User user){
+        return managebicycleService.bicycleInit(user);
+    }
+
+    @PostMapping("/subscribe")
+    public Result appointmentBicycle(@RequestBody User user) {
+        return managebicycleService.appointmentBicycle(user);
+    }
+
+    @PostMapping("/unlock")
+    public Result unlockBicycle(@RequestBody User user){
+        return managebicycleService.unlockBicycle(user);
+    }
 
     /**
      * 历史故障（用户提交单车的故障）
@@ -56,7 +80,7 @@ public class ManagebicycleController {
      * @param map
      * @return
      */
-    @RequestMapping("/bikes/cycling")
+    @RequestMapping("/cycling")
     public Result cycling(@RequestBody Map<String, String> map){
         return managebicycleService.cycling(map);
     }
@@ -66,7 +90,7 @@ public class ManagebicycleController {
      * @param map
      * @return
      */
-    @RequestMapping("/bikes/deduction")
+    @RequestMapping("/deduction")
     public Result deduction(@RequestBody Map<String, String> map){
         return managebicycleService.deduction(map);
     }
@@ -76,7 +100,7 @@ public class ManagebicycleController {
      * @param map
      * @return
      */
-    @RequestMapping("/bikes/pay")
+    @RequestMapping("/pay")
     public Result pay(@RequestBody Map<String, String> map){
         return managebicycleService.pay(map);
     }

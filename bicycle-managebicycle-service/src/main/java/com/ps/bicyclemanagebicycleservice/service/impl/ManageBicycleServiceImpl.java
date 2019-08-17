@@ -33,11 +33,11 @@ public class ManageBicycleServiceImpl implements ManageBicycleService {
 
     @Override
     public void appointmentBicycle(User user) {
-        int bicycleNum = checkAppointmentBicycle(user.getId());
+        int bicycleNum = checkAppointmentBicycle(user.getUserId());
         if(bicycleNum!=0){
             throw new BusinessException(500, "您已经预约过单车了");
         }
-        manageBicycleMapper.appointmentBicycle(user.getBicycleNum(),user.getId());
+        manageBicycleMapper.appointmentBicycle(user.getBicycleNum(),user.getUserId());
         manageBicycleMapper.changeBicycleState(user.getBicycleNum(),1);
     }
 
@@ -53,11 +53,11 @@ public class ManageBicycleServiceImpl implements ManageBicycleService {
 
     @Override
     public void unlockBicycle(User user){
-        if(manageBicycleMapper.checkUnlock(user.getId()) != 0){
+        if(manageBicycleMapper.checkUnlock(user.getUserId()) != 0){
             throw new BusinessException(500, "您有一个订单正在进行！");
         }
         //是否预约了单车
-        int bicycleNum = checkAppointmentBicycle(user.getId());
+        int bicycleNum = checkAppointmentBicycle(user.getUserId());
         if(bicycleNum!=0 && user.getBicycleNum() == bicycleNum){
             if(user.getBicycleNum() != bicycleNum){
                 throw new BusinessException(500, "您已经预约过一辆车了！");
@@ -69,7 +69,7 @@ public class ManageBicycleServiceImpl implements ManageBicycleService {
         //根据单车编号获取位置
         String site = manageBicycleMapper.getSiteByBicycleNum(user.getBicycleNum());
         System.out.println(site);
-        manageBicycleMapper.unlockBicycle(new ShareBicycle(user.getId(),user.getBicycleNum(),site,nowTime));
+        manageBicycleMapper.unlockBicycle(new ShareBicycle(user.getUserId(),user.getBicycleNum(),site,nowTime));
     }
 
     /**
