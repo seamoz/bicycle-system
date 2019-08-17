@@ -1,9 +1,6 @@
 package com.ps.bicyclemanagebicycleservice.mapper;
 
-import com.ps.allapp.domain.Fault;
-import com.ps.allapp.domain.ShareBicycle;
-import com.ps.allapp.domain.User;
-import com.ps.allapp.domain.Wallet;
+import com.ps.allapp.domain.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
