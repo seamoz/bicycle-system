@@ -157,6 +157,7 @@ public class BillingServiceImpl implements BillingService {
         Map<String ,Float> map = new HashMap<String,Float>();
         map.put("money",229f);
 
+        resul.setError_code(200);
         resul.setData(map);
         resul.setMeg("押金为："+229+"元");
         return resul;
