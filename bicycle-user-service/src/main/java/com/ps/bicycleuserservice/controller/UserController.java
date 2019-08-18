@@ -70,16 +70,6 @@ public class UserController {
     public Result sendCodeToEmail(@RequestParam int id,@RequestParam String email){
         return userServiceImpl.sendCodeToEmail(id , email);
     }
-    /**
-     *  免密支付
-     * @param userId,password
-     * @return
-     */
-    @GetMapping("/confidential-payment")
-    public Result confidentialPayment(@RequestParam("userId") int userId, @RequestParam("password") String password){
-        Result result  = userService.confidentialPayment(userId,password);
-        return result;
-    }
 
     /**
      * @Description 根据电话修改密码
