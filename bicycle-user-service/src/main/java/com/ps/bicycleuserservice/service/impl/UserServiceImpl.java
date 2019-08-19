@@ -17,9 +17,13 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -29,13 +33,21 @@ import java.util.concurrent.TimeUnit;
  */
 @Service
 public class UserServiceImpl implements UserService {
-    //redis 电话号码验证码存缓 的key
+
+    /**
+     * redis 注册电话号码验证码存缓 的key
+     * */
     private static final String userPhone = "phone:";
 
     /**
      * redis 注册邮箱地址验证码存缓 的key
      */
     private static final String userEmail = "email:";
+
+    /**
+     * redis 忘记密码邮箱地址或手机号验证码存缓 的key
+     * */
+    private static final String userEmailOrPassword = "emailOrPassword:";
 
     /**
      * redis 修改邮箱验证码存缓 的key  暂时不用
@@ -80,23 +92,26 @@ public class UserServiceImpl implements UserService {
     @Override
     public Result logIn(String userData, String password) {
 
-        User user = null;
+        if(Regexs.isEmail(userData)){
+            System.out.println("email");
+            User user = userMapper.logInByEmailAndPassword(userData, password);
+            if (null == user) {
+                return new Result("不存在该用户", 101);
+            }
+        }
 
-        if (Regexs.isEmail(userData)) {
-            user = userMapper.logInByEmailAndPassword(userData, password);
+        if(Regexs.orPhoneNumber(userData)){
+            System.out.println("phone");
+            User user = userMapper.logInByPhoneAndPassword(userData, password);
             if (null == user) {
                 return new Result("不存在该用户", 101);
             }
-        } else if (Regexs.orPhoneNumber(userData)) {
-            user = userMapper.logInByPhoneAndPassword(userData, password);
-            if (null == user) {
-                return new Result("不存在该用户", 101);
-            }
-        } else {
-            user = userMapper.logInByUserNameAndPassword(userData, password);
-            if (null == user) {
-                return new Result("不存在该用户", 101);
-            }
+        }
+
+        User user = userMapper.logInByUserNameAndPassword(userData, password);
+        System.out.println("username");
+        if (null == user) {
+            return new Result("不存在该用户", 101);
         }
 
         return new Result("存在该用户", 200, user.getUserId());
@@ -253,7 +268,6 @@ public class UserServiceImpl implements UserService {
         return new Result("修改手机成功", 200);
     }
 
-
     /**
      * @param phone 用户要修改的邮箱地址
      * @return Message<String> 返回的对象提示
@@ -274,6 +288,31 @@ public class UserServiceImpl implements UserService {
 
         message.setMsg("正确.");
         message.setCode(200);
+        message.setState(true);
+        return message;
+    }
+
+    /**
+     * @param key 用户的邮箱或手机号
+     * @return Message<String> 返回的对象提示
+     * @Description 重置密码  判断验证存不存在
+     */
+    @Override
+    public Message<String> resetPassword(String key, String verificationCode) {
+        //创建返回对象
+        Message<String> message = new Message<>();
+
+        //查看 redis 存缓里有没有 验证码存缓
+        boolean judeg = judgeCode(userEmailOrPassword+key,verificationCode);
+        if(!judeg){
+            message.setCode(0);
+            message.setMsg("验证码已过期或验证码输入错误.");
+            message.setState(false);
+            return message;
+        }
+
+        message.setCode(200);
+        message.setMsg("验证成功.");
         message.setState(true);
         return message;
     }
@@ -308,7 +347,8 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * @param email       用户的邮箱地址
+     * @Description 根据电话修改密码
+     * @param email 用户的邮箱地址
      * @param newPassword 用户要修改的密码
      * @return Message<String> 返回的对象提示
      * @Description 根据电话修改密码
@@ -335,17 +375,17 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * @Description 给邮箱发送短信
      * @param email 用户的邮箱地址
      * @return Message<String> 返回的对象提示
-     * @Description 给邮箱发送短信
-     */
-    public Message <String> verificationCodes(String email, Integer state) {
+     * */
+    public Message<String> verificationCodes(String email, Integer state) {
         //返回信息对象
-        Message <String> message = new Message <>();
+        Message<String> message = new Message<>();
 
         //如果邮箱以有人注册或绑定 就返回提示
         User user = userMapper.queryUserByEmail(email);
-        if (user != null) {
+        if(user != null && state == 0){
             message.setCode(0);
             message.setMsg("邮箱已注册.");
             message.setState(false);
@@ -379,9 +419,12 @@ public class UserServiceImpl implements UserService {
                 MailUtil.send(mail);
 
                 //存入redis存缓里面去90秒过期
-                ValueOperations <String, String> valueOperations = template.opsForValue();
-                String key = userEmail + email;
-                valueOperations.set(key, code.toString().split(":")[1], 90, TimeUnit.SECONDS);
+                ValueOperations<String,String> valueOperations = template.opsForValue();
+                String key = userEmail+email;
+                if(state == 1){
+                    key = userEmailOrPassword+email;
+                }
+                valueOperations.set(key,code.toString().split(":")[1],90, TimeUnit.SECONDS);
                 //添加一条发送信息记录
                 userMapper.addCodeRecordEmail(email, state, code.toString().split(":")[1]);
             } catch (Exception e) {
@@ -396,6 +439,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * @Description 给手机发送短信
      * @param phone 用户的电话号码
      * @return Message<String> 返回的对象提示
      */
@@ -405,7 +449,7 @@ public class UserServiceImpl implements UserService {
 
         //判断 该号码有没有被注册过
         User user = userMapper.queryUserByPhone(phone);
-        if (user != null) {
+        if(user != null && state == 0){
             message.setCode(0);
             message.setMsg("该号码以被注册.");
             message.setState(false);
@@ -423,13 +467,16 @@ public class UserServiceImpl implements UserService {
                 for (int i = 0; i < 6; i++) {
                     code.append(random.nextInt(9));
                 }
-                JuheDemo.mobileQuery(phone, code.toString());
-
+                //JuheDemo.mobileQuery(phone,code.toString());
+                System.out.println(code.toString());
                 //存入redis存缓里面去90秒过期
                 //获取缓存对象
-                ValueOperations <String, String> valueOperations = template.opsForValue();
-                String key = userPhone + phone;
-                valueOperations.set(key, code.toString(), 90, TimeUnit.SECONDS);
+                ValueOperations<String,String> valueOperations = template.opsForValue();
+                String key = userPhone+phone;
+                if(state == 1){
+                    key = userEmailOrPassword+phone;
+                }
+                valueOperations.set(key,code.toString(),90, TimeUnit.SECONDS);
 
                 //添加一条发送信息记录
                 userMapper.addCodeRecordPhone(phone, state, code.toString());
@@ -445,12 +492,12 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * @param password 用户保存的密码
-     * @param phone    用户手机号码
-     * @return Message<String> 返回的对象提示
      * @Description 根据电话修改密码
-     */
-    public Message <String> setPasswordByUserPhone(String phone, String password) {
+     * @param password 用户保存的密码
+     * @param phone 用户手机号码
+     * @return Message<String> 返回的对象提示
+     * */
+    public Message<String> setPasswordByUserPhone(String phone, String password) {
         //返回对象
         Message <String> message = new Message <>();
 
@@ -464,17 +511,17 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * @Description 判断验证码正不正确 正确就创建用户
      * @param verificationCode 验证码
      * @return Message<String> 返回的对象提示
-     * @Description 判断验证码正不正确 正确就创建用户
-     */
-    public Message <String> judgeVerificationCode(String phone, String verificationCode) {
+     * */
+    public Message<String> judgeVerificationCode(String phone,String verificationCode) {
         //返回对象
-        Message <String> message = new Message <>();
+        Message<String> message = new Message<>();
 
         //查看 redis 存缓里有没有 验证码存缓
-        boolean judeg = judgeCode(userPhone + phone, verificationCode);
-        if (!judeg) {
+        boolean judeg = judgeCode(userPhone+phone,verificationCode);
+        if(!judeg){
             message.setCode(0);
             message.setMsg("验证码已过期或验证码输入错误.");
             message.setState(false);
@@ -482,11 +529,11 @@ public class UserServiceImpl implements UserService {
         }
 
         //创建用户  用户名就是 用户电话加密
-        String phoneNumber = phone.replaceAll("(\\d{3})\\d{5}(\\d{3})", "$1*****$2");
+        String phoneNumber = phone.replaceAll("(\\d{3})\\d{5}(\\d{3})","$1*****$2");
         //点电话进行加密  初始化用户名
         String name = MD5Util.getMd5Code(phoneNumber);
         //开始添加用户
-        userMapper.addUserByCode(name, phone);
+        userMapper.addUserByCode(name,phone);
 
         message.setCode(200);
         message.setMsg("验证码正确.");
@@ -495,18 +542,18 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * @param verificationCode 验证码
-     * @param email            邮箱地址
-     * @return Message<String> 返回的对象提示
      * @Description 根据邮箱注册用户
-     */
-    public Message <String> judgeEmailVerificationCode(String userName, String password, String email, String verificationCode) {
+     * @param verificationCode 验证码
+     * @param email 邮箱地址
+     * @return Message<String> 返回的对象提示
+     * */
+    public Message<String> judgeEmailVerificationCode(String userName, String password, String email, String verificationCode) {
         //返回对象
-        Message <String> message = new Message <>();
+        Message<String> message = new Message<>();
 
         //判断邮箱有没有注册????
         User user = userMapper.queryUserByEmail(email);
-        if (user != null) {
+        if(user != null){
             message.setState(false);
             message.setCode(0);
             message.setMsg("该邮箱已注册.");
@@ -534,35 +581,35 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * @param verificationCode 验证码 值
-     * @param key              键
-     * @return Message<String> 返回的对象提示
      * @Description 判断验证码对不对或有没有过期
-     */
-    public boolean judgeCode(String key, String verificationCode) {
-        ValueOperations <String, String> valueOperations = template.opsForValue();
+     * @param verificationCode 验证码 值
+     * @param key 键
+     * @return Message<String> 返回的对象提示
+     * */
+    public boolean judgeCode(String key,String verificationCode){
+        ValueOperations<String, String> valueOperations = template.opsForValue();
         //判断这个验证码有没有过期  或存不存在 存在返回true  不存在返回false
         String code = valueOperations.get(key);
-        if (code == null || (!code.equals(verificationCode))) {
+        if(code == null || (!code.equals(verificationCode))){
             return false;
         }
         return true;
     }
 
     /**
-     * @param id               用户的id
-     * @param newEmail         用户要修改的邮箱地址
+     * @Description 修改用户的邮箱
+     * @param id 用户的id
+     * @param newEmail 用户要修改的邮箱地址
      * @param verificationCode 邮箱验证码
      * @return Message<String> 返回的对象提示
-     * @Description 修改用户的邮箱
-     */
-    public Message <String> updateEmailById(String id, String newEmail, String verificationCode) {
+     * */
+    public Message<String> updateEmailById(String id, String newEmail, String verificationCode) {
         //创建返回对象
-        Message <String> message = new Message <>();
+        Message<String> message = new Message<>();
 
         //查看 redis 存缓里有没有 验证码存缓
-        boolean judeg = judgeCode(userEmail + newEmail, verificationCode);
-        if (!judeg) {
+        boolean judeg = judgeCode(userEmail+newEmail,verificationCode);
+        if(!judeg){
             message.setCode(0);
             message.setMsg("验证码已过期或验证码输入错误.");
             message.setState(false);
@@ -640,7 +687,7 @@ public class UserServiceImpl implements UserService {
      * @return Message<String> 返回的对象提示
      * @Description 根据用户id
      */
-    public Message <String> getWalletMain(Integer userId) {
+    public Message<String> getWalletMain(Integer userId) {
         Wallet wallet = userMapper.getWalletMain(userId);
         Message message = new Message();
         message.setCode(200);
@@ -654,35 +701,22 @@ public class UserServiceImpl implements UserService {
      * @return Message<String> 返回的对象提示
      * @Description 根据用户id查询优惠券
      */
-    /*public Message getDiscount(Integer userId) {
+    public Message getDiscount(Integer userId) {
         List <Discount> discount = userMapper.getDiscount(userId);
         Message message = new Message();
         message.setData(discount);
         message.setCode(200);
         message.setMsg("success！");
         return message;
-    }*/
+    }
 
-    /**
-     * @param userId 用户id
-     * @return Message<String> 返回的对象提示
-     * @Description 根据用户id查询支付记录
-     */
-    /*public Message getPayrecord(Integer userId) {
-        List <Payrecord> list = userMapper.getPayrecord(userId);
-        Message message = new Message();
-        message.setMsg("success!");
-        message.setCode(200);
-        message.setData(list);
-        return message;
-    }*/
 
     /**
      * @param userId 用户id
      * @return Message<String> 返回的对象提示
      * @Description 根据用户客户充值，增加充值记录
      */
-    /*@Transactional
+    @Transactional
     public Message recharge(Integer userId, String payType, float payMoney) {
         userMapper.recharge(userId, payType, payMoney);
         userMapper.insertPayrecord(userId, payType, payMoney);
@@ -725,36 +759,6 @@ public class UserServiceImpl implements UserService {
     /**
      * @param userId 用户id
      * @return Message<String> 返回的对象提示
-     * @Description 根据用户客户充值，增加充值记录
-     */
-    @Transactional
-    public Message recharge(Integer userId, String payType, float payMoney) {
-        userMapper.recharge(userId, payType, payMoney);
-        userMapper.insertPayrecord(userId, payType, payMoney);
-
-        Message message = new Message();
-        message.setCode(200);
-        message.setMsg("success");
-        return message;
-    }
-
-    /**
-     * @param userId 用户id
-     * @return Message<String> 返回的对象提示
-     * @Description 根据用户id查询优惠券
-     */
-    public Message getDiscount(Integer userId) {
-        List <Discount> discount = userMapper.getDiscount(userId);
-        Message message = new Message();
-        message.setData(discount);
-        message.setCode(200);
-        message.setMsg("success！");
-        return message;
-    }
-
-    /**
-     * @param userId 用户id
-     * @return Message<String> 返回的对象提示
      * @Description 根据用户id查询支付记录
      */
     public Message getPayrecord(Integer userId) {
@@ -766,4 +770,27 @@ public class UserServiceImpl implements UserService {
         return message;
     }
 
+    /**
+     * @param key 用户的邮箱或手机号
+     * @param index 表示  0 表示邮箱 1 表示手机号
+     * @return Message<String> 返回的对象提示
+     * @Description 重置密码
+     */
+    public Message<String> setPassword(String key,String password, Integer index) {
+        //返回对象
+        Message<String> message = new Message<>();
+
+        //开始设置密码
+        String newPassword = MD5Encryption.encryption(password);
+        if(index == 1){
+            userMapper.updatePasswordByPhone(key,newPassword);
+        }else{
+            userMapper.updatePasswordByEmail(key,newPassword);
+        }
+
+        message.setCode(200);
+        message.setMsg("设置成功.");
+        message.setState(true);
+        return message;
+    }
 }

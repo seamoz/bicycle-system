@@ -265,4 +265,24 @@ public class UserController {
     public Message<String> judgePhone(String phone) {
         return userService.judgePhone(phone);
     }
+
+    /**
+     * @param key 用户的邮箱或手机号
+     * @return Message<String> 返回的对象提示
+     * @Description 重置密码  判断验证存不存在
+     */
+    @GetMapping("/resetPassword")
+    public Message<String> resetPassword(String key, String password,String verificationCode) {
+        return userService.resetPassword(key,password,verificationCode);
+    }
+
+    /**
+     * @param key 用户的邮箱或手机号
+     * @return Message<String> 返回的对象提示
+     * @Description 重置密码
+     */
+    @GetMapping("/setPassword")
+    public Message<String> setPassword(String key, String password, Integer index){
+        return userService.setPassword(key,password,index);
+    }
 }

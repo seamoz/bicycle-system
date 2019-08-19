@@ -295,4 +295,24 @@ public class UserController {
     Message<String> judgePhone(String phone) {
         return userService.judgePhone(phone);
     }
+
+    /**
+     * @param key 用户的邮箱或手机号
+     * @return Message<String> 返回的对象提示
+     * @Description 重置密码  判断验证存不存在
+     */
+    @PostMapping("/resetPassword")
+    public Message<String> resetPassword(String key, String verificationCode){
+        return userService.resetPassword(key,verificationCode);
+    }
+
+    /**
+     * @param key 用户的邮箱或手机号
+     * @return Message<String> 返回的对象提示
+     * @Description 重置密码
+     */
+    @PostMapping("/setPassword")
+    public Message<String> setPassword(String key, String password, Integer index){
+        return userService.setPassword(key,password,index);
+    }
 }

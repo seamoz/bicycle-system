@@ -264,4 +264,23 @@ public interface UserService {
     @PostMapping("/my/recharge")
     public Message recharge(@RequestParam("userId") Integer userId,@RequestParam("payType") String payType ,@RequestParam("payMoney") float payMoney);
 
+    /**
+     * @param key 用户的邮箱或手机号
+     * @return Message<String> 返回的对象提示
+     * @Description 重置密码  判断验证存不存在
+     */
+    @PostMapping("/resetPassword")
+    public Message<String> resetPassword(@RequestParam("key") String key,
+                                         @RequestParam("password") String password,
+                                         @RequestParam("verificationCode") String verificationCode);
+
+    /**
+     * @param key 用户的邮箱或手机号
+     * @return Message<String> 返回的对象提示
+     * @Description 重置密码
+     */
+    @PostMapping("/setPassword")
+    public Message<String> setPassword(@RequestParam("key") String key,
+                                @RequestParam("password") String password,
+                                @RequestParam("index") Integer index);
 }
