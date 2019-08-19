@@ -13,6 +13,10 @@
             id = #{userId}
     </update>
 
+    <update id="updatePassword">
+
+    </update>
+
 
     <select id="findPay" resultType="java.lang.Integer">
         SELECT

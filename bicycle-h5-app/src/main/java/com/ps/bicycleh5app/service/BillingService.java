@@ -14,7 +14,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient("billing-service")
 public interface BillingService {
 
-
+    /**
+     * 设置支付密码
+     * @param userId
+     * @param payPassword
+     * @return
+     */
+    @PostMapping("/billing/paymentCode")
+    public Integer findPay(@RequestParam Integer userId,@RequestParam String payPassword);
 
     /**
      *  免密支付

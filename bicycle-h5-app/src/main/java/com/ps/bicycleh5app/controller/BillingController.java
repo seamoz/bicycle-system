@@ -16,9 +16,12 @@ public class BillingController {
     private BillingService billingService;
 
     @PostMapping("/paymentCode")
-    public Integer findPay(@RequestParam("userId")Integer userId,@RequestParam("payPassword")String payPassword){
-        System.out.println(billingService.findPay(userId,payPassword));
-        return null;
+    public Result findPay(@RequestParam("userId") Integer userId,@RequestParam("payPassword") String payPassword){
+        Integer pay = billingService.findPay(userId, payPassword);
+        Result<Object> objectResult = new Result<>();
+        objectResult.setData(pay);
+        objectResult.setMeg("成功");
+        return objectResult;
     }
 
     /**

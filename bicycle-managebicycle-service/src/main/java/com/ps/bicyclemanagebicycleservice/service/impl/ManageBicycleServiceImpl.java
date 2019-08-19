@@ -32,10 +32,6 @@ public class ManageBicycleServiceImpl implements ManageBicycleService {
         return manageBicycleMapper.changeAddress(address);
     }
 
-    @Override
-    public void appointmentBicycle(User user) {
-
-    }
 
     public void appointmentBicycle(int userId,int bicycleNum) {
 
@@ -61,10 +57,6 @@ public class ManageBicycleServiceImpl implements ManageBicycleService {
     }
 
     @Override
-    public void unlockBicycle(User user) {
-
-    }
-
     public void unlockBicycle(int userId,int bicycleNum){
 
         if(manageBicycleMapper.checkUnlock(userId) != 0){

@@ -2,7 +2,6 @@ package com.ps.bicyclebillingsevice.mapper;
 
 import com.ps.allapp.domain.Wallet;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Mapper
@@ -31,4 +30,6 @@ public interface WalletMapper {
      * return 支付密码
      */
     String getPayPassword(Integer userId);
+
+    Integer updatePassword(Integer userId, String payPassword);
 }
