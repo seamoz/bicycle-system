@@ -26,6 +26,7 @@ public class BillingController {
         Result<Object> objectResult = new Result<>();
         objectResult.setData(pay);
         objectResult.setMeg("成功");
+        System.out.println(objectResult);
         return objectResult;
     }
 
