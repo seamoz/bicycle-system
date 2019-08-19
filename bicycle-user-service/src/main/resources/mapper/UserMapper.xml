@@ -79,13 +79,13 @@
     </select>
 
     <!-- 根据电话号码查询用户 -->
-    <select id="queryUserByPhone" resultType="com.ps.allapp.domain.User">
+    <select id="queryUserByPhone" resultMap="logInResultMap">
         SELECT
-        *
+        <include refid="user" />
         FROM
-        sbike_user_t
+        sbike_user_t u
         WHERE
-        phone=#{phone}
+        u.phone=#{phone}
     </select>
 
     <!-- 根据电话号码修改用户 -->
