@@ -84,15 +84,6 @@ public interface UserService {
     @RequestMapping("/updatePhone")
     Result updatePhone(@RequestParam("id") int id,@RequestParam("phone") String phone);
 
-
-    /**
-     *  免密支付
-     * @param userId,password
-     * @return
-     */
-    @GetMapping("/confidential-payment")
-    Result confidentialPayment(@RequestParam("userId") int userId, @RequestParam("password") String password);
-
     /**
      * @Description 根据电话修改密码
      * @param phone 用户的电话号码

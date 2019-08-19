@@ -8,6 +8,7 @@ import com.ps.allapp.util.MD5Util;
 import com.ps.allapp.util.MailUtil;
 import com.ps.bicycleuserservice.mapper.UserMapper;
 import com.ps.bicycleuserservice.util.CreateCode;
+import com.ps.bicycleuserservice.util.Regexs;
 import com.ps.bicycleuserservice.util.SendEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -219,23 +220,7 @@ public class UserServiceImpl implements UserService{
         sendCodeToEmail(id,user.getPhone());
         return new Result("修改手机成功",200);
     }
-/*
-    @Autowired
-    private StringRedisTemplate template;*/
 
-   /* public List<ShareBicycle> queryRoute(int userId) {
-        List<ShareBicycle> shareBicycles = userMapper.queryRoute(userId);
-        return shareBicycles;
-    }
-
-    public Integer userOrder(int id) {
-        return userMapper.userOrder(id);
-    }
-
-
-    public User queryPersonage(int userId) {
-        return userMapper.queryPersonage(userId);
-    }
 
      /**
       * @Description 根据电话修改密码
