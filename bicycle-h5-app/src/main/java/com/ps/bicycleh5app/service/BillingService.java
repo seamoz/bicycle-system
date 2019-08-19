@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient("billing-service")
 public interface BillingService {
 
+
+
     /**
      *  免密支付
      * @param userId,password

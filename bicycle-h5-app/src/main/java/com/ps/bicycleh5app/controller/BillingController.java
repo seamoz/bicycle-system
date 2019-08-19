@@ -15,6 +15,12 @@ public class BillingController {
     @Autowired
     private BillingService billingService;
 
+    @PostMapping("/paymentCode")
+    public Integer findPay(@RequestParam("userId")Integer userId,@RequestParam("payPassword")String payPassword){
+        System.out.println(billingService.findPay(userId,payPassword));
+        return null;
+    }
+
     /**
      *  免密支付
      * @param user(userId,password)

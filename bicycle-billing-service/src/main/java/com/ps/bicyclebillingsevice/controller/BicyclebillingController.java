@@ -2,7 +2,9 @@ package com.ps.bicyclebillingsevice.controller;
 
 import com.ps.allapp.domain.Result;
 import com.ps.allapp.domain.User;
+import com.ps.allapp.domain.Wallet;
 import com.ps.bicyclebillingsevice.service.BillingService;
+import com.ps.bicyclebillingsevice.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,7 @@ public class BicyclebillingController {
 
     @Autowired
     private BillingService billingService;
+
 
     /**
      *  免密支付
