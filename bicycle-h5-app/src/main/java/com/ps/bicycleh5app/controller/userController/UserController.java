@@ -250,7 +250,7 @@ public class UserController {
      * @Description 查询电话存不存在
      */
     @GetMapping("/judgePhone")
-    Message<String> judgePhone(String phone) {
+    public Message<String> judgePhone(String phone) {
         return userService.judgePhone(phone);
     }
 }
