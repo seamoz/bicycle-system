@@ -2,11 +2,8 @@ package com.ps.bicycleh5app.service;
 
 import com.ps.allapp.domain.Result;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import com.ps.allapp.domain.Message;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @description:
@@ -15,6 +12,15 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @FeignClient("USER-SERVICE")
 public interface UserService {
+
+    /**
+     * 登录（校验了是否是用户名、手机号、邮箱）
+     * @param userData
+     * @param password
+     * @return
+     */
+    @RequestMapping("/logIn")
+    Result logIn(@RequestParam("username") String userData, String password);
 
     //我的里程查询
     @GetMapping("/queryRoute")
@@ -112,7 +118,7 @@ public interface UserService {
      * @return Message<String> 返回的对象提示
      * */
     @RequestMapping("/verification")
-    Message<String> verificationCodes(@RequestParam("email") String email);
+    Message<String> verificationCodes(@RequestParam("email") String email, @RequestParam("state") Integer state);
 
     /**
      * @Description 给手机发送短信
@@ -120,7 +126,7 @@ public interface UserService {
      * @return Message<String> 返回的对象提示
      * */
     @RequestMapping("/verificationPhone")
-    Message<String> verificationCodesPhone(@RequestParam("phone") String phone);
+    Message<String> verificationCodesPhone(@RequestParam("phone") String phone, @RequestParam("state") Integer state);
 
     /**
      * @Description 根据电话修改密码
@@ -151,4 +157,94 @@ public interface UserService {
                                                @RequestParam("password") String password,
                                                @RequestParam("email") String email,
                                                @RequestParam("verificationCode") String verificationCode);
+
+    /**
+     * @Description 判断验证码正不正确 正确就创建用户
+     * @param id 用户的id
+     * @param newEmail 用户要修改的邮箱地址
+     * @param verificationCode 邮箱验证码
+     * @return Message<String> 返回的对象提示
+     * */
+    @RequestMapping("/updateEmailById")
+    Message<String> updateEmailById(@RequestParam("id") String id,
+                                    @RequestParam("newEmail") String newEmail,
+                                    @RequestParam("verificationCode") String verificationCode);
+
+    /**
+     * @Description 添加邮箱
+     * @param id 用户的id
+     * @param newEmail 用户要修改的邮箱地址
+     * @param verificationCode 邮箱验证码
+     * @return Message<String> 返回的对象提示
+     * */
+    @RequestMapping("/addEmailById")
+    Message<String> addEmailById(@RequestParam("id") String id,
+                                 @RequestParam("newEmail") String newEmail,
+                                 @RequestParam("verificationCode") String verificationCode);
+
+    /**
+     * @Description 修改电话
+     * @param id 用户的id
+     * @param newPhone 用户要修改的邮箱地址
+     * @param verificationCode 邮箱验证码
+     * @return Message<String> 返回的对象提示
+     * */
+    @RequestMapping("/updatePhoneById")
+    Message<String> updatePhoneById(@RequestParam("id") String id,
+                                    @RequestParam("newPhone") String newPhone,
+                                    @RequestParam("verificationCode") String verificationCode);
+
+    /**
+     * @Description 修改电话
+     * @param id 用户的id
+     * @param newPhone 用户要修改的邮箱地址
+     * @param verificationCode 邮箱验证码
+     * @return Message<String> 返回的对象提示
+     * */
+    @RequestMapping("/addPhoneById")
+    Message<String> addPhoneById(@RequestParam("id") String id,
+                                 @RequestParam("newPhone") String newPhone,
+                                 @RequestParam("verificationCode") String verificationCode);
+
+    /**
+     * @param phone         用户要修改的邮箱地址
+     * @return Message<String> 返回的对象提示
+     * @Description 查询电话存不存在
+     */
+    @RequestMapping("/judgePhone")
+    Message<String> judgePhone(@RequestParam("phone") String phone);
+
+    /**
+     * @Description 根据用户id查找钱包
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/my/main")
+    public Message getWalletMain(@RequestParam("userId") Integer userId);
+
+
+    /**
+     * @Description 根据用户id查找优惠券
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/my/discount")
+    public Message getDiscount(@RequestParam("userId") Integer userId);
+
+    /**
+     * @Description 根据用户id查询支付记录
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/my/payrecord")
+    public Message getPayrecord(@RequestParam("userId") Integer userId);
+
+    /**
+     * @Description 用户充值
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @PostMapping("/my/recharge")
+    public Message recharge(@RequestParam("userId") Integer userId,@RequestParam("payType") String payType ,@RequestParam("payMoney") float payMoney);
+
 }

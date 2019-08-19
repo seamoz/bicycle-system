@@ -3,6 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ps.bicycleuserservice.mapper.UserMapper">
+
     <!--往验证表里添加数据-->
     <insert id="insertVerify">
         INSERT INTO bicycle_system.sbike_verify_t ( user_id, user_email, verify_type, verify_code, verify_time )
@@ -132,6 +133,38 @@
         #{verificationCode},
         now())
     </insert>
+
+    <!-- 根据用户id修改邮箱 -->
+    <update id="updateEmailById">
+        UPDATE sbike_user_t su
+        SET su.email = #{newEmail}
+        WHERE
+        su.id = #{id}
+    </update>
+
+    <!-- 根据用户的id 添加邮箱 -->
+    <update id="addEmailById">
+        UPDATE sbike_user_t su
+        SET su.email = #{newEmail}
+        WHERE
+        su.id = #{id}
+    </update>
+
+    <!-- 根据用户的id 修改电话 -->
+    <update id="updatePhoneById">
+        UPDATE sbike_user_t su
+        SET su.phone = #{newPhone}
+        WHERE
+        su.id = #{id}
+    </update>
+
+    <!-- 根据用户的id 添加电话 -->
+    <update id="addPhoneById">
+        UPDATE sbike_user_t su
+        SET su.phone = #{newPhone}
+        WHERE
+        su.id = #{id}
+    </update>
 
     <sql id="user_verify">
         u.id,u.username,u.PASSWORD,u.phone,u.email,CONVERT(u.register_time,CHAR) AS registerTime,u.route,u.head_photo,
@@ -266,5 +299,78 @@
         WHERE
             id = #{userId}
     </select>
+    <select id="getWalletMain" resultType="com.ps.allapp.domain.Wallet">
+        SELECT
+            id,
+            remain_money remainMoney,
+            no_password_pay noPasswordPay,
+            pledge_state pledgeState,
+            pay_password payPassword
+        FROM
+            sbike_wallet_t
+        WHERE
+            id = (
+                SELECT
+                    wallet_id
+                FROM
+                    sbike_user_t
+                WHERE
+                    id = #{userId}
+            )
+    </select>
+
+    <select id="getDiscount" resultType="com.ps.allapp.domain.Discount">
+        SELECT
+            id,
+            discount_money discountMoney,
+            take_effect_time takeEffectTime,
+            lose_effect_time loseEffectTime,
+             discount_type discountType,
+            lose_effect_type loseEffectType,
+            user_id userId
+        FROM
+            sbike_discount_t
+        WHERE
+            user_id = #{userId}
+    </select>
+
+    <select id="getPayrecord" resultType="com.ps.allapp.domain.Payrecord">
+        SELECT
+            id,
+            user_id userId,
+            pay_time payTime,
+            pay_type payType,
+            pay_money payMoney
+        FROM
+            sbike_payrecord_t
+        WHERE
+            user_id = #{userId}
+    </select>
+
+    <update id="recharge">
+        UPDATE sbike_wallet_t
+        SET remain_money = remain_money + #{payMoney}
+        WHERE
+            id = (
+                SELECT
+                    wallet_id
+                FROM
+                    sbike_user_t
+                WHERE
+                    id = #{userId}
+            )
+
+    </update>
+
+    <insert id="insertPayrecord">
+        INSERT INTO sbike_payrecord_t (
+            user_id,
+            pay_time,
+            pay_type,
+            pay_money
+        )
+        VALUES
+            (#{userId}, NOW(), #{payType}, #{payMoney})
+    </insert>
 
 </mapper>

@@ -172,4 +172,50 @@ public interface UserMapper {
      */
     User queryPhone(int userId,String phone);
 
+    /**
+     * @Description 根据用户 id查询用户优惠券
+     * @param userId 用户id
+     * */
+    List<Discount> getDiscount(Integer userId);
+
+    List<Payrecord> getPayrecord(Integer userId);
+
+    void recharge(Integer userId, String payType, float payMoney);
+
+    void insertPayrecord(Integer userId, String payType, float payMoney);
+
+
+    /**
+     * @Description 根据用户 id查询用户钱包
+     * @param userId 用户id
+     * */
+    Wallet getWalletMain(Integer userId);
+    /**
+     * @Description 邮箱发送短信进行记录
+     * @param id 用户id
+     * @param newEmail 要修改的邮箱
+     * */
+    void updateEmailById(String id, String newEmail);
+
+    /**
+     * @Description 根据用户的id 添加邮箱
+     * @param id 用户id
+     * @param email 要添加的邮箱
+     * */
+    void addEmailById(String id, String email);
+
+    /**
+     * @Description 根据用户的id 修改电话
+     * @param id 用户id
+     * @param newPhone 要修改电话
+     * */
+    void updatePhoneById(String id, String newPhone);
+
+    /**
+     * @Description 根据用户的id 添加电话
+     * @param id 用户id
+     * @param newPhone 添加的电话
+     * */
+    void addPhoneById(String id, String newPhone);
+
 }

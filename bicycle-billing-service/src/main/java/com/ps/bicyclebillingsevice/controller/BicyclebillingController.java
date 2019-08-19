@@ -1,6 +1,7 @@
 package com.ps.bicyclebillingsevice.controller;
 
 import com.ps.allapp.domain.Result;
+import com.ps.allapp.domain.User;
 import com.ps.bicyclebillingsevice.service.BillingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +18,12 @@ public class BicyclebillingController {
 
     /**
      *  免密支付
-     * @param userId,password
+     * @param user
      * @return
      */
     @PostMapping("/confidential-payment")
-    public Result confidentialPayment(@RequestParam("userId") int userId, @RequestParam("password") String password){
-        return billingService.confidentialPayment(userId,password);
+    public Result confidentialPayment(@RequestBody User user){
+        return billingService.confidentialPayment(user);
     }
 
     /**

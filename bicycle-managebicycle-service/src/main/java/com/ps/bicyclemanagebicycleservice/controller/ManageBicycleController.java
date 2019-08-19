@@ -25,34 +25,35 @@ public class ManageBicycleController {
     @Autowired
     private ManageBicycleService manageBicycleServiceImpl;
 
-    @GetMapping("/address")
-    public Result changeAddress(@RequestBody ShareBicycle shareBicycle) {
-        System.out.println(shareBicycle);
-        result.setData(manageBicycleServiceImpl.changeAddress(shareBicycle.getBicycleSite()));
+    @RequestMapping(value = "/address",method = RequestMethod.POST)
+    public Result changeAddress(@RequestParam("bicycleSite") String bicycleSite) {
+        result.setData(manageBicycleServiceImpl.changeAddress(bicycleSite));
         result.setError_code(0);
         result.setMeg("success");
         return result;
     }
 
-    @GetMapping("/init")
-    public Result bicycleInit(@RequestBody User user){
-        result.setData(manageBicycleServiceImpl.bicycleInit(user.getUserId()));
+    @RequestMapping(value = "/init",method = RequestMethod.POST)
+    public Result bicycleInit(@RequestParam("userId") int userId){
+        result.setData(manageBicycleServiceImpl.bicycleInit(userId));
         result.setError_code(0);
         result.setMeg("success");
         return result;
     }
 
-    @PostMapping("/subscribe")
-    public Result appointmentBicycle(@RequestBody User user) {
-        manageBicycleServiceImpl.appointmentBicycle(user);
+    @RequestMapping(value = "/subscribe",method = RequestMethod.POST)
+    public Result appointmentBicycle(@RequestParam("userId") int userId,@RequestParam("bicycleNum") int bicycleNum) {
+
+        manageBicycleServiceImpl.appointmentBicycle(userId,bicycleNum);
+
         result.setError_code(0);
-        result.setMeg("success");
+        result.setMeg("预约成功");
         return result;
     }
 
-    @PostMapping("/unlock")
-    public Result unlockBicycle(@RequestBody User user){
-        manageBicycleServiceImpl.unlockBicycle(user);
+    @RequestMapping(value = "/unlock",method = RequestMethod.POST)
+    public Result unlockBicycle(@RequestParam("userId") int userId,@RequestParam("bicycleNum") int bicycleNum){
+        manageBicycleServiceImpl.unlockBicycle(userId,bicycleNum);
         result.setError_code(0);
         result.setMeg("解锁成功");
         return result;

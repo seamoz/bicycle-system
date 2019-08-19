@@ -1,16 +1,17 @@
 package com.ps.bicyclebillingsevice.service;
 
 import com.ps.allapp.domain.Result;
+import com.ps.allapp.domain.User;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface BillingService {
 
     /**
      * 免密支付
-     * @param userId,password
+     * @param user
      * @return
      */
-    Result confidentialPayment(int userId, String password);
+    Result confidentialPayment( User user);
 
     /**
      * 退押金、交押金
