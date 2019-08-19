@@ -208,6 +208,21 @@ public class ManageBicycleServiceImpl implements ManageBicycleService {
             result.setMeg("故障类型、单车编号不能为空，请重新输入...");
             return result;
         }
+        int bicycleNum = 0;
+        try{
+            bicycleNum = Integer.valueOf(fault.getBicycleNum());
+        }catch(Exception e){
+            result.setError_code(105);
+            result.setMeg("输入有误...");
+            return result;
+        }
+
+        String count = manageBicycleMapper.getSiteByBicycleNum(bicycleNum);
+        if(count == null || count.equals("")){
+            result.setError_code(104);
+            result.setMeg("该单车不存在...");
+            return result;
+        }
 
         Integer integer = manageBicycleMapper.sbikeFault(fault);
 

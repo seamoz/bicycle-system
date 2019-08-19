@@ -2,6 +2,7 @@ package com.ps.bicycleuserservice.controller;
 
 import com.ps.allapp.domain.Result;
 import com.ps.allapp.domain.Message;
+import com.ps.allapp.domain.Result;
 import com.ps.bicycleuserservice.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,11 @@ public class UserController {
 
     @Autowired
     private UserServiceImpl userServiceImpl;
+
+    @RequestMapping("/logIn")
+    public Result logIn(@RequestParam("username") String userData, String password){
+        return userService.logIn(userData, password);
+    }
 
 
     //我的里程查询
@@ -70,6 +76,7 @@ public class UserController {
     public Result sendCodeToEmail(@RequestParam int id,@RequestParam String email){
         return userServiceImpl.sendCodeToEmail(id , email);
     }
+
 
     /**
      * @Description 根据电话修改密码
@@ -123,7 +130,7 @@ public class UserController {
      * @param phone 用户的电话号码
      * @return Message<String> 返回的对象提示
      * */
-    @RequestMapping("verificationPhone")
+    @RequestMapping("/verificationPhone")
     public Message<String> verificationCodesPhone(String phone){
         return userService.verificationCodesPhone(phone);
     }
@@ -167,9 +174,11 @@ public class UserController {
      * @return Message<String> 返回的对象提示
      * */
     @GetMapping("/my/main")
-    Message getWalletMain(@RequestParam("userId") Integer userId){
+    public Message getWalletMain(@RequestParam("userId") Integer userId){
+        System.out.println(userId);
         return userService.getWalletMain(userId);
     }
+
 
     /**
      * @Description 根据用户id查找优惠券
@@ -197,7 +206,7 @@ public class UserController {
      * @return Message<String> 返回的对象提示
      * */
     @PostMapping("/my/recharge")
-    public Message recharge(@RequestParam("userId") Integer userId,@RequestParam("payType") String payType ,@RequestParam("payMoney") float payMoney) {
+    public Message recharge(@RequestParam("userId") Integer userId,@RequestParam("payType") String payType ,@RequestParam("payMoney") float payMoney){
         return userService.recharge(userId,payType,payMoney);
     }
 }

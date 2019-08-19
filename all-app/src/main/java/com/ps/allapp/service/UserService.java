@@ -10,6 +10,37 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient("user-service")
 public interface UserService {
 
+    /**
+     * 登录（校验了是否是用户名、手机号、邮箱）
+     * @param userData
+     * @param password
+     * @return
+     */
+    Result logIn(String userData, String password);
+
+    /**
+     * 手机号码密码登录
+     * @param phone
+     * @param password
+     * @return
+     */
+    Result logInByPhoneAndPassword(String phone, String password);
+
+    /**
+     * 邮箱密码登录
+     * @param email
+     * @param password
+     * @return
+     */
+    Result logInByEmailAndPassword(String email, String password);
+
+    /**
+     * 用户名密码登录
+     * @param userName
+     * @param password
+     * @return
+     */
+    Result logInByUserNameAndPassword(String userName, String password);
 
     /**
      * 接口例子，所有模块controller需要暴露的接口实现相应的service接口，重写方法

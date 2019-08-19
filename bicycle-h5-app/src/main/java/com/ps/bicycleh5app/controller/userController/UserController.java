@@ -20,6 +20,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/logIn")
+    public Result logIn(@RequestParam("username") String userData, String password){
+        return userService.logIn(userData, password);
+    }
+
     /**
      * @Description 根据电话修改密码
      * @param map 一个存放了 phone(用户的电话号码) 和 newPassword(用户的新密码) 的容器
@@ -101,13 +106,15 @@ public class UserController {
      * @return Message<String> 返回的对象提示
      * */
     @GetMapping("/my/main")
+    @CrossOrigin
     public Message getWalletMain(@RequestParam("userId") Integer userId){
+        System.out.println(userId);
         return userService.getWalletMain(userId);
     }
 
 
-    /**
-     * @Description 根据用户id查找优惠券
+
+     /* @Description 根据用户id查找优惠券
      * @param userId 用户id
      * @return Message<String> 返回的对象提示
      * */
@@ -115,14 +122,13 @@ public class UserController {
     public Message getDiscount(@RequestParam("userId") Integer userId){
         return userService.getDiscount(userId);
     }
-
     /**
      * @Description 根据用户id查询支付记录
      * @param userId 用户id
      * @return Message<String> 返回的对象提示
      * */
     @GetMapping("/my/payrecord")
-    public Message getPayrecord(@RequestParam("userId") Integer userId){
+    public Message getPayrecord(@RequestParam("userId") Integer userId) {
         return userService.getPayrecord(userId);
     }
 
@@ -135,21 +141,6 @@ public class UserController {
     public Message recharge(@RequestParam("userId") Integer userId,@RequestParam("payType") String payType ,@RequestParam("payMoney") float payMoney){
         return userService.recharge(userId,payType,payMoney);
     }
-
-
-    /**
-     *  免密支付
-     * @param userId,password
-     * @return
-     */
-    @GetMapping("/confidential-payment")
-    public Result confidentialPayment(@RequestParam("userId") int userId,
-                                      @RequestParam("password") String password){
-        Result result = userService.confidentialPayment(userId, password);
-
-        return result;
-    }
-
 
     //我的里程查询
     @GetMapping("/queryRoute")

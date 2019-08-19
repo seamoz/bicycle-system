@@ -8,6 +8,7 @@ import com.ps.allapp.util.MD5Util;
 import com.ps.allapp.util.MailUtil;
 import com.ps.bicycleuserservice.mapper.UserMapper;
 import com.ps.bicycleuserservice.util.CreateCode;
+import com.ps.bicycleuserservice.util.Regexs;
 import com.ps.bicycleuserservice.util.SendEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -40,6 +41,63 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private StringRedisTemplate template;
+
+    @Override
+    public Result logIn(String userData, String password){
+
+        if(Regexs.isEmail(userData)){
+            System.out.println("email");
+            User user = userMapper.logInByEmailAndPassword(userData, password);
+            if (null == user) {
+                return new Result("不存在该用户", 101);
+            }
+        }
+
+        if(Regexs.orPhoneNumber(userData)){
+            System.out.println("phone");
+            User user = userMapper.logInByPhoneAndPassword(userData, password);
+            if (null == user) {
+                return new Result("不存在该用户", 101);
+            }
+        }
+
+        User user = userMapper.logInByUserNameAndPassword(userData, password);
+        System.out.println("username");
+        if (null == user) {
+            return new Result("不存在该用户", 101);
+        }
+
+        return new Result("存在该用户", 200);
+    }
+
+    @Override
+    public Result logInByPhoneAndPassword(String phone, String password) {
+        User user = userMapper.logInByPhoneAndPassword(phone, password);
+        if (null == user) {
+            return new Result("不存在该用户", 101);
+        }
+        return new Result("存在该用户", 200);
+    }
+
+
+    @Override
+    public Result logInByEmailAndPassword(String email, String password) {
+        User user = userMapper.logInByEmailAndPassword(email, password);
+        if (null == user) {
+            return new Result("不存在该用户", 101);
+        }
+        return new Result("存在该用户", 200);
+    }
+
+    @Override
+    public Result logInByUserNameAndPassword(String userName, String password) {
+        User user = userMapper.logInByUserNameAndPassword(userName, password);
+        if (null == user) {
+            return new Result("不存在该用户", 101);
+        }
+        return new Result("存在该用户", 200);
+    }
+
 
     @Override
     public Result queryRoute(int userId) {
@@ -162,23 +220,6 @@ public class UserServiceImpl implements UserService{
         sendCodeToEmail(id,user.getPhone());
         return new Result("修改手机成功",200);
     }
-/*
-    @Autowired
-    private StringRedisTemplate template;*/
-
-   /* public List<ShareBicycle> queryRoute(int userId) {
-        List<ShareBicycle> shareBicycles = userMapper.queryRoute(userId);
-        return shareBicycles;
-    }
-
-    public Integer userOrder(int id) {
-        return userMapper.userOrder(id);
-    }
-
-
-    public User queryPersonage(int userId) {
-        return userMapper.queryPersonage(userId);
-    }
 
     /**
      * @Description 根据电话修改密码
@@ -186,18 +227,18 @@ public class UserServiceImpl implements UserService{
      * @param newPassword 用户要修改的密码
      * @return Message<String> 返回的对象提示
      * */
-    public Message<String> updatePasswordByPhone(String phone, String newPassword) {
-        //返回对象
-        Message<String> message = new Message<>();
+   public Message <String> updatePasswordByPhone(String phone, String newPassword) {
+       //返回对象
+       Message<String> message = new Message<>();
 
-        //根据电话号码判断有没有该用户 没有就返回提示
-        User user = userMapper.queryUserByPhone(phone);
-        if(user == null){
-            message.setMsg("电话号码错误.");
-            message.setCode(0);
-            message.setState(false);
-            return message;
-        }
+       //根据电话号码判断有没有该用户 没有就返回提示
+       User user = userMapper.queryUserByPhone(phone);
+       if(user == null){
+           message.setMsg("电话号码错误.");
+           message.setCode(0);
+           message.setState(false);
+           return message;
+       }
 
         //开始修改密码
         userMapper.updatePasswordByPhone(phone,newPassword);
@@ -270,6 +311,7 @@ public class UserServiceImpl implements UserService{
                 //设置内容
                 mail.setMessage(code.toString());
                 Set<String> set = new HashSet<>();
+                System.out.println("个人邮箱:  "+email);
                 //添加收信者
                 set.add(email);
                 //设置收信者
@@ -451,12 +493,13 @@ public class UserServiceImpl implements UserService{
     }
 
     /**
-     * @Description 根据用户id
      * @param userId 用户id
      * @return Message<String> 返回的对象提示
-     * */
+     * @Description 根据用户id
+     */
     public Message getWalletMain(Integer userId) {
         Wallet wallet = userMapper.getWalletMain(userId);
+        System.out.println(wallet);
         Message message = new Message();
         message.setCode(200);
         message.setData(wallet);
@@ -465,12 +508,12 @@ public class UserServiceImpl implements UserService{
     }
 
     /**
-     * @Description 根据用户id查询优惠券
      * @param userId 用户id
      * @return Message<String> 返回的对象提示
-     * */
+     * @Description 根据用户id查询优惠券
+     */
     public Message getDiscount(Integer userId) {
-        List<Discount> discount = userMapper.getDiscount(userId);
+        List <Discount> discount = userMapper.getDiscount(userId);
         Message message = new Message();
         message.setData(discount);
         message.setCode(200);
@@ -479,12 +522,12 @@ public class UserServiceImpl implements UserService{
     }
 
     /**
-     * @Description 根据用户id查询支付记录
      * @param userId 用户id
      * @return Message<String> 返回的对象提示
-     * */
+     * @Description 根据用户id查询支付记录
+     */
     public Message getPayrecord(Integer userId) {
-        List<Payrecord> list = userMapper.getPayrecord(userId);
+        List <Payrecord> list = userMapper.getPayrecord(userId);
         Message message = new Message();
         message.setMsg("success!");
         message.setCode(200);
@@ -493,18 +536,19 @@ public class UserServiceImpl implements UserService{
     }
 
     /**
-     * @Description 根据用户客户充值，增加充值记录
      * @param userId 用户id
      * @return Message<String> 返回的对象提示
-     * */
+     * @Description 根据用户客户充值，增加充值记录
+     */
     @Transactional
     public Message recharge(Integer userId, String payType, float payMoney) {
-        userMapper.recharge(userId,payType,payMoney);
-        userMapper.insertPayrecord(userId,payType,payMoney);
+        userMapper.recharge(userId, payType, payMoney);
+        userMapper.insertPayrecord(userId, payType, payMoney);
 
         Message message = new Message();
         message.setCode(200);
         message.setMsg("success");
         return message;
     }
+
 }

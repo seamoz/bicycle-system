@@ -10,8 +10,17 @@ import com.ps.allapp.domain.Message;
  * @author: peigen
  * @create: 2019/08/14
  */
-@FeignClient("USER-SERVICE")
+@FeignClient("user-service")
 public interface UserService {
+
+    /**
+     * 登录（校验了是否是用户名、手机号、邮箱）
+     * @param userData
+     * @param password
+     * @return
+     */
+    @RequestMapping("/logIn")
+    Result logIn(@RequestParam("username") String userData, String password);
 
     //我的里程查询
     @GetMapping("/queryRoute")
@@ -74,15 +83,6 @@ public interface UserService {
      */
     @RequestMapping("/updatePhone")
     Result updatePhone(@RequestParam("id") int id,@RequestParam("phone") String phone);
-
-
-    /**
-     *  免密支付
-     * @param userId,password
-     * @return
-     */
-    @GetMapping("/confidential-payment")
-    Result confidentialPayment(@RequestParam("userId") int userId, @RequestParam("password") String password);
 
     /**
      * @Description 根据电话修改密码
@@ -155,7 +155,8 @@ public interface UserService {
      * @return Message<String> 返回的对象提示
      * */
     @GetMapping("/my/main")
-    Message getWalletMain(@RequestParam("userId") Integer userId);
+    public Message getWalletMain(@RequestParam("userId") Integer userId);
+
 
     /**
      * @Description 根据用户id查找优惠券
@@ -163,7 +164,7 @@ public interface UserService {
      * @return Message<String> 返回的对象提示
      * */
     @GetMapping("/my/discount")
-    Message getDiscount(@RequestParam("userId") Integer userId);
+    public Message getDiscount(@RequestParam("userId") Integer userId);
 
     /**
      * @Description 根据用户id查询支付记录
@@ -171,7 +172,7 @@ public interface UserService {
      * @return Message<String> 返回的对象提示
      * */
     @GetMapping("/my/payrecord")
-    Message getPayrecord(@RequestParam("userId") Integer userId);
+    public Message getPayrecord(@RequestParam("userId") Integer userId);
 
     /**
      * @Description 用户充值
@@ -181,4 +182,4 @@ public interface UserService {
     @PostMapping("/my/recharge")
     public Message recharge(@RequestParam("userId") Integer userId,@RequestParam("payType") String payType ,@RequestParam("payMoney") float payMoney);
 
-    }
+}

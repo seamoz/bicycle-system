@@ -1,12 +1,10 @@
 package com.ps.bicycleh5app.controller;
 
 import com.ps.allapp.domain.Result;
+import com.ps.allapp.domain.User;
 import com.ps.bicycleh5app.service.BillingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author VP
@@ -19,12 +17,13 @@ public class BillingController {
 
     /**
      *  免密支付
-     * @param userId,password
+     * @param user(userId,password)
      * @return
      */
     @PostMapping("/confidential-payment")
-    public Result confidentialPayment(@RequestParam("userId") int userId, @RequestParam("password") String password){
-        return billingService.confidentialPayment(userId,password);
+    public Result confidentialPayment(@RequestBody User user){
+        System.out.println(user);
+        return billingService.confidentialPayment(user);
     }
 
     /**

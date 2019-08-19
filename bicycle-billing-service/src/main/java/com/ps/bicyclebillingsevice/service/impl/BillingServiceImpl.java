@@ -24,20 +24,20 @@ public class BillingServiceImpl implements BillingService {
 
     /**
      * 免密支付
-     * @param userId,password
+     * @param user(userId,password)
      * @return
      */
     @Override
-    public Result confidentialPayment(int userId, String password) {
+    public Result confidentialPayment(User user) {
         Result result = new Result();
 
-        if(password == null || userId <= 0){
+        if(user.getPassword() == null || user.getUserId() == null || user.getUserId() <= 0){
             result.setError_code(102);
             result.setMeg("输入框为空或者输入有误，请正确输入...");
             return result;
         }
 
-        Integer id = billingMapper.userWalletDetails(userId,password);
+        Integer id = billingMapper.userWalletDetails(user.getUserId(),user.getPassword());
 
         if (id == null || id <= 0){
             result.setError_code(100);
@@ -157,6 +157,7 @@ public class BillingServiceImpl implements BillingService {
         Map<String ,Float> map = new HashMap<String,Float>();
         map.put("money",229f);
 
+        resul.setError_code(200);
         resul.setData(map);
         resul.setMeg("押金为："+229+"元");
         return resul;
