@@ -1,5 +1,6 @@
 package com.ps.bicycleuserservice.controller;
 
+import com.ps.allapp.domain.Result;
 import com.ps.allapp.domain.Message;
 import com.ps.allapp.domain.Result;
 import com.ps.bicycleuserservice.service.impl.UserServiceImpl;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
  * @create: 2019/08/14
  */
 @RestController
-
 public class UserController {
     /**
      * user 的 service 类
@@ -81,11 +81,11 @@ public class UserController {
      * @param userId,password
      * @return
      */
-    /*@GetMapping("/confidential-payment")
+    @GetMapping("/confidential-payment")
     public Result confidentialPayment(@RequestParam("userId") int userId, @RequestParam("password") String password){
         Result result  = userService.confidentialPayment(userId,password);
         return result;
-    }*/
+    }
 
     /**
      * @Description 根据电话修改密码
@@ -93,8 +93,9 @@ public class UserController {
      * @param newPassword 用户要修改的密码
      * @return Message<String> 返回的对象提示
      * */
+
     @RequestMapping("/updatePasswordByPhone")
-    public Message <String> updatePasswordByPhone(String phone, String newPassword){
+    public Message<String> updatePasswordByPhone(String phone,String newPassword){
         System.out.println("newPassword:"+newPassword);
         return userService.updatePasswordByPhone(phone,newPassword);
     }
