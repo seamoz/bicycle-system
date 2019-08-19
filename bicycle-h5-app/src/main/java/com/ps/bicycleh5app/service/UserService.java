@@ -155,7 +155,6 @@ public interface UserService {
      * @return Message<String> 返回的对象提示
      * */
     @GetMapping("/my/main")
-    @CrossOrigin
     public Message getWalletMain(@RequestParam("userId") Integer userId);
 
 

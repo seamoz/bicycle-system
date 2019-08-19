@@ -107,7 +107,7 @@ public class UserController {
      * */
     @GetMapping("/my/main")
     @CrossOrigin
-    public Message getWalletMain(Integer userId){
+    public Message getWalletMain(@RequestParam("userId") Integer userId){
         System.out.println(userId);
         return userService.getWalletMain(userId);
     }
@@ -142,21 +142,6 @@ public class UserController {
     public Message recharge(@RequestParam("userId") Integer userId,@RequestParam("payType") String payType ,@RequestParam("payMoney") float payMoney){
         return userService.recharge(userId,payType,payMoney);
     }
-
-
-    /**
-     *  免密支付
-     * @param userId,password
-     * @return
-     */
-    @GetMapping("/confidential-payment")
-    public Result confidentialPayment(@RequestParam("userId") int userId,
-                                      @RequestParam("password") String password){
-        Result result = userService.confidentialPayment(userId, password);
-
-        return result;
-    }
-
 
     //我的里程查询
     @GetMapping("/queryRoute")
