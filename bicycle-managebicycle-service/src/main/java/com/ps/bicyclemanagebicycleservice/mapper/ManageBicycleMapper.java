@@ -93,7 +93,7 @@ public interface ManageBicycleMapper {
      * @param userId    用户ID
      * @return
      */
-    List<ShareBicycle> selectShareBicycleByUserId(int userId);
+    ShareBicycle selectShareBicycleByUserId(int userId);
 
     /**
      * 根据骑行记录ID查询骑行记录信息

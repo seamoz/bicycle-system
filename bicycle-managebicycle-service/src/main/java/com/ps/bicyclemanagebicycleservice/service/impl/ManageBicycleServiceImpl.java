@@ -31,8 +31,7 @@ public class ManageBicycleServiceImpl implements ManageBicycleService {
     public List<ShareBicycle> changeAddress(String address){
         return manageBicycleMapper.changeAddress(address);
     }
-
-
+    @Override
     public void appointmentBicycle(int userId,int bicycleNum) {
 
         if(manageBicycleMapper.checkUnlock(userId) != 0){
@@ -91,8 +90,10 @@ public class ManageBicycleServiceImpl implements ManageBicycleService {
     public Result cycling(int userId){
         Result result = new Result();
         //查询骑行中
-        List<ShareBicycle> list = manageBicycleMapper.selectShareBicycleByUserId(userId);
-        ShareBicycle shareBicycle = list.get(list.size()-1);
+        ShareBicycle shareBicycle = manageBicycleMapper.selectShareBicycleByUserId(userId);
+        if(shareBicycle == null){
+            throw new BusinessException(500, "没有骑行!");
+        }
         if (shareBicycle.getBicycleState() != 0){
             throw new BusinessException(500, "没有骑行!");
         }
@@ -288,6 +289,8 @@ public class ManageBicycleServiceImpl implements ManageBicycleService {
         if(updateCode == 1){
             throw new BusinessException(500, "关锁失败!");
         }
+        ShareBicycle shareBicycle1 = manageBicycleMapper.selectShareBicycleById(id);
+        manageBicycleMapper.changeBicycleState(0,shareBicycle1.getBicycleNum());
         result.setError_code(updateCode);
         result.setMeg("关锁成功!");
         return result;

@@ -70,7 +70,8 @@
     </resultMap>
 
     <select id="selectShareBicycleByUserId" parameterType="int" resultMap="selectShareBicycleByUserId">
-        select b.id, b.user_id, b.bicycle_num, b.initial_address, b.end_address, b.start_time, b.end_time, b.money, b.route, b.bicycle_state, b.use_time from sharebicycle_bicycle_t b where b.user_id = #{userId}
+        select b.id, b.user_id, b.bicycle_num, b.initial_address, b.end_address, b.start_time, b.end_time, b.money, b.route, b.bicycle_state, b.use_time from sharebicycle_bicycle_t b
+        where b.user_id = #{userId} and b.bicycle_state = 0
     </select>
 
     <resultMap id="selectShareBicycleById" type="com.ps.allapp.domain.ShareBicycle">
