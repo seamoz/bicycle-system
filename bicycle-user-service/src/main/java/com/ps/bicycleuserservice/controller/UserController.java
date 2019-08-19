@@ -70,16 +70,6 @@ public class UserController {
     public Result sendCodeToEmail(@RequestParam int id,@RequestParam String email){
         return userServiceImpl.sendCodeToEmail(id , email);
     }
-    /**
-     *  免密支付
-     * @param userId,password
-     * @return
-     */
-    @GetMapping("/confidential-payment")
-    public Result confidentialPayment(@RequestParam("userId") int userId, @RequestParam("password") String password){
-        Result result  = userService.confidentialPayment(userId,password);
-        return result;
-    }
 
     /**
      * @Description 根据电话修改密码
@@ -109,20 +99,30 @@ public class UserController {
      * @Description 给邮箱发送短信
      * @param email 用户的邮箱地址
      * @return Message<String> 返回的对象提示
-     * */
+     */
     @RequestMapping("/verification")
     public Message<String> verificationCodes(String email){
         return userService.verificationCodes(email);
     }
 
-    //添加手机号
+    /**
+     * 添加手机号
+     * @param id
+     * @param phone
+     * @return
+     */
     @RequestMapping("/addPhone")
     public Result addPhone(@RequestParam("id") int id,@RequestParam ("phone") String phone){
         Result addPhone = userServiceImpl.addPhone(id,phone);
         return addPhone;
     }
 
-    //修改手机号
+    /**
+     * 修改手机号
+     * @param id
+     * @param phone
+     * @return
+     */
     @RequestMapping("/updatePhone")
     public Result updatePhone(@RequestParam("id") int id,@RequestParam ("phone") String phone){
         Result result = userServiceImpl.updatePhone(id, phone);

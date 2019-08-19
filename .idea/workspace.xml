@@ -2,7 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89bee25f-9bed-4e8a-8d94-ab0e619bc653" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Abnormal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/config/CorsConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Discount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/ShareBicycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/ShareBicycle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/controller/ManagebicycleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/controller/ManagebicycleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/service/ManagebicycleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/service/ManagebicycleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bicycle-h5-app/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-h5-app/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/controller/ManageBicycleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/controller/ManageBicycleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/mapper/ManageBicycleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/mapper/ManageBicycleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/service/ManageBicycleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/service/ManageBicycleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/service/impl/ManageBicycleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/service/impl/ManageBicycleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/resources/mapper/ManageBicycleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/resources/mapper/ManageBicycleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bicycle-user-service/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bicycle-user-service/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/bicycle-billing-service/target/" />
@@ -36,7 +54,79 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/service/ManageBicycleService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="219">
+              <caret line="100" column="26" lean-forward="true" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/controller/ManageBicycleController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="135" column="13" lean-forward="true" selection-start-line="135" selection-start-column="13" selection-end-line="135" selection-end-column="13" />
+              <folding>
+                <element signature="e#1861#1862#0" expanded="true" />
+                <element signature="e#1925#1926#0" expanded="true" />
+                <element signature="e#2042#2043#0" expanded="true" />
+                <element signature="e#2106#2107#0" expanded="true" />
+                <element signature="e#2260#2261#0" expanded="true" />
+                <element signature="e#2325#2326#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bicycle-managebicycle-service/src/main/resources/mapper/ManageBicycleMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="138" column="19" lean-forward="true" selection-start-line="138" selection-start-column="19" selection-end-line="138" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/service/impl/ManageBicycleServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="272" column="13" lean-forward="true" selection-start-line="272" selection-start-column="13" selection-end-line="272" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/mapper/ManageBicycleMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="143" column="7" lean-forward="true" selection-start-line="143" selection-start-column="7" selection-end-line="143" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Abnormal.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -53,6 +143,11 @@
       <find>test</find>
       <find>verification</find>
       <find>queryRoute</find>
+      <find>User</find>
+      <find>unlockBicycle</find>
+      <find>Bicycle</find>
+      <find>con</find>
+      <find>reportAbnormalBilling</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -67,8 +162,6 @@
         <option value="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domai/User.java" />
         <option value="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Bicycle.java" />
         <option value="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/BicycleUserServiceApplication.java" />
-        <option value="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/ShareBicycle.java" />
-        <option value="$PROJECT_DIR$/bicycle-h5-app/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/serviceImpl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/util/AESUtil.java" />
         <option value="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/util/createCode.java" />
@@ -80,18 +173,29 @@
         <option value="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Result.java" />
         <option value="$PROJECT_DIR$/bicycle-managebicycle-service/pom.xml" />
         <option value="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/test/Test.java" />
-        <option value="$PROJECT_DIR$/eureka-service/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/controller/userController/UserController.java" />
         <option value="$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/BicycleH5AppApplication.java" />
         <option value="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/User.java" />
-        <option value="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/controller/UserController.java" />
         <option value="$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/service/UserService.java" />
         <option value="$PROJECT_DIR$/bicycle-user-service/pom.xml" />
-        <option value="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/mapper/UserMapper.java" />
-        <option value="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/bicycle-user-service/src/main/resources/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/bicycle-user-service/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/eureka-service/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/bicycle-h5-app/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/ShareBicycle.java" />
+        <option value="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Discount.java" />
+        <option value="$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/mapper/UserMapper.java" />
+        <option value="$PROJECT_DIR$/bicycle-user-service/src/main/resources/mapper/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/controller/ManagebicycleController.java" />
+        <option value="$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/service/ManagebicycleService.java" />
+        <option value="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/mapper/ManageBicycleMapper.java" />
+        <option value="$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Abnormal.java" />
+        <option value="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/resources/mapper/ManageBicycleMapper.xml" />
         <option value="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/controller/ManageBicycleController.java" />
+        <option value="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/service/ManageBicycleService.java" />
+        <option value="$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/service/impl/ManageBicycleServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -150,6 +254,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -160,25 +265,25 @@
             <path>
               <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
-              <item name="all-app" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-h5-app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
-              <item name="all-app" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-h5-app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
-              <item name="all-app" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-h5-app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
-              <item name="all-app" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-h5-app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -186,7 +291,7 @@
             <path>
               <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
-              <item name="all-app" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-h5-app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -195,7 +300,95 @@
             <path>
               <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
-              <item name="all-app" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-h5-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-h5-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ps" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycleh5app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-h5-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ps" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycleh5app" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-h5-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ps" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycleh5app" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-h5-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-managebicycle-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-managebicycle-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-managebicycle-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-managebicycle-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-managebicycle-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-managebicycle-service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -205,31 +398,84 @@
             <path>
               <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
-              <item name="all-app" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-managebicycle-service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="ps" type="462c0819:PsiDirectoryNode" />
-              <item name="allapp" type="462c0819:PsiDirectoryNode" />
+              <item name="bicyclemanagebicycleservice" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
               <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
-              <item name="all-app" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-managebicycle-service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="ps" type="462c0819:PsiDirectoryNode" />
-              <item name="allapp" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
+              <item name="bicyclemanagebicycleservice" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-managebicycle-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ps" type="462c0819:PsiDirectoryNode" />
+              <item name="bicyclemanagebicycleservice" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-managebicycle-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ps" type="462c0819:PsiDirectoryNode" />
+              <item name="bicyclemanagebicycleservice" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-managebicycle-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ps" type="462c0819:PsiDirectoryNode" />
+              <item name="bicyclemanagebicycleservice" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-managebicycle-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bicycle-system" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bicycle-system" type="462c0819:PsiDirectoryNode" />
+              <item name="bicycle-managebicycle-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -241,6 +487,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -265,19 +517,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.BicycleH5AppApplication">
-    <configuration name="SendEmail" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ps.bicycleuserservice.util.SendEmail" />
-      <module name="bicycle-user-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ps.bicycleuserservice.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="AllAppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="all-app" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ps.allapp.AllAppApplication" />
@@ -285,16 +524,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BicycleBillingServiceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="bicycle-billing-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ps.bicyclebillingsevice.BicycleBillingServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="BicycleBillingServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bicycle-billing-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ps.bicyclebillingservice.BicycleBillingServiceApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ps.bicyclebillingsevice.BicycleBillingServiceApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -327,11 +560,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.SendEmail" />
-      </list>
-    </recent_temporary>
+    <list>
+      <item itemvalue="Spring Boot.BicycleBillingServiceApplication" />
+      <item itemvalue="Spring Boot.AllAppApplication" />
+      <item itemvalue="Spring Boot.BicycleH5AppApplication" />
+      <item itemvalue="Spring Boot.BicycleManagebicycleServiceApplication" />
+      <item itemvalue="Spring Boot.BicycleUserServiceApplication" />
+      <item itemvalue="Spring Boot.EurekaServiceApplication" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -351,6 +587,9 @@
       <workItem from="1565827425807" duration="33649000" />
       <workItem from="1565914092742" duration="15111000" />
       <workItem from="1566008283055" duration="603000" />
+      <workItem from="1566010941421" duration="10683000" />
+      <workItem from="1566089882745" duration="7278000" />
+      <workItem from="1566174340640" duration="13497000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1565696170409</created>
@@ -419,7 +658,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93876000" />
+    <option name="totallyTimeSpent" value="125334000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -433,7 +672,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22441365" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23134328" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -444,7 +683,7 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49946696" weight="0.21221864" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.35691318" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.324295" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -455,10 +694,10 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.2657267" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" sideWeight="0.4997029" weight="0.3290461" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49946696" visible="true" weight="0.2657267" />
+      <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49946696" weight="0.2654388" />
       <window_info anchor="bottom" id="JRebel Console" order="14" side_tool="true" />
       <window_info anchor="bottom" id="JRebel Executor" order="15" />
-      <window_info anchor="bottom" id="Messages" order="16" sideWeight="0.49910873" weight="0.30439442" />
+      <window_info anchor="bottom" id="Messages" order="16" sideWeight="0.49910873" weight="0.30368763" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Database" order="1" weight="0.32995737" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -536,83 +775,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/service/ManageBicycleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/AllAppApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/github/openfeign/feign-core/10.2.3/feign-core-10.2.3.jar!/feign/SynchronousMethodHandler.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="59" column="47" lean-forward="true" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.9.RELEASE/spring-web-5.1.9.RELEASE.jar!/org/springframework/web/bind/annotation/PathVariable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bicycle-h5-app/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/util/MD5Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="19" column="39" lean-forward="true" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/util/AESUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="43" column="41" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.9.RELEASE/spring-web-5.1.9.RELEASE.jar!/org/springframework/web/bind/annotation/RequestParam.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/util/CreateCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="11" lean-forward="true" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/ShareBicycle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Wallet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="33" column="31" lean-forward="true" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/util/SendEmail.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
@@ -648,16 +810,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bicycle-managebicycle-service/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2251">
@@ -666,13 +818,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/test/Test.java" />
-    <entry file="file://$PROJECT_DIR$/eureka-service/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/resources/mapper/user_mapper.xml" />
     <entry file="file://$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/controller/UserController.java" />
     <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/util/MailUtil.java">
@@ -720,13 +865,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/controller/user/UserController.java" />
     <entry file="file://$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/controller/user/service/UserService.java" />
-    <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/mapper/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1211">
-          <caret line="164" selection-start-line="164" selection-end-line="164" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/eureka-service/src/main/java/com/ps/eurekaservice/EurekaServiceApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -735,27 +873,6 @@
             <element signature="e#354#355#0" expanded="true" />
             <element signature="e#429#430#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/resources/mapper/UserMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="161" column="44" lean-forward="true" selection-start-line="161" selection-start-column="44" selection-end-line="161" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/service/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="33" column="45" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -773,13 +890,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore" />
     <entry file="file://$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/BicycleH5AppApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="348">
@@ -788,13 +899,6 @@
             <element signature="e#428#429#0" expanded="true" />
             <element signature="e#502#503#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/service/ManagebicycleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-661">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
@@ -812,52 +916,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/controller/ManageBicycleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="45" column="49" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Payrecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="32" column="26" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bicycle-billing-service/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Discount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Fault.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bicycle-managebicycle-service/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="45" selection-start-column="45" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -868,17 +930,205 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/controller/ManagebicycleController.java">
+    <entry file="file://$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/service/BillingService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+        <state relative-caret-position="-624">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1502">
+          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Payrecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="897">
+          <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-managebicycle-service/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eureka-service/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="5" column="38" lean-forward="true" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-h5-app/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="3" column="38" lean-forward="true" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/all-app/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/config/CorsConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/ShareBicycle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/mapper/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11">
+          <caret line="59" column="13" lean-forward="true" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/resources/mapper/UserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="197" column="56" lean-forward="true" selection-start-line="197" selection-start-column="56" selection-end-line="197" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Mail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+        <state relative-caret-position="312">
+          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Fault.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Discount.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="97" column="7" lean-forward="true" selection-start-line="97" selection-start-column="7" selection-end-line="97" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-user-service/src/main/java/com/ps/bicycleuserservice/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="29" column="53" lean-forward="true" selection-start-line="29" selection-start-column="53" selection-end-line="29" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/controller/ManagebicycleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="124" column="38" lean-forward="true" selection-start-line="124" selection-start-column="38" selection-end-line="124" selection-end-column="38" />
+          <folding>
+            <element signature="e#2956#2957#0" expanded="true" />
+            <element signature="e#2991#2992#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-h5-app/src/main/java/com/ps/bicycleh5app/service/ManagebicycleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="84" column="14" lean-forward="true" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/all-app/src/main/java/com/ps/allapp/domain/Abnormal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-managebicycle-service/src/main/resources/mapper/ManageBicycleMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="138" column="19" lean-forward="true" selection-start-line="138" selection-start-column="19" selection-end-line="138" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/service/ManageBicycleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="100" column="26" lean-forward="true" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/controller/ManageBicycleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="135" column="13" lean-forward="true" selection-start-line="135" selection-start-column="13" selection-end-line="135" selection-end-column="13" />
+          <folding>
+            <element signature="e#1861#1862#0" expanded="true" />
+            <element signature="e#1925#1926#0" expanded="true" />
+            <element signature="e#2042#2043#0" expanded="true" />
+            <element signature="e#2106#2107#0" expanded="true" />
+            <element signature="e#2260#2261#0" expanded="true" />
+            <element signature="e#2325#2326#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/service/impl/ManageBicycleServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="272" column="13" lean-forward="true" selection-start-line="272" selection-start-column="13" selection-end-line="272" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bicycle-managebicycle-service/src/main/java/com/ps/bicyclemanagebicycleservice/mapper/ManageBicycleMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="143" column="7" lean-forward="true" selection-start-line="143" selection-start-column="7" selection-end-line="143" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

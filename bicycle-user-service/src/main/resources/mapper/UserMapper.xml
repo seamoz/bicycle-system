@@ -3,24 +3,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ps.bicycleuserservice.mapper.UserMapper">
-
-    <!-- 免密支付 -->
-    <update id="confidentialPayment">
-        UPDATE sbike_wallet_t
-        SET no_password_pay = #{noPasswordPay}
-        WHERE
-            id = #{id}
-    </update>
-
-
     <!--往验证表里添加数据-->
     <insert id="insertVerify">
         INSERT INTO bicycle_system.sbike_verify_t ( user_id, user_email, verify_type, verify_code, verify_time )
         VALUES
             ( #{userId}, #{userEmail},#{verifyType},#{verifyCode},now())
-
     </insert>
-
 
     <!--根据用户id查询个人email-->
     <select id="queryMailbox" resultType="com.ps.allapp.domain.User">
@@ -45,7 +33,7 @@
             su.id = #{userId}
     </select>
 
-<!--修改email-->
+    <!--修改email-->
     <update id="updateMyEmail">
         UPDATE sbike_user_t
         SET email = #{email}
@@ -64,18 +52,6 @@
     <!--查询手机号-->
     <select id="queryPhone" resultType="com.ps.allapp.domain.User">
         SELECT phone FROM sbike_user_t WHERE id =#{userId}
-    </select>
-
-    <!-- 根据用户id，密码查询 用户钱包关联数据 -->
-    <select id="userWalletDetails" resultType="java.lang.Integer">
-        SELECT
-            w.id
-        FROM
-            sbike_user_t u
-            LEFT JOIN sbike_wallet_t w ON ( u.wallet_id = w.id )
-        WHERE
-            u.id = #{userId}
-            AND u.PASSWORD = #{password}
     </select>
 
     <!-- 根据电话号码查询用户 -->

@@ -122,6 +122,26 @@ public class ManageBicycleController {
         return manageBicycleServiceImpl.pay(Integer.valueOf(map.get("userId")), Float.valueOf(map.get("money")), map.get("payPassword"), map.get("payType"));
     }
 
+    /**
+     * 关锁
+     * @param map
+     * @return
+     */
+    @RequestMapping("/shut")
+    public Result shut(@RequestBody Map<String, String> map){
+        return manageBicycleServiceImpl.shut(Integer.valueOf(map.get("id")), map.get("useTime"));
+    }
+
+    /**
+     * 上报计费异常
+     * @param map
+     * @return
+     */
+    @RequestMapping("/abnormal")
+    public Result abnormal(@RequestBody Map<String, String> map){
+        return manageBicycleServiceImpl.abnormal(Integer.valueOf(map.get("id")), map.get("abnormal"));
+    }
+
 }
 
 

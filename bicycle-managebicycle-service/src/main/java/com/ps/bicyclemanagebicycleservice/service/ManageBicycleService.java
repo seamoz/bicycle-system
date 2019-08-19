@@ -1,9 +1,6 @@
 package com.ps.bicyclemanagebicycleservice.service;
 
-import com.ps.allapp.domain.Fault;
-import com.ps.allapp.domain.Result;
-import com.ps.allapp.domain.ShareBicycle;
-import com.ps.allapp.domain.User;
+import com.ps.allapp.domain.*;
 
 import java.util.List;
 
@@ -89,4 +86,21 @@ public interface ManageBicycleService {
      * @return
      */
     Result sbikeFault(Fault fault);
+
+    /**
+     * 关锁
+     * @param id      骑行记录ID
+     * @param useTime     骑行时间
+     * @return
+     */
+    Result shut(int id, String useTime);
+
+    /**
+     * 上报计费异常
+     * @param id    骑行记录ID
+     * @param abnormal  异常
+     * @return
+     */
+    Result abnormal(int id, String abnormal);
+
 }

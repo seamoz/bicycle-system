@@ -156,55 +156,6 @@ public class UserServiceImpl implements UserService{
         sendCodeToEmail(id,user.getPhone());
         return new Result("修改手机成功",200);
     }
-/*
-    @Autowired
-    private StringRedisTemplate template;*/
-
-   /* public List<ShareBicycle> queryRoute(int userId) {
-        List<ShareBicycle> shareBicycles = userMapper.queryRoute(userId);
-        return shareBicycles;
-    }
-
-    public Integer userOrder(int id) {
-        return userMapper.userOrder(id);
-    }
-
-
-    public User queryPersonage(int userId) {
-        return userMapper.queryPersonage(userId);
-    }
-
-
-    /**
-     * 免密支付
-     * @param userId,password
-     * @return
-     */
-    public Result confidentialPayment(int userId, String password) {
-        Result result = new Result();
-
-        if(password == null || userId <= 0){
-            result.setError_code(102);
-            return result;
-        }
-        System.out.println(userId +" "+ password);
-
-        Integer id = userMapper.userWalletDetails(userId,password);
-        if (id <= 0){
-            result.setError_code(100);
-            return result;
-        }
-
-        Integer integer = userMapper.confidentialPayment(id,1);
-
-        if(integer <= 0){
-            result.setError_code(103);
-            return result;
-        }
-
-        result.setError_code(200);
-        return result;
-    }
 
     /**
      * @Description 根据电话修改密码
