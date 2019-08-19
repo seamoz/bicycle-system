@@ -551,8 +551,5 @@ public class UserServiceImpl implements UserService{
         message.setMsg("success");
         return message;
     }
-
-    public Result confidentialPayment(int userId, String password) {
-        return null;
-    }
+    
 }
