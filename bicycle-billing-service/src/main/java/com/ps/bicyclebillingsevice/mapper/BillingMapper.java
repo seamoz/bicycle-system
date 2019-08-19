@@ -57,5 +57,11 @@ public interface BillingMapper {
      */
     int insertPayrecord(Payrecord payrecord);
 
+    /**
+     * 查询是否交押金
+     * @param walletId
+     * @return
+     */
+    String pledgeState(int walletId);
 
 }

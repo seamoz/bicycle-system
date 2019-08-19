@@ -66,7 +66,7 @@
 
     <update id="updateWalletById" parameterType="com.ps.allapp.domain.Wallet">
         UPDATE sbike_wallet_t
-        SET remain_money = #{remainMoney} where id = #{id}
+        SET remain_money = #{remainMoney},pledge_state = #{pledgeState} where id = #{id}
     </update>
 
     <insert id="insertPayrecord" parameterType="com.ps.allapp.domain.Payrecord">
@@ -87,6 +87,22 @@
         WHERE
             u.id = #{userId}
             AND u.PASSWORD = #{password}
+    </select>
+
+    <!--查询是否交押金-->
+    <select id="pledgeState" resultType="java.lang.String">
+        SELECT
+            CASE
+                pledge_state
+                WHEN 0 THEN
+                "未交"
+                WHEN 1 THEN
+                "已交"
+            END pledgeState
+        FROM
+            sbike_wallet_t
+        WHERE
+            id = #{walletId}
     </select>
 
 </mapper>
