@@ -21,24 +21,24 @@ public class ManagebicycleController {
     private ManagebicycleService managebicycleService;
 
 
-    @GetMapping("/address")
-    public Result changeAddress(@RequestBody ShareBicycle shareBicycle) {
-        return managebicycleService.changeAddress(shareBicycle);
+    @RequestMapping(value = "/address",method = RequestMethod.POST)
+    public Result changeAddress(@RequestParam("bicycleSite") String bicycleSite) {
+        return managebicycleService.changeAddress(bicycleSite);
     }
 
-    @GetMapping("/init")
-    public Result bicycleInit(@RequestBody User user){
-        return managebicycleService.bicycleInit(user);
+    @RequestMapping(value = "/init",method = RequestMethod.POST)
+    public Result bicycleInit(@RequestParam("userId")int userId){
+        return managebicycleService.bicycleInit(userId);
     }
 
-    @PostMapping("/subscribe")
-    public Result appointmentBicycle(@RequestBody User user) {
-        return managebicycleService.appointmentBicycle(user);
+    @RequestMapping(value = "/subscribe",method = RequestMethod.POST)
+    public Result appointmentBicycle(@RequestParam("userId") int userId,@RequestParam("bicycleNum") int bicycleNum) {
+        return managebicycleService.appointmentBicycle(userId,bicycleNum);
     }
 
-    @PostMapping("/unlock")
-    public Result unlockBicycle(@RequestBody User user){
-        return managebicycleService.unlockBicycle(user);
+    @RequestMapping(value = "/unlock",method = RequestMethod.POST)
+    public Result unlockBicycle(@RequestParam("userId") int userId,@RequestParam("bicycleNum") int bicycleNum){
+        return managebicycleService.unlockBicycle(userId,bicycleNum);
     }
 
     /**
@@ -103,6 +103,26 @@ public class ManagebicycleController {
     @RequestMapping("/pay")
     public Result pay(@RequestBody Map<String, String> map){
         return managebicycleService.pay(map);
+    }
+
+    /**
+     * 关锁
+     * @param map
+     * @return
+     */
+    @RequestMapping("/shut")
+    public Result shut(@RequestBody Map<String, String> map){
+        return managebicycleService.shut(map);
+    }
+
+    /**
+     * 上报计费异常
+     * @param map
+     * @return
+     */
+    @RequestMapping("/abnormal")
+    public Result abnormal(@RequestBody Map<String, String> map){
+        return managebicycleService.abnormal(map);
     }
 
 }

@@ -15,6 +15,15 @@ public class BillingController {
     @Autowired
     private BillingService billingService;
 
+    @PostMapping("/paymentCode")
+    public Result findPay(@RequestParam("userId") Integer userId,@RequestParam("payPassword") String payPassword){
+        Integer pay = billingService.findPay(userId, payPassword);
+        Result<Object> objectResult = new Result<>();
+        objectResult.setData(pay);
+        objectResult.setMeg("成功");
+        return objectResult;
+    }
+
     /**
      *  免密支付
      * @param user(userId,password)

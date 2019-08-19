@@ -26,18 +26,18 @@ public class JuheDemo {
         String url ="http://v.juhe.cn/sms/send";//请求接口地址
         Map params = new HashMap();//请求参数
         params.put("mobile",phone);//接受短信的用户手机号码
-        params.put("tpl_id","168915");//您申请的短信模板ID，根据实际情况修改
+        params.put("tpl_id","180746");//您申请的短信模板ID，根据实际情况修改
         params.put("tpl_value","#code#="+randomNumber);//您设置的模板变量，根据实际情况修改
-        params.put("key","39af7bd8b1dc72bea2d9b16433acfcb2");//应用APPKEY(应用详细页查询)
+        params.put("key","08f9acb62792b1e2e3aed7eb9df558b2");//应用APPKEY(应用详细页查询)
         try {
             result = net(url, params, "GET");
             JSONObject object = JSONObject.fromObject(result);
             if(object.getInt("error_code")==0){
-                //System.out.println(object.get("result"));
-                log.info((String) object.get("result"));
+                System.out.println(object.get("result"));
+                //log.info((String) object.get("result"));
             }else{
-                //System.out.println(object.get("error_code")+":"+object.get("reason"));
-                log.info(object.get("error_code")+":"+object.get("reason"));
+                System.out.println(object.get("error_code")+":"+object.get("reason"));
+                //log.info(object.get("error_code")+":"+object.get("reason"));
             }
         } catch (Exception e) {
             e.printStackTrace();

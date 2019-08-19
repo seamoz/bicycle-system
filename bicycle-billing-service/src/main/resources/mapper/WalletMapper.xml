@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ps.bicyclebillingsevice.mapper.WalletMapper">
+    <insert id="insertWallet" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sbike_wallet_t() VALUES()
+    </insert>
+
+    <update id="setPayPassword">
+        UPDATE sbike_wallet_t
+        SET pay_password = #{payPassword}
+        WHERE
+            id = #{userId}
+    </update>
+
+    <update id="updatePassword">
+
+    </update>
+
+
+    <select id="findPay" resultType="java.lang.Integer">
+        SELECT
+            wallet_id
+        FROM
+            sbike_user_t
+        WHERE
+            id = #{userId}
+    </select>
+    <select id="getPayPassword" resultType="java.lang.String">
+        SELECT
+            pay_password
+        FROM
+            sbike_wallet_t
+        WHERE
+            id = #{userId}
+    </select>
+</mapper>

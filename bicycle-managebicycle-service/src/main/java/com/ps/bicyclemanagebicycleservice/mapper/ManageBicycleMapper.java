@@ -130,4 +130,25 @@ public interface ManageBicycleMapper {
      */
     int insertPayrecord(Payrecord payrecord);
 
+    /**
+     * 关锁改变骑行记录
+     * @param shareBicycle      骑行记录实体类
+     * @return
+     */
+    int shutUpdateShareBicycle(ShareBicycle shareBicycle);
+
+    /**
+     * 上报计费异常
+     * @param abnormal      上报计费异常实体类
+     * @return
+     */
+    int reportAbnormalBilling(Abnormal abnormal);
+
+    /**
+     * 异常修改骑行记录
+     * @param id    骑行记录ID
+     * @return
+     */
+    int abnormalUpdateShareBicycle(int id);
+
 }

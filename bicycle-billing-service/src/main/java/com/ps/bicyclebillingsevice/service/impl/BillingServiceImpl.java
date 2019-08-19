@@ -5,6 +5,7 @@ import com.ps.allapp.domain.Result;
 import com.ps.allapp.domain.User;
 import com.ps.allapp.domain.Wallet;
 import com.ps.bicyclebillingsevice.mapper.BillingMapper;
+import com.ps.bicyclebillingsevice.mapper.WalletMapper;
 import com.ps.bicyclebillingsevice.service.BillingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,38 @@ public class BillingServiceImpl implements BillingService {
 
     @Autowired
     private BillingMapper billingMapper;
+
+    @Autowired
+    private WalletMapper walletMapper;
+
+    @Override
+    public Integer updatePassword(Integer userId, String payPassword) {
+        return walletMapper.updatePassword(userId,payPassword);
+    }
+
+    @Override
+    public String getPayPassword(Integer userId) {
+        return walletMapper.getPayPassword(userId);
+    }
+
+    /**
+     * 查询id有没有钱包
+     * return id
+     */
+    @Override
+    public Integer findPay(Integer userId) {
+        return walletMapper.findPay(userId);
+    }
+
+    @Override
+    public Integer insertWallet(Wallet wallet) {
+        return walletMapper.insertWallet(wallet);
+    }
+
+    @Override
+    public Integer setPayPassword(Integer userId, String payPassword) {
+        return walletMapper.setPayPassword(userId,payPassword);
+    }
 
     /**
      * 免密支付
