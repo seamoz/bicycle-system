@@ -71,6 +71,22 @@ public interface UserMapper {
     User queryPersonage(int userId);
 
     /**
+     *  免密支付
+     * @param id
+     * @param noPasswordPay
+     * @return
+     */
+    Integer confidentialPayment(int id,int noPasswordPay);
+
+    /**
+     * 根据用户id，密码查询 钱包id
+     * @param userId
+     * @param password
+     * @return
+     */
+    Integer userWalletDetails(int userId, String password);
+
+    /**
      * @Description 根据电话修改密码
      * @param phone 用户的电话号码
      * @return User 返回的用户对象
@@ -181,7 +197,32 @@ public interface UserMapper {
      * @param userId 用户id
      * */
     Wallet getWalletMain(Integer userId);
+    /**
+     * @Description 邮箱发送短信进行记录
+     * @param id 用户id
+     * @param newEmail 要修改的邮箱
+     * */
+    void updateEmailById(String id, String newEmail);
 
+    /**
+     * @Description 根据用户的id 添加邮箱
+     * @param id 用户id
+     * @param email 要添加的邮箱
+     * */
+    void addEmailById(String id, String email);
 
+    /**
+     * @Description 根据用户的id 修改电话
+     * @param id 用户id
+     * @param newPhone 要修改电话
+     * */
+    void updatePhoneById(String id, String newPhone);
+
+    /**
+     * @Description 根据用户的id 添加电话
+     * @param id 用户id
+     * @param newPhone 添加的电话
+     * */
+    void addPhoneById(String id, String newPhone);
 
 }

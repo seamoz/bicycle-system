@@ -9,7 +9,7 @@ package com.ps.allapp.util;
 public class MD5Encryption {
 
     /**
-     * @Description 对传过来的密码进行MD5加密
+     * @Description 对传过来的密码进行MD5加密   加盐方式:us+密码+er
      * @param password 加密的密码
      * @return String 返回加密的密码
      * */

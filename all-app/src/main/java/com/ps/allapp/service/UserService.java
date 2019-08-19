@@ -1,5 +1,6 @@
 package com.ps.allapp.service;
 
+import com.ps.allapp.domain.Message;
 import com.ps.allapp.domain.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -104,4 +105,10 @@ public interface UserService {
     @RequestMapping("/updatePhone")
     Result updatePhone(@RequestParam("id") int id,@RequestParam("phone") String phone);
 
+    /**
+     * @param newPhone         用户要修改的邮箱地址
+     * @return Message<String> 返回的对象提示
+     * @Description 查询电话存不存在
+     */
+    Message<String> judgePhone(String newPhone);
 }

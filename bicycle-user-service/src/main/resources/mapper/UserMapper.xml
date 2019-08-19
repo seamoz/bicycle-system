@@ -136,6 +136,38 @@
         now())
     </insert>
 
+    <!-- 根据用户id修改邮箱 -->
+    <update id="updateEmailById">
+        UPDATE sbike_user_t su
+        SET su.email = #{newEmail}
+        WHERE
+        su.id = #{id}
+    </update>
+
+    <!-- 根据用户的id 添加邮箱 -->
+    <update id="addEmailById">
+        UPDATE sbike_user_t su
+        SET su.email = #{newEmail}
+        WHERE
+        su.id = #{id}
+    </update>
+
+    <!-- 根据用户的id 修改电话 -->
+    <update id="updatePhoneById">
+        UPDATE sbike_user_t su
+        SET su.phone = #{newPhone}
+        WHERE
+        su.id = #{id}
+    </update>
+
+    <!-- 根据用户的id 添加电话 -->
+    <update id="addPhoneById">
+        UPDATE sbike_user_t su
+        SET su.phone = #{newPhone}
+        WHERE
+        su.id = #{id}
+    </update>
+
     <sql id="user_verify">
         u.id,u.username,u.PASSWORD,u.phone,u.email,CONVERT(u.register_time,CHAR) AS registerTime,u.route,u.head_photo,
         u.address,u.wallet_id,u.make_bicycle_num,v.id AS verifyId,v.user_id,v.verify_type,v.verify_code,
