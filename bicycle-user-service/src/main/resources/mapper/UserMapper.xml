@@ -216,7 +216,7 @@
         sbike_user_t u
         WHERE
         u.username = #{param1}
-        AND v.password = #{param2}
+        AND u.password = #{param2}
     </select>
 
     <select id="logInByEmailAndPassword" resultMap="logInResultMap">
@@ -226,7 +226,7 @@
         sbike_user_t u
         WHERE
         u.email = #{param1}
-        AND v.password = #{param2}
+        AND u.password = #{param2}
     </select>
 
     <select id="logInByPhoneAndPassword" resultMap="logInResultMap">
@@ -236,7 +236,7 @@
         sbike_user_t u
         WHERE
         u.phone = #{param1}
-        AND v.password = #{param2}
+        AND u.password = #{param2}
     </select>
 
     <select id="logInByPhoneAndVerify" resultMap="logInByVerifyResultMap">

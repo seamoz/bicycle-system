@@ -2,6 +2,8 @@ package com.ps.bicycleh5app.controller.userController;
 
 import com.ps.allapp.domain.Message;
 import com.ps.allapp.domain.Result;
+import com.ps.allapp.domain.User;
+import com.ps.allapp.domain.Verify;
 import com.ps.bicycleh5app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +22,19 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/logInByPhoneAndVerify")
+    public Result logInByPhoneAndVerify(@RequestBody Verify verify){
+        return userService.logInByPhoneAndVerify(verify);
+    }
+
+    @RequestMapping("/sendVerify")
+    public Result sendVerify(@RequestBody Verify verify){
+        return userService.sendVerify(verify);
+    }
+
     @RequestMapping("/logIn")
-    public Result logIn(@RequestParam("username") String userData, String password){
-        return userService.logIn(userData, password);
+    public Result logIn(@RequestBody User user){
+        return userService.logIn(user);
     }
 
     /**

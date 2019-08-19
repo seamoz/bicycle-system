@@ -12,7 +12,6 @@ public class CreateCode {
         {
             result+=random.nextInt(10);
         }
-        System.out.println(result);
         return result;
     }
 }

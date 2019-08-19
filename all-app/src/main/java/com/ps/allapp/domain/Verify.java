@@ -31,11 +31,18 @@ public class Verify implements Serializable {
     /**
      * 验证码
      */
-    private String verifyCode;
+    private String verify;
+
+    /**
+     * 手机号码
+     */
+    private String phone;
 
     /**
      * 发送时间
      */
     private Date verifyTime;
+
+
 
 }

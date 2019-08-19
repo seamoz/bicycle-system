@@ -1,12 +1,11 @@
 package com.ps.bicycleh5app.service;
 
 import com.ps.allapp.domain.Result;
+import com.ps.allapp.domain.User;
+import com.ps.allapp.domain.Verify;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import com.ps.allapp.domain.Message;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @description:
@@ -17,13 +16,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface UserService {
 
     /**
+     * 手机验证码登录校验
+     * @param verify
+     * @return
+     */
+    @RequestMapping("/logInByPhoneAndVerify")
+    Result logInByPhoneAndVerify(@RequestBody Verify verify);
+
+    /**
+     * 发送验证码
+     * @param verify
+     * @return
+     */
+    @RequestMapping("/sendVerify")
+    Result sendVerify(@RequestBody Verify verify);
+
+    /**
      * 登录（校验了是否是用户名、手机号、邮箱）
-     * @param userData
-     * @param password
+     * @param user
      * @return
      */
     @RequestMapping("/logIn")
-    Result logIn(@RequestParam("username") String userData, String password);
+    Result logIn(@RequestBody User user);
 
     //我的里程查询
     @GetMapping("/queryRoute")

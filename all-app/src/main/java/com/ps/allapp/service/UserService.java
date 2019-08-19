@@ -1,6 +1,7 @@
 package com.ps.allapp.service;
 
 import com.ps.allapp.domain.Result;
+import com.ps.allapp.domain.Verify;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +10,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient("user-service")
 public interface UserService {
+
+    /**
+     * 手机验证码登录校验
+     * @param verify
+     * @return
+     */
+    Result logInByPhoneAndVerify(Verify verify);
+
+    /**
+     * 发送验证码
+     * @param verify
+     * @return
+     */
+    Result sendVerify(Verify verify);
 
     /**
      * 登录（校验了是否是用户名、手机号、邮箱）

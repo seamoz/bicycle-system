@@ -1,7 +1,6 @@
 package com.ps.bicycleuserservice.controller;
 
-import com.ps.allapp.domain.Result;
-import com.ps.allapp.domain.Message;
+import com.ps.allapp.domain.*;
 import com.ps.allapp.domain.Result;
 import com.ps.bicycleuserservice.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +27,19 @@ public class UserController {
     @Autowired
     private UserServiceImpl userServiceImpl;
 
+    @RequestMapping("/logInByPhoneAndVerify")
+    public Result logInByPhoneAndVerify(@RequestBody Verify verify){
+        return userService.logInByPhoneAndVerify(verify);
+    }
+
+    @RequestMapping("/sendVerify")
+    public Result sendVerify(@RequestBody Verify verify){
+        return userService.sendVerify(verify);
+    }
+
     @RequestMapping("/logIn")
-    public Result logIn(@RequestParam("username") String userData, String password){
-        return userService.logIn(userData, password);
+    public Result logIn(@RequestBody User user){
+        return userService.logIn(user.getUsername(), user.getPassword());
     }
 
 
@@ -81,11 +90,11 @@ public class UserController {
      * @param userId,password
      * @return
      */
-    @GetMapping("/confidential-payment")
+    /*@GetMapping("/confidential-payment")
     public Result confidentialPayment(@RequestParam("userId") int userId, @RequestParam("password") String password){
         Result result  = userService.confidentialPayment(userId,password);
         return result;
-    }
+    }*/
 
     /**
      * @Description 根据电话修改密码
