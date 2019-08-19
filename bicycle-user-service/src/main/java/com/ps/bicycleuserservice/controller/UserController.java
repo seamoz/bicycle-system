@@ -69,31 +69,18 @@ public class UserController {
         return result;
     }
 
-
-
     //发送验证码至邮箱
     @RequestMapping("/sendCodeToEmail")
     public Result sendCodeToEmail(@RequestParam int id,@RequestParam String email){
         return userServiceImpl.sendCodeToEmail(id , email);
     }
-    /**
-     *  免密支付
-     * @param userId,password
-     * @return
-     */
-    @GetMapping("/confidential-payment")
-    public Result confidentialPayment(@RequestParam("userId") int userId, @RequestParam("password") String password){
-        Result result  = userService.confidentialPayment(userId,password);
-        return result;
-    }
-
+   
     /**
      * @Description 根据电话修改密码
      * @param phone 用户的电话号码
      * @param newPassword 用户要修改的密码
      * @return Message<String> 返回的对象提示
      * */
-
     @RequestMapping("/updatePasswordByPhone")
     public Message<String> updatePasswordByPhone(String phone,String newPassword){
         System.out.println("newPassword:"+newPassword);
