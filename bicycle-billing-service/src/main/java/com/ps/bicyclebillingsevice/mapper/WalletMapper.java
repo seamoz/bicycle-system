@@ -25,4 +25,10 @@ public interface WalletMapper {
      * return 成功与否
      */
     Integer setPayPassword(Integer userId, String payPassword);
+
+    /**
+     * 查询用户支付密码
+     * return 支付密码
+     */
+    String getPayPassword(Integer userId);
 }

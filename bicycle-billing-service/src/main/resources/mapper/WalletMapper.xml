@@ -22,4 +22,12 @@
         WHERE
             id = #{userId}
     </select>
+    <select id="getPayPassword" resultType="java.lang.String">
+        SELECT
+            pay_password
+        FROM
+            sbike_wallet_t
+        WHERE
+            id = #{userId}
+    </select>
 </mapper>

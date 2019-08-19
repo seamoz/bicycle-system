@@ -12,6 +12,16 @@ public class WalletServiceImpl implements WalletService {
     @Autowired
     private WalletMapper walletMapper;
 
+    @Override
+    public Integer updatePassword(Integer userId, String payPassword) {
+        return null;
+    }
+
+    @Override
+    public String getPayPassword(Integer userId) {
+        return walletMapper.getPayPassword(userId);
+    }
+
     /**
      * 查询id有没有钱包
      * return id
