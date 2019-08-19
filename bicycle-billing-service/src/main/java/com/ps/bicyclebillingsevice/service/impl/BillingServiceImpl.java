@@ -27,12 +27,17 @@ public class BillingServiceImpl implements BillingService {
     private WalletMapper walletMapper;
 
     @Override
+    public Integer setBB(Integer userId, Integer bb) {
+        return walletMapper.setBB(userId, bb);
+    }
+
+    @Override
     public Integer updatePassword(Integer userId, String payPassword) {
         return walletMapper.updatePassword(userId,payPassword);
     }
 
     @Override
-    public String getPayPassword(Integer userId) {
+    public Wallet getPayPassword(Integer userId) {
         return walletMapper.getPayPassword(userId);
     }
 

@@ -8,8 +8,13 @@ import org.springframework.transaction.annotation.Transactional;
 public interface BillingService {
 
     /**
-     * 修改密码
-     * return 成功与否
+     * 钱包id植入用户表
+     */
+    public Integer setBB(Integer userId, Integer bb);
+
+    /**
+     * 更改支付密码
+     * return 1成功，0失败, 3源密码不一致
      */
     public Integer updatePassword(Integer userId,String payPassword);
 
@@ -17,7 +22,7 @@ public interface BillingService {
      * 查询用户支付密码
      * return 支付密码
      */
-    public String getPayPassword(Integer userId);
+    public Wallet getPayPassword(Integer userId);
 
     /**
      * 查询id有没有钱包
