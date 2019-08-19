@@ -8,6 +8,7 @@ import com.ps.bicyclebillingsevice.mapper.BillingMapper;
 import com.ps.bicyclebillingsevice.mapper.WalletMapper;
 import com.ps.bicyclebillingsevice.service.BillingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +26,9 @@ public class BillingServiceImpl implements BillingService {
 
     @Autowired
     private WalletMapper walletMapper;
+
+    @Value("${user.cashPledge}")
+    private Float cashPledge;
 
     @Override
     public Integer setBB(Integer userId, Integer bb) {
@@ -96,6 +100,7 @@ public class BillingServiceImpl implements BillingService {
         return result;
     }
 
+
     /**
      * 退押金、交押金
      * @param userId
@@ -104,8 +109,10 @@ public class BillingServiceImpl implements BillingService {
     @Override
     @Transactional
     public Result RefundPayDeposit(int userId, String state) {
-        String cross = "交押金",pay="退押金";
+        String cross = "交押金",pay="退押金",handInPay = "已交",notToPay = "未交",meg = "";
         Result result = new Result();
+        Payrecord payrecord = new Payrecord();
+        int code = 0;
 
         // 判断参数是否为空
         if(userId <= 0 || state == null){
@@ -120,21 +127,40 @@ public class BillingServiceImpl implements BillingService {
         //根据钱包ID查询钱包信息
         Wallet wallet = billingMapper.selectWalletById(user.getWalletId());
 
+        // 查看押金状态
+        String pledgeState= billingMapper.pledgeState(user.getWalletId());
+
         // 退押金
-        if(pay.equals(state)){
-            wallet.setRemainMoney(wallet.getRemainMoney() + 299f);
+        if(pay.equals(state) && pledgeState.equals(handInPay)){
+
+            wallet.setRemainMoney(wallet.getRemainMoney() + this.cashPledge);
+            wallet.setPledgeState("0");
+            payrecord.setPayType("退还押金");
+            code = 1;
+            meg="已退还押金，请注意查收";
 
             // 交押金
-        }else if(cross.equals(state)){
+        }else if(cross.equals(state) && pledgeState.equals(notToPay)){
             // 余额不足，返回
-            if(wallet.getRemainMoney() <= 0 || wallet.getRemainMoney() < 299f){
+            if(wallet.getRemainMoney() <= 0 || wallet.getRemainMoney() < this.cashPledge){
                 result.setError_code(105);
                 result.setMeg("余额不足，请充值");
                 return result;
             }
-            wallet.setRemainMoney(wallet.getRemainMoney() - 299f);
+
+            wallet.setRemainMoney(wallet.getRemainMoney() - this.cashPledge);
+            wallet.setPledgeState("1");
+            payrecord.setPayType("支付押金");
+            meg="押金支付成功";
+            code = 2;
+
+        }else{
+            result.setError_code(106);
+            result.setMeg("押金"+pledgeState);
+            return result;
         }
 
+        // 更改金额与押金状态
         int updateCode = billingMapper.updateWalletById(wallet);
         if(updateCode == 0){
             result.setError_code(103);
@@ -143,25 +169,11 @@ public class BillingServiceImpl implements BillingService {
         }
 
         //增加消费记录
-        Payrecord payrecord = new Payrecord();
-        payrecord.setPayMoney(299);
 
-        int code = 0;
-        String meg = "";
-        // 退押金
-        if(pay.equals(state)){
-            payrecord.setPayType("退还押金");
-            code = 1;
-            meg="已退还押金，请注意查收";
-            // 交押金
-        }else if(cross.equals(state)){
-            payrecord.setPayType("支付押金");
-            meg="押金支付成功";
-            code = 2;
-        }
-
+        payrecord.setPayMoney(this.cashPledge);
         payrecord.setUserId(userId);
 
+        // 插入消费记录
         int insertCode = billingMapper.insertPayrecord(payrecord);
         // 消费记录增加成功
         if(insertCode != 0){
@@ -170,19 +182,43 @@ public class BillingServiceImpl implements BillingService {
             return result;
         }
 
+        //  回退押金
+        result = backTheDeposit(result,wallet,code);
+
+        return result;
+    }
+
+    /**
+     * 回退押金
+     * @param result
+     * @param wallet
+     * @param code
+     * @return
+     */
+    public Result backTheDeposit(Result result,Wallet wallet,int code){
         result.setMeg("网络异常，操作失败");
         result.setError_code(103);
         if(code == 1){
             // 退还押金失误，回退
-            wallet.setRemainMoney(wallet.getRemainMoney() - 299f);
-
+            wallet.setRemainMoney(wallet.getRemainMoney() - this.cashPledge);
+            wallet.setPledgeState("1");
         }else if(code == 2){
             // 交押金失误，回退
-            wallet.setRemainMoney(wallet.getRemainMoney() + 299f);
+            wallet.setRemainMoney(wallet.getRemainMoney() + this.cashPledge);
+            wallet.setPledgeState("0");
+        }
+
+        // 更改金额与押金状态
+        int updateCode1 = billingMapper.updateWalletById(wallet);
+        if(updateCode1 == 0){
+            result.setError_code(103);
+            result.setMeg("网络异常，回退操作失败");
+            return result;
         }
 
         return result;
     }
+
 
     /**
      * 查询金额
@@ -193,11 +229,11 @@ public class BillingServiceImpl implements BillingService {
     public Result inquiryAmount(int userId) {
         Result resul  = new Result();
         Map<String ,Float> map = new HashMap<String,Float>();
-        map.put("money",229f);
+        map.put("money",this.cashPledge);
 
         resul.setError_code(200);
         resul.setData(map);
-        resul.setMeg("押金为："+229+"元");
+        resul.setMeg("押金为："+this.cashPledge+"元");
         return resul;
     }
 

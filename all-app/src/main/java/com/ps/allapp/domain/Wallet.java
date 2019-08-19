@@ -6,12 +6,17 @@ import lombok.Data;
  * @author VP
  */
 @Data
-public class Wallet {
+public class Wallet implements Serializable {
 
     /**
      * 钱包id
      */
     private int id;
+
+    /**
+     * 用户id
+     */
+    private int userId;
 
     /**
      * 余额
@@ -32,5 +37,10 @@ public class Wallet {
      * 支付密码
      */
     private String payPassword;
+
+    /**
+     * 更改的支付密码
+     */
+    private String alterPayPassword;
 
 }
