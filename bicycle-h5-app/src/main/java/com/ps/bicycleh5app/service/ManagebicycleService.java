@@ -5,13 +5,9 @@ import com.ps.allapp.domain.Result;
 import com.ps.allapp.domain.ShareBicycle;
 import com.ps.allapp.domain.User;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
@@ -22,35 +18,37 @@ import java.util.Map;
 public interface ManagebicycleService {
     /**
      * 更改地址
-     * @param shareBicycle
+     * @param bicycleSite
      * @return
      */
-    @GetMapping("/bikes/address")
-    Result changeAddress(@RequestBody ShareBicycle shareBicycle);
+    @PostMapping("/bikes/address")
+    Result changeAddress(@RequestParam("bicycleSite") String bicycleSite);
 
     /**
      * 初始化首页获取地址和预约的单车
-     * @param user
+     * @param userId
      * @return
      */
-    @GetMapping("/bikes/init")
-    Result bicycleInit(@RequestBody User user);
+    @RequestMapping(value = "/bikes/init",method = RequestMethod.POST)
+    Result bicycleInit(@RequestParam("userId")int userId);
 
     /**
      * 预约单车
-     * @param user
+     * @param userId
+     * @param bicycleNum
      * @return
      */
     @PostMapping("/bikes/subscribe")
-    Result appointmentBicycle(@RequestBody User user);
+    Result appointmentBicycle(@RequestParam("userId") int userId,@RequestParam("bicycleNum") int bicycleNum);
 
     /**
      * 解锁
-     * @param user
+     *  @param userId
+     *  @param bicycleNum
      * @return
      */
     @PostMapping("/bikes/unlock")
-    Result unlockBicycle(@RequestBody User user);
+    Result unlockBicycle(@RequestParam("userId") int userId,@RequestParam("bicycleNum") int bicycleNum);
 
 
     /**

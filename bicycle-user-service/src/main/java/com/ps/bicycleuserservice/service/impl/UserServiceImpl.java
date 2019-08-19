@@ -13,8 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -174,38 +180,6 @@ public class UserServiceImpl implements UserService{
         return userMapper.queryPersonage(userId);
     }
 
-
-    /**
-     * 免密支付
-     * @param userId,password
-     * @return
-     */
-    public Result confidentialPayment(int userId, String password) {
-        Result result = new Result();
-
-        if(password == null || userId <= 0){
-            result.setError_code(102);
-            return result;
-        }
-        System.out.println(userId +" "+ password);
-
-        Integer id = userMapper.userWalletDetails(userId,password);
-        if (id <= 0){
-            result.setError_code(100);
-            return result;
-        }
-
-        Integer integer = userMapper.confidentialPayment(id,1);
-
-        if(integer <= 0){
-            result.setError_code(103);
-            return result;
-        }
-
-        result.setError_code(200);
-        return result;
-    }
-
     /**
      * @Description 根据电话修改密码
      * @param phone 用户的电话号码
@@ -296,7 +270,6 @@ public class UserServiceImpl implements UserService{
                 //设置内容
                 mail.setMessage(code.toString());
                 Set<String> set = new HashSet<>();
-                System.out.println("个人邮箱:  "+email);
                 //添加收信者
                 set.add(email);
                 //设置收信者
@@ -475,5 +448,63 @@ public class UserServiceImpl implements UserService{
             return false;
         }
         return true;
+    }
+
+    /**
+     * @Description 根据用户id
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    public Message getWalletMain(Integer userId) {
+        Wallet wallet = userMapper.getWalletMain(userId);
+        Message message = new Message();
+        message.setCode(200);
+        message.setData(wallet);
+        message.setMsg("查询成功！");
+        return message;
+    }
+
+    /**
+     * @Description 根据用户id查询优惠券
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    public Message getDiscount(Integer userId) {
+        List<Discount> discount = userMapper.getDiscount(userId);
+        Message message = new Message();
+        message.setData(discount);
+        message.setCode(200);
+        message.setMsg("success！");
+        return message;
+    }
+
+    /**
+     * @Description 根据用户id查询支付记录
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    public Message getPayrecord(Integer userId) {
+        List<Payrecord> list = userMapper.getPayrecord(userId);
+        Message message = new Message();
+        message.setMsg("success!");
+        message.setCode(200);
+        message.setData(list);
+        return message;
+    }
+
+    /**
+     * @Description 根据用户客户充值，增加充值记录
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @Transactional
+    public Message recharge(Integer userId, String payType, float payMoney) {
+        userMapper.recharge(userId,payType,payMoney);
+        userMapper.insertPayrecord(userId,payType,payMoney);
+
+        Message message = new Message();
+        message.setCode(200);
+        message.setMsg("success");
+        return message;
     }
 }

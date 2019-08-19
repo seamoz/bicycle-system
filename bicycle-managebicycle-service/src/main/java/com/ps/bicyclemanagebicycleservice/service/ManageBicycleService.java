@@ -22,9 +22,10 @@ public interface ManageBicycleService {
 
     /**
      * 预约单车
-     * @param user 用户对象
+     * @param userId
+     * @param bicycleNum
      */
-    void appointmentBicycle(User user);
+    void appointmentBicycle(int userId,int bicycleNum);
 
     /**
      * 进入骑行首页初始化获取地址和预约车辆
@@ -42,9 +43,10 @@ public interface ManageBicycleService {
 
     /**
      * 解锁单车
-     * @param user
+     * @param userId
+     * @param bicycleNum
      */
-    void unlockBicycle(User user);
+    void unlockBicycle(int userId,int bicycleNum);
 
     /**
      * 骑行中
