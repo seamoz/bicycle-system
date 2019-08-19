@@ -2,11 +2,8 @@ package com.ps.bicycleh5app.service;
 
 import com.ps.allapp.domain.Result;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import com.ps.allapp.domain.Message;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @description:
@@ -160,4 +157,39 @@ public interface UserService {
                                                @RequestParam("password") String password,
                                                @RequestParam("email") String email,
                                                @RequestParam("verificationCode") String verificationCode);
+
+    /**
+     * @Description 根据用户id查找钱包
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/my/main")
+    @CrossOrigin
+    public Message getWalletMain(@RequestParam("userId") Integer userId);
+
+
+    /**
+     * @Description 根据用户id查找优惠券
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/my/discount")
+    public Message getDiscount(@RequestParam("userId") Integer userId);
+
+    /**
+     * @Description 根据用户id查询支付记录
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/my/payrecord")
+    public Message getPayrecord(@RequestParam("userId") Integer userId);
+
+    /**
+     * @Description 用户充值
+     * @param userId 用户id
+     * @return Message<String> 返回的对象提示
+     * */
+    @PostMapping("/my/recharge")
+    public Message recharge(@RequestParam("userId") Integer userId,@RequestParam("payType") String payType ,@RequestParam("payMoney") float payMoney);
+
 }

@@ -515,6 +515,7 @@ public class UserServiceImpl implements UserService{
      */
     public Message getWalletMain(Integer userId) {
         Wallet wallet = userMapper.getWalletMain(userId);
+        System.out.println(wallet);
         Message message = new Message();
         message.setCode(200);
         message.setData(wallet);
@@ -564,5 +565,9 @@ public class UserServiceImpl implements UserService{
         message.setCode(200);
         message.setMsg("success");
         return message;
+    }
+
+    public Result confidentialPayment(int userId, String password) {
+        return null;
     }
 }
