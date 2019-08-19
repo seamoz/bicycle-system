@@ -11,6 +11,7 @@ import com.ps.bicyclemanagebicycleservice.service.ManageBicycleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,10 @@ public class ManageBicycleServiceImpl implements ManageBicycleService {
     }
 
     @Override
+    public void appointmentBicycle(User user) {
+
+    }
+
     public void appointmentBicycle(int userId,int bicycleNum) {
 
         if(manageBicycleMapper.checkUnlock(userId) != 0){
@@ -56,6 +61,10 @@ public class ManageBicycleServiceImpl implements ManageBicycleService {
     }
 
     @Override
+    public void unlockBicycle(User user) {
+
+    }
+
     public void unlockBicycle(int userId,int bicycleNum){
 
         if(manageBicycleMapper.checkUnlock(userId) != 0){
@@ -68,6 +77,7 @@ public class ManageBicycleServiceImpl implements ManageBicycleService {
                 throw new BusinessException(500, "您已经预约过一辆车了！");
             }
         }
+        /*#{userId},#{bicycleNum},#{initialAddress},#{startTime}*/
         //获取当前时间
         String nowTime = new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss").format(new Date());
         //根据单车编号获取位置
@@ -94,7 +104,24 @@ public class ManageBicycleServiceImpl implements ManageBicycleService {
         if (shareBicycle.getBicycleState() != 0){
             throw new BusinessException(500, "没有骑行!");
         }
-        result.setData(list.get(list.size()-1));
+        String startTime = shareBicycle.getStartTime();
+        String[] strings = startTime.split("[.]");
+        startTime = strings[0];
+        shareBicycle.setStartTime(startTime);
+        Date st = null;
+        long stl = 0L;
+        long ctl = 0L;
+        try {
+            st = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startTime);
+            stl = st.getTime();
+            ctl = System.currentTimeMillis();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        long xxx = ctl - stl;
+        xxx = xxx/60000;
+        shareBicycle.setUseTime(xxx+"");
+        result.setData(shareBicycle);
         result.setError_code(0);
         return result;
     }
@@ -240,6 +267,63 @@ public class ManageBicycleServiceImpl implements ManageBicycleService {
         result.setError_code(200);
         return result;
 
+    }
+
+    /**
+     * 关锁
+     * @param id      骑行记录ID
+     * @param useTimes    骑行时间
+     * @return
+     */
+    @Override
+    public Result shut(int id, String useTimes) {
+        ShareBicycle shareBicycle = new ShareBicycle();
+        shareBicycle.setId(id);
+        shareBicycle.setUseTime(useTimes);
+        Result result = new Result();
+        shareBicycle.setEndTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        long useTime = Long.valueOf(shareBicycle.getUseTime());
+        float count = 0;
+        useTime = useTime - 60;
+        if(useTime < 0){
+            count++;
+        } else {
+            useTime = useTime/30;
+            count = useTime*0.5f;
+        }
+        shareBicycle.setMoney(count);
+        int updateCode = manageBicycleMapper.shutUpdateShareBicycle(shareBicycle);
+        if(updateCode == 1){
+            throw new BusinessException(500, "关锁失败!");
+        }
+        result.setError_code(updateCode);
+        result.setMeg("关锁成功!");
+        return result;
+    }
+
+    /**
+     * 上报计费异常
+     * @param id    骑行记录ID
+     * @param abnormal  异常
+     * @return
+     */
+    @Override
+    public Result abnormal(int id, String abnormal) {
+        Result result = new Result();
+        ShareBicycle shareBicycle = manageBicycleMapper.selectShareBicycleById(id);
+        Abnormal abnormals = new Abnormal();
+        abnormals.setShareId(id);
+        abnormals.setUserId(shareBicycle.getUserId());
+        abnormals.setReportTime(new Date());
+        abnormals.setAbnormal(abnormal);
+        int insertCode = manageBicycleMapper.reportAbnormalBilling(abnormals);
+        if(insertCode != 1){
+            throw new BusinessException(500, "上报失败!");
+        }
+        int updateCode = manageBicycleMapper.abnormalUpdateShareBicycle(id);
+        result.setMeg("上报成功");
+        result.setError_code(insertCode);
+        return null;
     }
 
 }

@@ -44,7 +44,7 @@ public class ShareBicycle implements Serializable {
     /**
      * 金额
      */
-    private double money;
+    private float money;
     /**
      * 骑行距离
      */
@@ -58,10 +58,14 @@ public class ShareBicycle implements Serializable {
      */
     private String bicycleSite;
 
-    public ShareBicycle(int userId, int bicycleNum,  String initialAddress,String startTime) {
+    public ShareBicycle(int userId, int bicycleNum, String initialAddress, String startTime) {
         this.userId = userId;
         this.bicycleNum = bicycleNum;
         this.startTime = startTime;
         this.initialAddress = initialAddress;
+    }
+
+    public ShareBicycle(){
+
     }
 }

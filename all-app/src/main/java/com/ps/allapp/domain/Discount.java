@@ -5,20 +5,44 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 优惠券实体类
+ */
 @Data
 public class Discount implements Serializable {
-    /**优惠券id*/
+
+    /**
+     * 优惠券ID
+     */
     private Integer id;
-    /**折扣金额*/
+
+    /**
+     * 折扣金额
+     */
     private double discountMoney;
-    /**生效时间*/
+
+    /**
+     * 生效时间
+     */
     private Date takeEffectTime;
-    /**失效时间*/
+
+    /**
+     * 失效时间
+     */
     private Date loseEffectTime;
-    /**折扣类型*/
+
+    /**
+     * 折扣类型
+     */
     private Integer discountType;
-    /**失效类型*/
+
+    /**
+     * 失效类型
+     */
     private Integer loseEffectType;
-    /**用户id*/
+
+    /**
+     * 用户ID
+     */
     private Integer userId;
 }

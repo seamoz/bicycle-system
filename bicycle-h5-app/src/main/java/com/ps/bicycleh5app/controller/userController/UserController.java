@@ -51,9 +51,9 @@ public class UserController {
      * @param email 用户的邮箱地址
      * @return Message<String> 返回的对象提示
      * */
-    @GetMapping("/verificationEmail")
-    public Message<String> verificationCodesEmail(String email){
-        return userService.verificationCodes(email);
+    @GetMapping("/sendMessage")
+    public Message<String> verificationCodesEmail(String email,Integer state){
+        return userService.verificationCodes(email,state);
     }
 
     /**
@@ -61,9 +61,9 @@ public class UserController {
      * @param phone 用户的电话号码
      * @return Message<String> 返回的对象提示
      * */
-    @GetMapping("/verificationPhone")
-    public Message<String> verificationCodesPhone(String phone){
-        return userService.verificationCodesPhone(phone);
+    @GetMapping("/sendPhoneMessage")
+    public Message<String> verificationCodesPhone(String phone,Integer state){
+        return userService.verificationCodesPhone(phone,state);
     }
 
     /**
@@ -195,5 +195,62 @@ public class UserController {
     public Result updatePhone(@RequestParam("id") int id,@RequestParam ("phone") String phone){
         Result result = userService.updatePhone(id, phone);
         return result;
+    }
+    /**
+     * @Description 修改用户的邮箱
+     * @param id 用户的id
+     * @param newEmail 用户要修改的邮箱地址
+     * @param verificationCode 邮箱验证码
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/updateEmailById")
+    public Message<String> updateEmailById(String id,String newEmail,String verificationCode){
+        return userService.updateEmailById(id,newEmail,verificationCode);
+    }
+
+    /**
+     * @Description 添加邮箱
+     * @param id 用户的id
+     * @param newEmail 用户要修改的邮箱地址
+     * @param verificationCode 邮箱验证码
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/addEmailById")
+    public Message<String> addEmailById(String id,String newEmail,String verificationCode){
+        return userService.addEmailById(id,newEmail,verificationCode);
+    }
+
+    /**
+     * @Description 修改电话
+     * @param id 用户的id
+     * @param newPhone 用户要修改的邮箱地址
+     * @param verificationCode 邮箱验证码
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/updatePhoneById")
+    public Message<String> updatePhoneById(String id,String newPhone,String verificationCode){
+        return userService.updatePhoneById(id,newPhone,verificationCode);
+    }
+
+    /**
+     * @Description 添加电话
+     * @param id 用户的id
+     * @param newPhone 用户要添加的电话
+     * @param verificationCode 邮箱验证码
+     * @return Message<String> 返回的对象提示
+     * */
+    @GetMapping("/addPhoneById")
+    public Message<String> addPhoneById(String id,String newPhone,String verificationCode){
+        return userService.addPhoneById(id,newPhone,verificationCode);
+    }
+
+    /**
+     * @param phone         用户要修改的邮箱地址
+     * @return Message<String> 返回的对象提示
+     * @Description 查询电话存不存在
+     */
+    @GetMapping("/judgePhone")
+    Message<String> judgePhone(String phone) {
+        return userService.judgePhone(phone);
     }
 }

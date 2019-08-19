@@ -100,4 +100,22 @@ public interface ManagebicycleService {
      */
     @PostMapping("/bikes/malfunction")
     Result sbikeFault(Fault fault);
+
+
+    /**
+     * 关锁
+     * @param map
+     * @return
+     */
+    @RequestMapping("/bikes/shut")
+    Result shut(@RequestBody Map<String, String> map);
+
+    /**
+     * 上报计费异常
+     * @param map
+     * @return
+     */
+    @RequestMapping("/bikes/abnormal")
+    public Result abnormal(@RequestBody Map<String, String> map);
+
 }

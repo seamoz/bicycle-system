@@ -105,4 +105,24 @@ public class ManagebicycleController {
         return managebicycleService.pay(map);
     }
 
+    /**
+     * 关锁
+     * @param map
+     * @return
+     */
+    @RequestMapping("/shut")
+    public Result shut(@RequestBody Map<String, String> map){
+        return managebicycleService.shut(map);
+    }
+
+    /**
+     * 上报计费异常
+     * @param map
+     * @return
+     */
+    @RequestMapping("/abnormal")
+    public Result abnormal(@RequestBody Map<String, String> map){
+        return managebicycleService.abnormal(map);
+    }
+
 }
