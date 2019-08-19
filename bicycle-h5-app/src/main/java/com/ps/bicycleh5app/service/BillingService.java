@@ -15,6 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface BillingService {
 
     /**
+     * 修改支付密码
+     */
+    @PostMapping("/billing/alterPaymentCode")
+    public Result updatePayPassword(@RequestParam Integer userId, @RequestParam String payPassword, @RequestParam String payPassword2);
+
+    /**
      * 设置支付密码
      * @param userId
      * @param payPassword

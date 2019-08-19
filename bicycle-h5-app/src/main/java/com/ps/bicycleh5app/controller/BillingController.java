@@ -15,6 +15,11 @@ public class BillingController {
     @Autowired
     private BillingService billingService;
 
+    @PostMapping("/alterPaymentCode")
+    public Result updatePayPassword(@RequestParam("userId") Integer userId, @RequestParam("payPassword") String payPassword, @RequestParam("payPassword2") String payPassword2) {
+        return billingService.updatePayPassword(userId,payPassword,payPassword2);
+    }
+
     @PostMapping("/paymentCode")
     public Result findPay(@RequestParam("userId") Integer userId,@RequestParam("payPassword") String payPassword){
         Integer pay = billingService.findPay(userId, payPassword);

@@ -17,6 +17,34 @@ public class BicyclebillingController {
     @Autowired
     private BillingService billingService;
 
+    @PostMapping("/alterPaymentCode")
+    public Result updatePayPassword(@RequestParam Integer userId, @RequestParam String payPassword, @RequestParam String payPassword2){
+        Result<Object> objectResult = new Result<>();
+        Wallet wallet = new Wallet();
+        wallet = billingService.getPayPassword(userId);
+        System.out.println(wallet.toString());
+
+        if(!wallet.getPayPassword().equals(payPassword)){
+            objectResult.setMeg("源密码不一致");
+            objectResult.setError_code(201);
+            return objectResult;
+        }
+
+        Integer integer = billingService.updatePassword(wallet.getId(), payPassword2);
+        if(integer == 0){
+            objectResult.setMeg("修改失败");
+            objectResult.setError_code(46123);
+            return objectResult;
+        }
+        if(integer == 1){
+            objectResult.setMeg("修改成功");
+            objectResult.setError_code(200);
+            return objectResult;
+        }
+
+        return null;
+    }
+
     @PostMapping("/paymentCode")
     public Integer findPay(@RequestParam Integer userId,@RequestParam String payPassword){
         // 钱包主键
@@ -31,6 +59,9 @@ public class BicyclebillingController {
             billingService.insertWallet(wallet);
             key = wallet.getId();
             System.out.println("我创建了钱包");
+
+            // 钱包id植入用户表
+            System.out.println(billingService.setBB(userId, key)+"更正成功了吗");
         }
 
         // 设置支付密码

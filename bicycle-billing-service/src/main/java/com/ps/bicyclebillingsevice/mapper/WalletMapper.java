@@ -8,6 +8,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface WalletMapper {
     /**
+     *
+     */
+    Integer setBB(Integer userId , Integer bb);
+
+    /**
      * 查询id有没有钱包
      * return id
      */
@@ -29,7 +34,13 @@ public interface WalletMapper {
      * 查询用户支付密码
      * return 支付密码
      */
-    String getPayPassword(Integer userId);
+    Wallet getPayPassword(Integer userId);
 
+    /**
+     * 更改密码
+     * @param userId
+     * @param payPassword
+     * @return
+     */
     Integer updatePassword(Integer userId, String payPassword);
 }
