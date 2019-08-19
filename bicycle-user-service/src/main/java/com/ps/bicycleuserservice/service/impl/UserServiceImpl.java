@@ -52,7 +52,9 @@ public class UserServiceImpl implements UserService {
         if (!code.equals(verify.getVerify())) {
             return new Result("验证码不正确", 101);
         }
-        return new Result("登录成功", 200);
+        User user = userMapper.queryUserByPhone(verify.getPhone());
+        System.out.println(user.toString());
+        return new Result("登录成功", 200, user.getUserId());
     }
 
     @Override
@@ -69,24 +71,26 @@ public class UserServiceImpl implements UserService {
     @Override
     public Result logIn(String userData, String password) {
 
+        User user = null;
+
         if (Regexs.isEmail(userData)) {
-            User user = userMapper.logInByEmailAndPassword(userData, password);
+            user = userMapper.logInByEmailAndPassword(userData, password);
             if (null == user) {
                 return new Result("不存在该用户", 101);
             }
         } else if (Regexs.orPhoneNumber(userData)) {
-            User user = userMapper.logInByPhoneAndPassword(userData, password);
+            user = userMapper.logInByPhoneAndPassword(userData, password);
             if (null == user) {
                 return new Result("不存在该用户", 101);
             }
         } else {
-            User user = userMapper.logInByUserNameAndPassword(userData, password);
+            user = userMapper.logInByUserNameAndPassword(userData, password);
             if (null == user) {
                 return new Result("不存在该用户", 101);
             }
         }
 
-        return new Result("存在该用户", 200);
+        return new Result("存在该用户", 200, user.getUserId());
     }
 
     @Override
