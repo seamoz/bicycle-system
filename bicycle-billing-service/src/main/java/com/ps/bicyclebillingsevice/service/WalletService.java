@@ -3,7 +3,7 @@ package com.ps.bicyclebillingsevice.service;
 import com.ps.allapp.domain.Wallet;
 
 /**
- * 该类修改权，需向作者授权
+ * 
  */
 public interface WalletService {
     /**
