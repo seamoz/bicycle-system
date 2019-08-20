@@ -2,6 +2,7 @@ package com.ps.bicycleh5app.controller;
 
 import com.ps.allapp.domain.Result;
 import com.ps.allapp.domain.User;
+import com.ps.allapp.domain.Wallet;
 import com.ps.bicycleh5app.service.BillingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,14 +33,14 @@ public class BillingController {
 
     /**
      *  免密支付
-     * @param user(userId,password)
+     * @param wallet(userId,password)
      * @return
      */
     @PostMapping("/confidential-payment")
-    public Result confidentialPayment(@RequestBody User user){
-        System.out.println(user);
-        return billingService.confidentialPayment(user);
+    public Result confidentialPayment(@RequestBody Wallet wallet){
+        return billingService.confidentialPayment(wallet);
     }
+
 
     /**
      * 退押金

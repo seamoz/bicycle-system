@@ -66,20 +66,47 @@ public class BillingServiceImpl implements BillingService {
 
     /**
      * 免密支付
-     * @param user(userId,password)
+     * @param wallet(userId,password)
      * @return
      */
     @Override
-    public Result confidentialPayment(User user) {
+    public Result confidentialPayment(Wallet wallet) {
         Result result = new Result();
 
-        if(user.getPassword() == null || user.getUserId() == null || user.getUserId() <= 0){
+        if(wallet.getPayPassword() == null || wallet.getUserId() <= 0){
             result.setError_code(102);
             result.setMeg("输入框为空或者输入有误，请正确输入...");
             return result;
         }
 
-        Integer id = billingMapper.userWalletDetails(user.getUserId(),user.getPassword());
+        //根据用户ID查询用户信息
+        User user = billingMapper.selectUserById(wallet.getUserId());
+
+        if(user == null){
+            result.setError_code(109);
+            result.setMeg("该用户不存在");
+            return result;
+        }else if(user != null && user.getWalletId() == 0){
+            result.setError_code(108);
+            result.setMeg("请设置支付密码！");
+            return result;
+        }
+
+        //根据钱包ID查询钱包信息
+        Wallet wallet1 = billingMapper.selectWalletById(user.getWalletId());
+
+        if(wallet1 == null){
+            result.setError_code(108);
+            result.setMeg("请设置支付密码！");
+            return result;
+        }else if(wallet1 != null && wallet1.getNoPasswordPay().equals("1")){
+            result.setError_code(107);
+            result.setMeg("免密支付已开通");
+            return result;
+        }
+
+        // 根据钱包id 查询支付密码
+        Integer id = billingMapper.pay(wallet1.getId(),wallet.getPayPassword());
 
         if (id == null || id <= 0){
             result.setError_code(100);
@@ -87,6 +114,8 @@ public class BillingServiceImpl implements BillingService {
             return result;
         }
 
+
+        // 更改为免密支付
         Integer integer = billingMapper.confidentialPayment(id,1);
 
         if(integer == null || integer <= 0){

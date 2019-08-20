@@ -2,6 +2,7 @@ package com.ps.bicycleh5app.service;
 
 import com.ps.allapp.domain.Result;
 import com.ps.allapp.domain.User;
+import com.ps.allapp.domain.Wallet;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,11 +32,11 @@ public interface BillingService {
 
     /**
      *  免密支付
-     * @param userId,password
+     * @param
      * @return
      */
     @PostMapping("/billing/confidential-payment")
-    public Result confidentialPayment(@RequestBody User user);
+    Result confidentialPayment(@RequestBody Wallet wallet);
 
     /**
      * 退押金

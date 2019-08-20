@@ -74,14 +74,13 @@ public class BicyclebillingController {
 
     /**
      *  免密支付
-     * @param user
+     * @param wallet
      * @return
      */
     @PostMapping("/confidential-payment")
-    public Result confidentialPayment(@RequestBody User user){
-        return billingService.confidentialPayment(user);
+    public Result confidentialPayment(@RequestBody Wallet wallet){
+        return billingService.confidentialPayment(wallet);
     }
-
     /**
      * 退押金
      * @param userId

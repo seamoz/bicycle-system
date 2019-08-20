@@ -64,4 +64,10 @@ public interface BillingMapper {
      */
     String pledgeState(int walletId);
 
+    /**
+     *  设置支付密码
+     * @param id
+     */
+    Integer pay(int id,String payPassword);
+
 }
