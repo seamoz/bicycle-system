@@ -7,6 +7,10 @@ package com.ps.bicycleuserservice.util;
  */
 public class Regexs {
 
+    public static void main(String[] args) {
+        System.out.println(orPhoneNumber("1881218284447"));
+    }
+
     /**
      * 2 *正则表达式验证手机
      * 3
