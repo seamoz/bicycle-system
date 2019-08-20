@@ -24,22 +24,22 @@ public class Discount implements Serializable {
     /**
      * 生效时间
      */
-    private Date takeEffectTime;
+    private String takeEffectTime;
 
     /**
      * 失效时间
      */
-    private Date loseEffectTime;
+    private String loseEffectTime;
 
     /**
      * 折扣类型
      */
-    private Integer discountType;
+    private String discountType;
 
     /**
      * 失效类型
      */
-    private Integer loseEffectType;
+    private String loseEffectType;
 
     /**
      * 用户ID

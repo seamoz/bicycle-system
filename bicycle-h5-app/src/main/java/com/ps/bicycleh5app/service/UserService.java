@@ -261,7 +261,7 @@ public interface UserService {
      * @param userId 用户id
      * @return Message<String> 返回的对象提示
      * */
-    @PostMapping("/my/recharge")
+    @GetMapping("/my/recharge")
     public Message recharge(@RequestParam("userId") Integer userId,@RequestParam("payType") String payType ,@RequestParam("payMoney") float payMoney);
 
     /**
