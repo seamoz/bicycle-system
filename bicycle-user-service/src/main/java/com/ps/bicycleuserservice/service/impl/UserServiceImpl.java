@@ -92,26 +92,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public Result logIn(String userData, String password) {
 
-        if(Regexs.isEmail(userData)){
-            System.out.println("email");
-            User user = userMapper.logInByEmailAndPassword(userData, password);
+        User user = null;
+
+        if (Regexs.isEmail(userData)) {
+            user = userMapper.logInByEmailAndPassword(userData, password);
             if (null == user) {
                 return new Result("不存在该用户", 101);
             }
-        }
-
-        if(Regexs.orPhoneNumber(userData)){
-            System.out.println("phone");
-            User user = userMapper.logInByPhoneAndPassword(userData, password);
+        } else if (Regexs.orPhoneNumber(userData)) {
+            user = userMapper.logInByPhoneAndPassword(userData, password);
             if (null == user) {
                 return new Result("不存在该用户", 101);
             }
-        }
-
-        User user = userMapper.logInByUserNameAndPassword(userData, password);
-        System.out.println("username");
-        if (null == user) {
-            return new Result("不存在该用户", 101);
+        } else {
+            user = userMapper.logInByUserNameAndPassword(userData, password);
+            if (null == user) {
+                return new Result("不存在该用户", 101);
+            }
         }
 
         return new Result("存在该用户", 200, user.getUserId());
