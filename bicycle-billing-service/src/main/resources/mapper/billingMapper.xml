@@ -105,4 +105,15 @@
             id = #{walletId}
     </select>
 
+    <!-- 根据钱包id 查询支付密码-->
+    <select id="pay" resultType="java.lang.Integer">
+        SELECT
+            count(0)
+        FROM
+            sbike_wallet_t
+        WHERE
+            id = #{id}
+            AND pay_password = #{payPassword}
+    </select>
+
 </mapper>

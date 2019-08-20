@@ -2,6 +2,8 @@ package com.ps.allapp.domain;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @author VP
  */

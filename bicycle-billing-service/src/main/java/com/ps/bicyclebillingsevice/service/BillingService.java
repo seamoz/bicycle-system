@@ -44,10 +44,10 @@ public interface BillingService {
 
     /**
      * 免密支付
-     * @param user
+     * @param wallet
      * @return
      */
-    Result confidentialPayment( User user);
+    Result confidentialPayment(Wallet wallet);
 
     /**
      * 退押金、交押金
